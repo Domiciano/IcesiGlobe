@@ -50,6 +50,10 @@
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
 
     <script>
+        
+        const arcsData = [
+                   
+                ];
         const countriesToHighlight = [];
         const selectCountry1 = document.getElementById('country1');
         const selectCountry2 = document.getElementById('country2');
@@ -95,11 +99,17 @@
                         countriesToHighlight.push(countryName2);
                         world.polygonsData(countries.features)
                             .polygonCapColor(feature =>
-                                shouldHighlightCountry(feature.properties.name, countriesToHighlight) ? 'white' : '#183eb4'
+                                shouldHighlightCountry(feature.properties.name, countriesToHighlight) ? '#386ee4' : '#183eb4'
                             )
                             .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
                             .polygonStrokeColor(() => '#020a73')
                             .polygonsTransitionDuration(300);
+
+                        //Arcos
+                        createArc(world, countryName1, countryName2);
+
+                        
+                        
                     } else if (countryName1 === countryName2) {
                         alert('Por favor, selecciona dos países diferentes.');
                     } else {
@@ -123,33 +133,7 @@
                     .polygonStrokeColor(() => '#020a73')
                     .polygonsTransitionDuration(300);
 
-                // Coordenadas de Bogotá y Madrid
-                const bogotaLat = 4.7110;
-                const bogotaLng = -74.0721;
-                const madridLat = 40.4168;
-                const madridLng = -3.7038;
-
-                // Datos del arco
-                const arcsData = [
-                    {
-                        startLat: bogotaLat,
-                        startLng: bogotaLng,
-                        endLat: madridLat,
-                        endLng: madridLng,
-                        color: '#fff'
-                    }
-                ];
-
-                // Añadir los arcos al globo
-                world.arcsData(arcsData);
-                world.arcAltitude(0.2);
-                world.arcStroke(0.5);
-                world.arcDashLength(0.1);
-                world.arcDashGap(0.03);
-                world.arcColor('color');
-                world.arcDashLength(() => 0.1)
-                world.arcDashAnimateTime(() => 3000);
-
+                
                 
 
 
@@ -158,6 +142,46 @@
             })
             .catch(err => console.error('Error al cargar el archivo JSON:', err));
 
+
+        function updateArcs(world){
+            world.arcsData(arcsData);
+                //world.arcAltitude(0.2);
+                world.arcAltitudeAutoScale(0.5);
+                world.arcStroke(0.5);
+                world.arcDashLength(0.1);
+                world.arcDashGap(0.03);
+                world.arcColor('color');
+                world.arcDashLength(() => 0.1)
+                world.arcDashAnimateTime(() => 3000);
+        }
+
+        async function createArc(world, country1, country2){
+            const responseCountry1 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country1}&format=jsonv2`);
+            const dataCountry1 = await responseCountry1.json();
+            let startLat = dataCountry1[0].lat;
+            let startLng = dataCountry1[0].lon;
+
+            console.log(startLat);
+            console.log(startLng);
+
+            const responseCountry2 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country2}&format=jsonv2`);
+            const dataCountry2 = await responseCountry2.json();
+            let endLat = dataCountry2[0].lat;
+            let endLng = dataCountry2[0].lon;
+
+            console.log(endLat);
+            console.log(endLng);
+        
+            arcsData.push({
+                            startLat: startLat,
+                            startLng: startLng,
+                            endLat: endLat,
+                            endLng: endLng,
+                            color: '#fff'
+                        });
+
+                        updateArcs(world)
+        }
 
         async function getCountryName(latitude, longitude) {
             const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2`;
