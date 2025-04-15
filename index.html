@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <title>Globo Minimalista con Arcos</title>
     <style>
         html, body { margin: 0; height: 100%; background-color: #f0f0f0; }
         #globeViz { width: 100%; height: 100%; }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
+
 <body>
     <div id="globeViz"></div>
+    <div class="controls">
+        <select id="country1"></select>
+        <select id="country2"></select>
+        <button id="generateArc">Generar Arco</button>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
 
     <script>
+        const countriesToHighlight = [];
+        const selectCountry1 = document.getElementById('country1');
+        const selectCountry2 = document.getElementById('country2');
+        const generateArcButton = document.getElementById('generateArc');
+
+        // Función para verificar si un país está en la lista a resaltar
+        function shouldHighlightCountry(countryName, highlightList) {
+            return highlightList.includes(countryName);
+        }
+
         fetch('world.json')
             .then(res => res.json())
             .then(countries => {
@@ -21,7 +67,47 @@
                     .globeImageUrl(null) // Elimina la textura de agua por defecto
                     .backgroundImageUrl('./night-sky.png')
                     .backgroundColor('black'); // Hace el fondo transparente
-                    
+
+
+                const allCountryNames = countries.features.map(feature => feature.properties.name).sort();
+                // Llenar los select-options con los nombres de los países
+                allCountryNames.forEach(name => {
+                    const option1 = document.createElement('option');
+                    option1.value = name;
+                    option1.textContent = name;
+                    selectCountry1.appendChild(option1);
+
+                    const option2 = document.createElement('option');
+                    option2.value = name;
+                    option2.textContent = name;
+                    selectCountry2.appendChild(option2);
+                });
+
+                let highlightedCountries = [];
+
+                generateArcButton.addEventListener('click', () => {
+                    const countryName1 = selectCountry1.value;
+                    const countryName2 = selectCountry2.value;
+                    console.log(countryName1);
+                    console.log(countryName2);
+                    if (countryName1 && countryName2 && countryName1 !== countryName2) {
+                        countriesToHighlight.push(countryName1);
+                        countriesToHighlight.push(countryName2);
+                        world.polygonsData(countries.features)
+                            .polygonCapColor(feature =>
+                                shouldHighlightCountry(feature.properties.name, countriesToHighlight) ? 'white' : '#183eb4'
+                            )
+                            .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
+                            .polygonStrokeColor(() => '#020a73')
+                            .polygonsTransitionDuration(300);
+                    } else if (countryName1 === countryName2) {
+                        alert('Por favor, selecciona dos países diferentes.');
+                    } else {
+                        alert('Por favor, selecciona ambos países.');
+                    }
+                });
+
+
 
                 // Modificar el color del agua después de la inicialización del globo
                 const waterMaterial = world.globeMaterial();
@@ -29,9 +115,10 @@
                     waterMaterial.color.set('#020a73'); // Cambia el color del agua a un azul RGB
                 }
 
+                
                 // Dibujar los países
                 world.polygonsData(countries.features)
-                    .polygonCapColor(() => '#183eb4')
+                    .polygonCapColor(feature => '#183eb4')
                     .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
                     .polygonStrokeColor(() => '#020a73')
                     .polygonsTransitionDuration(300);
@@ -63,10 +150,33 @@
                 world.arcDashLength(() => 0.1)
                 world.arcDashAnimateTime(() => 3000);
 
+                
+
+
+
+
             })
             .catch(err => console.error('Error al cargar el archivo JSON:', err));
+
+
+        async function getCountryName(latitude, longitude) {
+            const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.address && data.address.country) {
+                    return data.address.country;
+                } else {
+                    return null; // Indica que no se encontró el país
+                }
+            } catch (error) {
+                console.error('Error al geocodificar:', error);
+                return null; // Indica que hubo un error en la solicitud
+            }
+        }
     </script>
 </body>
+
 </html>
-
-
