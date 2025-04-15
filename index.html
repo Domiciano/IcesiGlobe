@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Globo Minimalista con Países</title>
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-      background-color: #f0f0f0;
-    }
-    #globeViz {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>Globo Minimalista con Arcos</title>
+    <style>
+        html, body { margin: 0; height: 100%; background-color: #f0f0f0; }
+        #globeViz { width: 100%; height: 100%; }
+    </style>
 </head>
 <body>
-  <div id="globeViz"></div>
+    <div id="globeViz"></div>
 
-  <!-- Dependencias -->
-  <script src="https://unpkg.com/three/build/three.min.js"></script>
-  <script src="./globe.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 
-  <script>
-    fetch('world.json') 
-      .then(res => res.json())
-      .then(countries => {
-        const world = Globe()(document.getElementById('globeViz'));
+    <script>
+        fetch('world.json')
+            .then(res => res.json())
+            .then(countries => {
+                const world = Globe()(document.getElementById('globeViz'))
+                    .globeImageUrl(null) // Elimina la textura de agua por defecto
+                    .backgroundColor('rgba(0, 0, 0, 1)'); // Hace el fondo transparente
 
-        // Usamos una textura azul para el agua (imagen local)
-        world.globeImageUrl('water-texture.png');
+                // Modificar el color del agua después de la inicialización del globo
+                const waterMaterial = world.globeMaterial();
+                if (waterMaterial) {
+                    waterMaterial.color.set('#020118'); // Cambia el color del agua a un azul RGB
+                }
 
-        // Establecer el color de fondo del área exterior al globo
-        world.backgroundColor('#000');
+                // Dibujar los países
+                world.polygonsData(countries.features)
+                    .polygonCapColor(() => '#183eb4')
+                    .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
+                    .polygonStrokeColor(() => '#020a73')
+                    .polygonsTransitionDuration(300);
 
-        // Dibujar los países con el color personalizado y detalles visibles
-        world.polygonsData(countries.features)
-          .polygonCapColor(() => '#183eb4')  // Color sólido para los países
-          .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)') // Lados más suaves
-          .polygonStrokeColor(() => '#020a73') // Añadir un borde leve (con transparencia) para visibilidad
+                // Coordenadas de Bogotá y Madrid
+                const bogotaLat = 4.7110;
+                const bogotaLng = -74.0721;
+                const madridLat = 40.4168;
+                const madridLng = -3.7038;
 
-        // Activar la transición para los países
-        world.polygonsTransitionDuration(300);
-      })
-      .catch(err => console.error('Error al cargar el archivo JSON:', err)); 
+                // Datos del arco
+                const arcsData = [
+                    {
+                        startLat: bogotaLat,
+                        startLng: bogotaLng,
+                        endLat: madridLat,
+                        endLng: madridLng,
+                        lineColor: '#fff', // Color blanco para el arco
+                        strokeWidth: 2, // Reduzco el grosor para que se vea mejor el color
+                        strokeOpacity: 1,
+                        transitionDuration: 300,
+                        // Puedes añadir más propiedades para personalizar el arco
+                    }
+                ];
 
+                // Añadir los arcos al globo
+                world.arcsData(arcsData);
 
-      
-  </script>
+            })
+            .catch(err => console.error('Error al cargar el archivo JSON:', err));
+    </script>
 </body>
 </html>
