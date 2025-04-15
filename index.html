@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Globo Minimalista con Países</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: #f0f0f0;
+    }
+    #globeViz {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="globeViz"></div>
+
+  <!-- Dependencias -->
+  <script src="https://unpkg.com/three/build/three.min.js"></script>
+  <script src="./globe.js"></script>
+
+  <script>
+    fetch('world.json') 
+      .then(res => res.json())
+      .then(countries => {
+        const world = Globe()(document.getElementById('globeViz'));
+
+        // Usamos una textura azul para el agua (imagen local)
+        world.globeImageUrl('water-texture.png');
+
+        // Establecer el color de fondo del área exterior al globo
+        world.backgroundColor('#000');
+
+        // Dibujar los países con el color personalizado y detalles visibles
+        world.polygonsData(countries.features)
+          .polygonCapColor(() => '#183eb4')  // Color sólido para los países
+          .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)') // Lados más suaves
+          .polygonStrokeColor(() => '#020a73') // Añadir un borde leve (con transparencia) para visibilidad
+
+        // Activar la transición para los países
+        world.polygonsTransitionDuration(300);
+      })
+      .catch(err => console.error('Error al cargar el archivo JSON:', err)); 
+
+
+      
+  </script>
+</body>
+</html>
