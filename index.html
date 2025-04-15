@@ -11,7 +11,7 @@
 <body>
     <div id="globeViz"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
+    <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
 
     <script>
         fetch('world.json')
@@ -19,12 +19,14 @@
             .then(countries => {
                 const world = Globe()(document.getElementById('globeViz'))
                     .globeImageUrl(null) // Elimina la textura de agua por defecto
-                    .backgroundColor('rgba(0, 0, 0, 1)'); // Hace el fondo transparente
+                    .backgroundImageUrl('./night-sky.png')
+                    .backgroundColor('black'); // Hace el fondo transparente
+                    
 
                 // Modificar el color del agua después de la inicialización del globo
                 const waterMaterial = world.globeMaterial();
                 if (waterMaterial) {
-                    waterMaterial.color.set('#020118'); // Cambia el color del agua a un azul RGB
+                    waterMaterial.color.set('#020a73'); // Cambia el color del agua a un azul RGB
                 }
 
                 // Dibujar los países
@@ -47,19 +49,24 @@
                         startLng: bogotaLng,
                         endLat: madridLat,
                         endLng: madridLng,
-                        lineColor: '#fff', // Color blanco para el arco
-                        strokeWidth: 2, // Reduzco el grosor para que se vea mejor el color
-                        strokeOpacity: 1,
-                        transitionDuration: 300,
-                        // Puedes añadir más propiedades para personalizar el arco
+                        color: '#fff'
                     }
                 ];
 
                 // Añadir los arcos al globo
                 world.arcsData(arcsData);
+                world.arcAltitude(0.2);
+                world.arcStroke(0.5);
+                world.arcDashLength(0.1);
+                world.arcDashGap(0.03);
+                world.arcColor('color');
+                world.arcDashLength(() => 0.1)
+                world.arcDashAnimateTime(() => 3000);
 
             })
             .catch(err => console.error('Error al cargar el archivo JSON:', err));
     </script>
 </body>
 </html>
+
+
