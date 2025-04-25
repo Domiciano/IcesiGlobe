@@ -1,0 +1,6020 @@
+{
+  "Afghanistan": {
+    "Turkmenistan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.64,
+      "price_usd": 126.8
+    },
+    "Iran": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Tajikistan": {
+      "duration_hours": 1.25,
+      "price_usd": 200.05
+    },
+    "Kazakhstan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Pakistan": {
+      "duration_hours": 1.58,
+      "price_usd": 239.13
+    },
+    "Kuwait": {
+      "duration_hours": 1.74,
+      "price_usd": 258.26
+    }
+  },
+  "Angola": {
+    "Republic of the Congo": {
+      "duration_hours": 0.49,
+      "price_usd": 108.29
+    },
+    "Gabon": {
+      "duration_hours": 0.77,
+      "price_usd": 142.57
+    },
+    "Cameroon": {
+      "duration_hours": 1.21,
+      "price_usd": 195.56
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 1.34,
+      "price_usd": 211.35
+    },
+    "Burundi": {
+      "duration_hours": 1.81,
+      "price_usd": 267.61
+    },
+    "Nigeria": {
+      "duration_hours": 1.83,
+      "price_usd": 269.61
+    },
+    "Central African Republic": {
+      "duration_hours": 1.84,
+      "price_usd": 271.28
+    },
+    "Rwanda": {
+      "duration_hours": 2.06,
+      "price_usd": 297.64
+    }
+  },
+  "Albania": {
+    "Macedonia": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Kosovo": {
+      "duration_hours": 0.03,
+      "price_usd": 53.91
+    },
+    "Montenegro": {
+      "duration_hours": 0.12,
+      "price_usd": 64.52
+    },
+    "Bulgaria": {
+      "duration_hours": 0.39,
+      "price_usd": 97.01
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.45,
+      "price_usd": 103.65
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.5,
+      "price_usd": 109.45
+    },
+    "Croatia": {
+      "duration_hours": 0.59,
+      "price_usd": 120.81
+    },
+    "Italy": {
+      "duration_hours": 0.74,
+      "price_usd": 138.6
+    }
+  },
+  "United Arab Emirates": {
+    "Qatar": {
+      "duration_hours": 0.12,
+      "price_usd": 64.44
+    },
+    "Kuwait": {
+      "duration_hours": 0.91,
+      "price_usd": 159.28
+    },
+    "Oman": {
+      "duration_hours": 1.03,
+      "price_usd": 173.68
+    },
+    "Yemen": {
+      "duration_hours": 1.07,
+      "price_usd": 178.36
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.58,
+      "price_usd": 240.17
+    },
+    "Somalia": {
+      "duration_hours": 1.77,
+      "price_usd": 262.33
+    },
+    "Iraq": {
+      "duration_hours": 1.79,
+      "price_usd": 264.31
+    },
+    "Iran": {
+      "duration_hours": 1.82,
+      "price_usd": 268.01
+    }
+  },
+  "Argentina": {
+    "Chile": {
+      "duration_hours": 0.44,
+      "price_usd": 102.77
+    },
+    "Falkland Islands": {
+      "duration_hours": 0.59,
+      "price_usd": 120.38
+    },
+    "Antarctica": {
+      "duration_hours": 3.47,
+      "price_usd": 466.72
+    },
+    "Brazil": {
+      "duration_hours": 3.56,
+      "price_usd": 476.78
+    },
+    "Uruguay": {
+      "duration_hours": 3.56,
+      "price_usd": 476.78
+    },
+    "Paraguay": {
+      "duration_hours": 4.58,
+      "price_usd": 599.84
+    },
+    "Bolivia": {
+      "duration_hours": 4.61,
+      "price_usd": 603.27
+    },
+    "Peru": {
+      "duration_hours": 5.24,
+      "price_usd": 678.43
+    }
+  },
+  "Armenia": {
+    "Georgia": {
+      "duration_hours": 0.22,
+      "price_usd": 76.53
+    },
+    "Azerbaijan": {
+      "duration_hours": 0.24,
+      "price_usd": 78.87
+    },
+    "Turkey": {
+      "duration_hours": 0.7,
+      "price_usd": 133.98
+    },
+    "Iraq": {
+      "duration_hours": 0.74,
+      "price_usd": 138.48
+    },
+    "Syria": {
+      "duration_hours": 1.19,
+      "price_usd": 193.31
+    },
+    "Iran": {
+      "duration_hours": 1.24,
+      "price_usd": 198.79
+    },
+    "Cyprus": {
+      "duration_hours": 1.34,
+      "price_usd": 211.34
+    },
+    "Lebanon": {
+      "duration_hours": 1.38,
+      "price_usd": 216.01
+    }
+  },
+  "Antarctica": {
+    "Argentina": {
+      "duration_hours": 3.47,
+      "price_usd": 466.72
+    },
+    "Chile": {
+      "duration_hours": 3.84,
+      "price_usd": 511.05
+    },
+    "Falkland Islands": {
+      "duration_hours": 3.93,
+      "price_usd": 521.53
+    },
+    "French Southern and Antarctic Lands": {
+      "duration_hours": 6.71,
+      "price_usd": 854.68
+    },
+    "Brazil": {
+      "duration_hours": 6.93,
+      "price_usd": 881.94
+    },
+    "Uruguay": {
+      "duration_hours": 6.93,
+      "price_usd": 881.94
+    },
+    "New Zealand": {
+      "duration_hours": 7.74,
+      "price_usd": 978.9
+    },
+    "Paraguay": {
+      "duration_hours": 8.04,
+      "price_usd": 1014.51
+    }
+  },
+  "French Southern and Antarctic Lands": {
+    "South Africa": {
+      "duration_hours": 4.79,
+      "price_usd": 625.01
+    },
+    "Swaziland": {
+      "duration_hours": 5.0,
+      "price_usd": 649.55
+    },
+    "Lesotho": {
+      "duration_hours": 5.04,
+      "price_usd": 655.08
+    },
+    "Madagascar": {
+      "duration_hours": 5.49,
+      "price_usd": 708.71
+    },
+    "Zimbabwe": {
+      "duration_hours": 5.54,
+      "price_usd": 714.59
+    },
+    "Namibia": {
+      "duration_hours": 6.21,
+      "price_usd": 795.68
+    },
+    "Botswana": {
+      "duration_hours": 6.39,
+      "price_usd": 817.26
+    },
+    "Mozambique": {
+      "duration_hours": 6.5,
+      "price_usd": 829.9
+    }
+  },
+  "Australia": {
+    "New Zealand": {
+      "duration_hours": 2.9,
+      "price_usd": 397.9
+    },
+    "New Caledonia": {
+      "duration_hours": 3.64,
+      "price_usd": 486.86
+    },
+    "Vanuatu": {
+      "duration_hours": 4.32,
+      "price_usd": 568.2
+    },
+    "Solomon Islands": {
+      "duration_hours": 4.67,
+      "price_usd": 610.87
+    },
+    "Papua New Guinea": {
+      "duration_hours": 4.88,
+      "price_usd": 635.76
+    },
+    "East Timor": {
+      "duration_hours": 5.09,
+      "price_usd": 660.45
+    },
+    "Fiji": {
+      "duration_hours": 5.11,
+      "price_usd": 663.33
+    },
+    "Indonesia": {
+      "duration_hours": 5.21,
+      "price_usd": 674.77
+    }
+  },
+  "Austria": {
+    "Czech Republic": {
+      "duration_hours": 0.07,
+      "price_usd": 57.9
+    },
+    "Hungary": {
+      "duration_hours": 0.19,
+      "price_usd": 72.95
+    },
+    "Slovakia": {
+      "duration_hours": 0.26,
+      "price_usd": 80.83
+    },
+    "Croatia": {
+      "duration_hours": 0.35,
+      "price_usd": 92.53
+    },
+    "Slovenia": {
+      "duration_hours": 0.37,
+      "price_usd": 94.93
+    },
+    "Poland": {
+      "duration_hours": 0.45,
+      "price_usd": 104.12
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.49,
+      "price_usd": 109.2
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.53,
+      "price_usd": 113.46
+    }
+  },
+  "Azerbaijan": {
+    "Armenia": {
+      "duration_hours": 0.24,
+      "price_usd": 78.87
+    },
+    "Georgia": {
+      "duration_hours": 0.44,
+      "price_usd": 102.99
+    },
+    "Iraq": {
+      "duration_hours": 0.52,
+      "price_usd": 112.88
+    },
+    "Turkey": {
+      "duration_hours": 0.88,
+      "price_usd": 156.13
+    },
+    "Iran": {
+      "duration_hours": 1.03,
+      "price_usd": 174.12
+    },
+    "Syria": {
+      "duration_hours": 1.12,
+      "price_usd": 184.7
+    },
+    "Lebanon": {
+      "duration_hours": 1.36,
+      "price_usd": 213.51
+    },
+    "Cyprus": {
+      "duration_hours": 1.38,
+      "price_usd": 215.75
+    }
+  },
+  "Burundi": {
+    "Rwanda": {
+      "duration_hours": 0.49,
+      "price_usd": 108.65
+    },
+    "Uganda": {
+      "duration_hours": 0.59,
+      "price_usd": 121.36
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 0.8,
+      "price_usd": 146.23
+    },
+    "Zambia": {
+      "duration_hours": 0.81,
+      "price_usd": 146.8
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 1.13,
+      "price_usd": 185.16
+    },
+    "Mozambique": {
+      "duration_hours": 1.21,
+      "price_usd": 194.93
+    },
+    "Malawi": {
+      "duration_hours": 1.21,
+      "price_usd": 194.93
+    },
+    "Kenya": {
+      "duration_hours": 1.7,
+      "price_usd": 253.51
+    }
+  },
+  "Belgium": {
+    "Luxembourg": {
+      "duration_hours": 0.29,
+      "price_usd": 85.31
+    },
+    "Netherlands": {
+      "duration_hours": 0.38,
+      "price_usd": 95.8
+    },
+    "Germany": {
+      "duration_hours": 0.75,
+      "price_usd": 139.82
+    },
+    "Switzerland": {
+      "duration_hours": 0.78,
+      "price_usd": 143.37
+    },
+    "England": {
+      "duration_hours": 0.88,
+      "price_usd": 155.05
+    },
+    "Ireland": {
+      "duration_hours": 0.88,
+      "price_usd": 155.33
+    },
+    "Denmark": {
+      "duration_hours": 0.98,
+      "price_usd": 167.24
+    },
+    "Poland": {
+      "duration_hours": 1.02,
+      "price_usd": 172.55
+    }
+  },
+  "Benin": {
+    "Togo": {
+      "duration_hours": 0.12,
+      "price_usd": 63.86
+    },
+    "Ghana": {
+      "duration_hours": 0.23,
+      "price_usd": 77.64
+    },
+    "Ivory Coast": {
+      "duration_hours": 0.79,
+      "price_usd": 144.55
+    },
+    "Niger": {
+      "duration_hours": 0.79,
+      "price_usd": 144.67
+    },
+    "Nigeria": {
+      "duration_hours": 0.83,
+      "price_usd": 149.64
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.89,
+      "price_usd": 157.15
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 1.19,
+      "price_usd": 192.88
+    },
+    "Liberia": {
+      "duration_hours": 1.47,
+      "price_usd": 225.8
+    }
+  },
+  "Burkina Faso": {
+    "Ivory Coast": {
+      "duration_hours": 0.64,
+      "price_usd": 127.11
+    },
+    "Ghana": {
+      "duration_hours": 0.74,
+      "price_usd": 139.06
+    },
+    "Niger": {
+      "duration_hours": 0.75,
+      "price_usd": 140.18
+    },
+    "Togo": {
+      "duration_hours": 0.81,
+      "price_usd": 146.93
+    },
+    "Guinea": {
+      "duration_hours": 0.82,
+      "price_usd": 148.16
+    },
+    "Benin": {
+      "duration_hours": 0.89,
+      "price_usd": 157.15
+    },
+    "Liberia": {
+      "duration_hours": 0.99,
+      "price_usd": 169.23
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.25,
+      "price_usd": 199.99
+    }
+  },
+  "Bangladesh": {
+    "Bhutan": {
+      "duration_hours": 0.8,
+      "price_usd": 146.36
+    },
+    "Myanmar": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    },
+    "Nepal": {
+      "duration_hours": 0.99,
+      "price_usd": 168.95
+    },
+    "Thailand": {
+      "duration_hours": 1.9,
+      "price_usd": 277.41
+    },
+    "Laos": {
+      "duration_hours": 1.98,
+      "price_usd": 287.04
+    },
+    "Vietnam": {
+      "duration_hours": 1.99,
+      "price_usd": 288.56
+    },
+    "Cambodia": {
+      "duration_hours": 2.14,
+      "price_usd": 306.58
+    },
+    "China": {
+      "duration_hours": 2.35,
+      "price_usd": 332.07
+    }
+  },
+  "Bulgaria": {
+    "Republic of Serbia": {
+      "duration_hours": 0.24,
+      "price_usd": 78.9
+    },
+    "Kosovo": {
+      "duration_hours": 0.36,
+      "price_usd": 93.1
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.37,
+      "price_usd": 94.75
+    },
+    "Montenegro": {
+      "duration_hours": 0.38,
+      "price_usd": 95.17
+    },
+    "Albania": {
+      "duration_hours": 0.39,
+      "price_usd": 97.01
+    },
+    "Macedonia": {
+      "duration_hours": 0.39,
+      "price_usd": 97.01
+    },
+    "Croatia": {
+      "duration_hours": 0.44,
+      "price_usd": 103.12
+    },
+    "Romania": {
+      "duration_hours": 0.51,
+      "price_usd": 110.81
+    }
+  },
+  "The Bahamas": {
+    "Cuba": {
+      "duration_hours": 0.61,
+      "price_usd": 123.15
+    },
+    "Jamaica": {
+      "duration_hours": 0.73,
+      "price_usd": 137.51
+    },
+    "Haiti": {
+      "duration_hours": 0.77,
+      "price_usd": 142.81
+    },
+    "Dominican Republic": {
+      "duration_hours": 0.94,
+      "price_usd": 162.57
+    },
+    "Puerto Rico": {
+      "duration_hours": 1.63,
+      "price_usd": 245.66
+    },
+    "Belize": {
+      "duration_hours": 1.72,
+      "price_usd": 256.35
+    },
+    "Venezuela": {
+      "duration_hours": 1.85,
+      "price_usd": 271.97
+    },
+    "Honduras": {
+      "duration_hours": 1.97,
+      "price_usd": 286.54
+    }
+  },
+  "Bosnia and Herzegovina": {
+    "Croatia": {
+      "duration_hours": 0.15,
+      "price_usd": 67.6
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.2,
+      "price_usd": 73.92
+    },
+    "Montenegro": {
+      "duration_hours": 0.34,
+      "price_usd": 90.49
+    },
+    "Bulgaria": {
+      "duration_hours": 0.37,
+      "price_usd": 94.75
+    },
+    "Hungary": {
+      "duration_hours": 0.39,
+      "price_usd": 96.57
+    },
+    "Kosovo": {
+      "duration_hours": 0.43,
+      "price_usd": 101.43
+    },
+    "Macedonia": {
+      "duration_hours": 0.45,
+      "price_usd": 103.65
+    },
+    "Albania": {
+      "duration_hours": 0.45,
+      "price_usd": 103.65
+    }
+  },
+  "Belarus": {
+    "Lithuania": {
+      "duration_hours": 0.08,
+      "price_usd": 60.13
+    },
+    "Latvia": {
+      "duration_hours": 0.35,
+      "price_usd": 92.37
+    },
+    "Estonia": {
+      "duration_hours": 0.54,
+      "price_usd": 115.28
+    },
+    "Slovakia": {
+      "duration_hours": 0.73,
+      "price_usd": 137.93
+    },
+    "Ukraine": {
+      "duration_hours": 0.74,
+      "price_usd": 138.82
+    },
+    "Poland": {
+      "duration_hours": 0.82,
+      "price_usd": 148.04
+    },
+    "Moldova": {
+      "duration_hours": 0.84,
+      "price_usd": 150.51
+    },
+    "Romania": {
+      "duration_hours": 0.84,
+      "price_usd": 150.96
+    }
+  },
+  "Belize": {
+    "Guatemala": {
+      "duration_hours": 0.58,
+      "price_usd": 119.32
+    },
+    "El Salvador": {
+      "duration_hours": 0.64,
+      "price_usd": 126.57
+    },
+    "Honduras": {
+      "duration_hours": 0.71,
+      "price_usd": 135.29
+    },
+    "Nicaragua": {
+      "duration_hours": 1.04,
+      "price_usd": 174.55
+    },
+    "Cuba": {
+      "duration_hours": 1.16,
+      "price_usd": 189.79
+    },
+    "Mexico": {
+      "duration_hours": 1.52,
+      "price_usd": 232.39
+    },
+    "Jamaica": {
+      "duration_hours": 1.53,
+      "price_usd": 234.01
+    },
+    "Costa Rica": {
+      "duration_hours": 1.57,
+      "price_usd": 238.06
+    }
+  },
+  "Bolivia": {
+    "Paraguay": {
+      "duration_hours": 0.04,
+      "price_usd": 54.34
+    },
+    "Peru": {
+      "duration_hours": 1.08,
+      "price_usd": 179.22
+    },
+    "Brazil": {
+      "duration_hours": 1.31,
+      "price_usd": 206.85
+    },
+    "Uruguay": {
+      "duration_hours": 1.31,
+      "price_usd": 206.85
+    },
+    "Colombia": {
+      "duration_hours": 3.47,
+      "price_usd": 466.45
+    },
+    "Ecuador": {
+      "duration_hours": 3.49,
+      "price_usd": 469.05
+    },
+    "France": {
+      "duration_hours": 3.67,
+      "price_usd": 490.46
+    },
+    "Suriname": {
+      "duration_hours": 3.95,
+      "price_usd": 523.99
+    }
+  },
+  "Brazil": {
+    "Uruguay": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Paraguay": {
+      "duration_hours": 1.27,
+      "price_usd": 202.53
+    },
+    "Bolivia": {
+      "duration_hours": 1.31,
+      "price_usd": 206.85
+    },
+    "Peru": {
+      "duration_hours": 2.32,
+      "price_usd": 327.93
+    },
+    "Falkland Islands": {
+      "duration_hours": 3.03,
+      "price_usd": 413.08
+    },
+    "Chile": {
+      "duration_hours": 3.31,
+      "price_usd": 447.14
+    },
+    "Argentina": {
+      "duration_hours": 3.56,
+      "price_usd": 476.78
+    },
+    "France": {
+      "duration_hours": 4.58,
+      "price_usd": 599.14
+    }
+  },
+  "Brunei": {
+    "Cambodia": {
+      "duration_hours": 1.7,
+      "price_usd": 254.06
+    },
+    "Philippines": {
+      "duration_hours": 1.77,
+      "price_usd": 261.98
+    },
+    "Laos": {
+      "duration_hours": 1.83,
+      "price_usd": 269.11
+    },
+    "Malaysia": {
+      "duration_hours": 1.83,
+      "price_usd": 270.02
+    },
+    "Thailand": {
+      "duration_hours": 1.92,
+      "price_usd": 280.09
+    },
+    "China": {
+      "duration_hours": 2.03,
+      "price_usd": 293.16
+    },
+    "Indonesia": {
+      "duration_hours": 2.23,
+      "price_usd": 317.8
+    },
+    "East Timor": {
+      "duration_hours": 2.38,
+      "price_usd": 335.75
+    }
+  },
+  "Bhutan": {
+    "Nepal": {
+      "duration_hours": 0.44,
+      "price_usd": 102.88
+    },
+    "Bangladesh": {
+      "duration_hours": 0.8,
+      "price_usd": 146.36
+    },
+    "Myanmar": {
+      "duration_hours": 1.45,
+      "price_usd": 223.76
+    },
+    "India": {
+      "duration_hours": 1.96,
+      "price_usd": 284.97
+    },
+    "Vietnam": {
+      "duration_hours": 2.24,
+      "price_usd": 318.63
+    },
+    "Pakistan": {
+      "duration_hours": 2.33,
+      "price_usd": 329.79
+    },
+    "Laos": {
+      "duration_hours": 2.56,
+      "price_usd": 357.24
+    },
+    "Thailand": {
+      "duration_hours": 2.58,
+      "price_usd": 359.74
+    }
+  },
+  "Botswana": {
+    "Zimbabwe": {
+      "duration_hours": 0.89,
+      "price_usd": 156.46
+    },
+    "Swaziland": {
+      "duration_hours": 1.4,
+      "price_usd": 218.3
+    },
+    "Lesotho": {
+      "duration_hours": 1.5,
+      "price_usd": 230.41
+    },
+    "Mozambique": {
+      "duration_hours": 1.54,
+      "price_usd": 234.89
+    },
+    "Malawi": {
+      "duration_hours": 1.54,
+      "price_usd": 234.89
+    },
+    "Zambia": {
+      "duration_hours": 1.61,
+      "price_usd": 242.62
+    },
+    "South Africa": {
+      "duration_hours": 1.66,
+      "price_usd": 249.33
+    },
+    "Namibia": {
+      "duration_hours": 1.83,
+      "price_usd": 269.18
+    }
+  },
+  "Central African Republic": {
+    "Chad": {
+      "duration_hours": 0.76,
+      "price_usd": 141.13
+    },
+    "Cameroon": {
+      "duration_hours": 0.78,
+      "price_usd": 143.03
+    },
+    "Nigeria": {
+      "duration_hours": 1.01,
+      "price_usd": 170.83
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 1.2,
+      "price_usd": 193.48
+    },
+    "Gabon": {
+      "duration_hours": 1.68,
+      "price_usd": 251.55
+    },
+    "Republic of the Congo": {
+      "duration_hours": 1.72,
+      "price_usd": 255.96
+    },
+    "Benin": {
+      "duration_hours": 1.75,
+      "price_usd": 259.58
+    },
+    "Angola": {
+      "duration_hours": 1.84,
+      "price_usd": 271.28
+    }
+  },
+  "Canada": {
+    "The Bahamas": {
+      "duration_hours": 3.52,
+      "price_usd": 472.54
+    },
+    "Dominican Republic": {
+      "duration_hours": 3.83,
+      "price_usd": 509.87
+    },
+    "Haiti": {
+      "duration_hours": 3.85,
+      "price_usd": 511.89
+    },
+    "Cuba": {
+      "duration_hours": 3.85,
+      "price_usd": 512.4
+    },
+    "Puerto Rico": {
+      "duration_hours": 3.9,
+      "price_usd": 517.78
+    },
+    "Jamaica": {
+      "duration_hours": 4.2,
+      "price_usd": 554.5
+    },
+    "Iceland": {
+      "duration_hours": 4.5,
+      "price_usd": 590.26
+    },
+    "Mexico": {
+      "duration_hours": 4.67,
+      "price_usd": 610.78
+    }
+  },
+  "Switzerland": {
+    "Slovenia": {
+      "duration_hours": 0.42,
+      "price_usd": 100.93
+    },
+    "Luxembourg": {
+      "duration_hours": 0.49,
+      "price_usd": 108.43
+    },
+    "Hungary": {
+      "duration_hours": 0.63,
+      "price_usd": 125.93
+    },
+    "Austria": {
+      "duration_hours": 0.7,
+      "price_usd": 133.52
+    },
+    "Poland": {
+      "duration_hours": 0.7,
+      "price_usd": 134.03
+    },
+    "Czech Republic": {
+      "duration_hours": 0.7,
+      "price_usd": 134.24
+    },
+    "Belgium": {
+      "duration_hours": 0.78,
+      "price_usd": 143.37
+    },
+    "Netherlands": {
+      "duration_hours": 0.89,
+      "price_usd": 156.63
+    }
+  },
+  "Chile": {
+    "Argentina": {
+      "duration_hours": 0.44,
+      "price_usd": 102.77
+    },
+    "Falkland Islands": {
+      "duration_hours": 0.64,
+      "price_usd": 127.25
+    },
+    "Brazil": {
+      "duration_hours": 3.31,
+      "price_usd": 447.14
+    },
+    "Uruguay": {
+      "duration_hours": 3.31,
+      "price_usd": 447.14
+    },
+    "Antarctica": {
+      "duration_hours": 3.84,
+      "price_usd": 511.05
+    },
+    "Paraguay": {
+      "duration_hours": 4.26,
+      "price_usd": 561.64
+    },
+    "Bolivia": {
+      "duration_hours": 4.29,
+      "price_usd": 564.86
+    },
+    "Peru": {
+      "duration_hours": 4.86,
+      "price_usd": 633.58
+    }
+  },
+  "China": {
+    "Vietnam": {
+      "duration_hours": 0.5,
+      "price_usd": 109.72
+    },
+    "Laos": {
+      "duration_hours": 0.92,
+      "price_usd": 159.86
+    },
+    "Thailand": {
+      "duration_hours": 1.37,
+      "price_usd": 214.84
+    },
+    "Myanmar": {
+      "duration_hours": 1.43,
+      "price_usd": 221.86
+    },
+    "Cambodia": {
+      "duration_hours": 1.44,
+      "price_usd": 223.29
+    },
+    "Taiwan": {
+      "duration_hours": 1.68,
+      "price_usd": 251.38
+    },
+    "Brunei": {
+      "duration_hours": 2.03,
+      "price_usd": 293.16
+    },
+    "Malaysia": {
+      "duration_hours": 2.13,
+      "price_usd": 306.05
+    }
+  },
+  "Ivory Coast": {
+    "Ghana": {
+      "duration_hours": 0.56,
+      "price_usd": 116.92
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.64,
+      "price_usd": 127.11
+    },
+    "Togo": {
+      "duration_hours": 0.67,
+      "price_usd": 130.74
+    },
+    "Liberia": {
+      "duration_hours": 0.68,
+      "price_usd": 131.49
+    },
+    "Benin": {
+      "duration_hours": 0.79,
+      "price_usd": 144.55
+    },
+    "Guinea": {
+      "duration_hours": 0.86,
+      "price_usd": 152.85
+    },
+    "Niger": {
+      "duration_hours": 1.18,
+      "price_usd": 191.84
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.21,
+      "price_usd": 195.62
+    }
+  },
+  "Cameroon": {
+    "Equatorial Guinea": {
+      "duration_hours": 0.53,
+      "price_usd": 113.33
+    },
+    "Nigeria": {
+      "duration_hours": 0.72,
+      "price_usd": 136.84
+    },
+    "Central African Republic": {
+      "duration_hours": 0.78,
+      "price_usd": 143.03
+    },
+    "Gabon": {
+      "duration_hours": 0.91,
+      "price_usd": 158.75
+    },
+    "Republic of the Congo": {
+      "duration_hours": 0.97,
+      "price_usd": 166.91
+    },
+    "Angola": {
+      "duration_hours": 1.21,
+      "price_usd": 195.56
+    },
+    "Chad": {
+      "duration_hours": 1.48,
+      "price_usd": 227.28
+    },
+    "Benin": {
+      "duration_hours": 1.54,
+      "price_usd": 235.13
+    }
+  },
+  "Democratic Republic of the Congo": {
+    "Uganda": {
+      "duration_hours": 0.64,
+      "price_usd": 127.19
+    },
+    "Rwanda": {
+      "duration_hours": 0.64,
+      "price_usd": 127.33
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 0.75,
+      "price_usd": 139.97
+    },
+    "Sudan": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "South Sudan": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Burundi": {
+      "duration_hours": 1.13,
+      "price_usd": 185.16
+    },
+    "Kenya": {
+      "duration_hours": 1.54,
+      "price_usd": 234.38
+    },
+    "Zambia": {
+      "duration_hours": 1.78,
+      "price_usd": 263.73
+    }
+  },
+  "Republic of the Congo": {
+    "Gabon": {
+      "duration_hours": 0.29,
+      "price_usd": 84.35
+    },
+    "Angola": {
+      "duration_hours": 0.49,
+      "price_usd": 108.29
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 0.94,
+      "price_usd": 162.43
+    },
+    "Cameroon": {
+      "duration_hours": 0.97,
+      "price_usd": 166.91
+    },
+    "Nigeria": {
+      "duration_hours": 1.46,
+      "price_usd": 225.3
+    },
+    "Central African Republic": {
+      "duration_hours": 1.72,
+      "price_usd": 255.96
+    },
+    "Benin": {
+      "duration_hours": 2.09,
+      "price_usd": 301.07
+    },
+    "Togo": {
+      "duration_hours": 2.16,
+      "price_usd": 309.34
+    }
+  },
+  "Colombia": {
+    "Ecuador": {
+      "duration_hours": 0.82,
+      "price_usd": 148.37
+    },
+    "Panama": {
+      "duration_hours": 1.08,
+      "price_usd": 179.28
+    },
+    "Costa Rica": {
+      "duration_hours": 1.57,
+      "price_usd": 237.81
+    },
+    "Venezuela": {
+      "duration_hours": 1.74,
+      "price_usd": 258.91
+    },
+    "Nicaragua": {
+      "duration_hours": 2.11,
+      "price_usd": 303.39
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 2.42,
+      "price_usd": 340.58
+    },
+    "Honduras": {
+      "duration_hours": 2.45,
+      "price_usd": 344.26
+    },
+    "Guyana": {
+      "duration_hours": 2.46,
+      "price_usd": 345.77
+    }
+  },
+  "Costa Rica": {
+    "Nicaragua": {
+      "duration_hours": 0.55,
+      "price_usd": 115.58
+    },
+    "Panama": {
+      "duration_hours": 0.71,
+      "price_usd": 135.75
+    },
+    "Honduras": {
+      "duration_hours": 0.89,
+      "price_usd": 156.46
+    },
+    "El Salvador": {
+      "duration_hours": 0.97,
+      "price_usd": 166.59
+    },
+    "Guatemala": {
+      "duration_hours": 1.24,
+      "price_usd": 198.36
+    },
+    "Colombia": {
+      "duration_hours": 1.57,
+      "price_usd": 237.81
+    },
+    "Belize": {
+      "duration_hours": 1.57,
+      "price_usd": 238.06
+    },
+    "Jamaica": {
+      "duration_hours": 1.6,
+      "price_usd": 241.54
+    }
+  },
+  "Cuba": {
+    "The Bahamas": {
+      "duration_hours": 0.61,
+      "price_usd": 123.15
+    },
+    "Jamaica": {
+      "duration_hours": 0.89,
+      "price_usd": 157.07
+    },
+    "Belize": {
+      "duration_hours": 1.16,
+      "price_usd": 189.79
+    },
+    "Haiti": {
+      "duration_hours": 1.26,
+      "price_usd": 201.12
+    },
+    "Dominican Republic": {
+      "duration_hours": 1.45,
+      "price_usd": 223.91
+    },
+    "El Salvador": {
+      "duration_hours": 1.54,
+      "price_usd": 234.79
+    },
+    "Honduras": {
+      "duration_hours": 1.56,
+      "price_usd": 237.36
+    },
+    "Guatemala": {
+      "duration_hours": 1.67,
+      "price_usd": 249.91
+    }
+  },
+  "Northern Cyprus": {
+    "Cyprus": {
+      "duration_hours": 0.14,
+      "price_usd": 67.04
+    },
+    "Lebanon": {
+      "duration_hours": 0.44,
+      "price_usd": 102.76
+    },
+    "Israel": {
+      "duration_hours": 0.48,
+      "price_usd": 107.9
+    },
+    "Jordan": {
+      "duration_hours": 0.5,
+      "price_usd": 110.13
+    },
+    "West Bank": {
+      "duration_hours": 0.5,
+      "price_usd": 110.13
+    },
+    "Syria": {
+      "duration_hours": 0.74,
+      "price_usd": 138.69
+    },
+    "Egypt": {
+      "duration_hours": 0.82,
+      "price_usd": 148.76
+    },
+    "Turkey": {
+      "duration_hours": 0.97,
+      "price_usd": 166.82
+    }
+  },
+  "Cyprus": {
+    "Northern Cyprus": {
+      "duration_hours": 0.14,
+      "price_usd": 67.04
+    },
+    "Lebanon": {
+      "duration_hours": 0.33,
+      "price_usd": 89.13
+    },
+    "Israel": {
+      "duration_hours": 0.38,
+      "price_usd": 95.99
+    },
+    "Jordan": {
+      "duration_hours": 0.41,
+      "price_usd": 99.42
+    },
+    "West Bank": {
+      "duration_hours": 0.41,
+      "price_usd": 99.42
+    },
+    "Syria": {
+      "duration_hours": 0.6,
+      "price_usd": 122.22
+    },
+    "Egypt": {
+      "duration_hours": 0.78,
+      "price_usd": 143.4
+    },
+    "Turkey": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    }
+  },
+  "Czech Republic": {
+    "Austria": {
+      "duration_hours": 0.07,
+      "price_usd": 57.9
+    },
+    "Slovakia": {
+      "duration_hours": 0.21,
+      "price_usd": 75.61
+    },
+    "Hungary": {
+      "duration_hours": 0.25,
+      "price_usd": 80.32
+    },
+    "Poland": {
+      "duration_hours": 0.39,
+      "price_usd": 96.82
+    },
+    "Croatia": {
+      "duration_hours": 0.41,
+      "price_usd": 99.6
+    },
+    "Slovenia": {
+      "duration_hours": 0.41,
+      "price_usd": 99.79
+    },
+    "Romania": {
+      "duration_hours": 0.54,
+      "price_usd": 115.15
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.55,
+      "price_usd": 116.57
+    }
+  },
+  "Germany": {
+    "Denmark": {
+      "duration_hours": 0.24,
+      "price_usd": 78.37
+    },
+    "Netherlands": {
+      "duration_hours": 0.37,
+      "price_usd": 94.94
+    },
+    "Poland": {
+      "duration_hours": 0.69,
+      "price_usd": 132.51
+    },
+    "Belgium": {
+      "duration_hours": 0.75,
+      "price_usd": 139.82
+    },
+    "Luxembourg": {
+      "duration_hours": 0.75,
+      "price_usd": 140.1
+    },
+    "Latvia": {
+      "duration_hours": 0.89,
+      "price_usd": 156.84
+    },
+    "Lithuania": {
+      "duration_hours": 1.04,
+      "price_usd": 174.31
+    },
+    "Switzerland": {
+      "duration_hours": 1.04,
+      "price_usd": 174.51
+    }
+  },
+  "Djibouti": {
+    "Eritrea": {
+      "duration_hours": 0.1,
+      "price_usd": 62.17
+    },
+    "Saudi Arabia": {
+      "duration_hours": 0.51,
+      "price_usd": 110.75
+    },
+    "Ethiopia": {
+      "duration_hours": 0.77,
+      "price_usd": 141.92
+    },
+    "Somaliland": {
+      "duration_hours": 0.92,
+      "price_usd": 160.07
+    },
+    "Somalia": {
+      "duration_hours": 0.92,
+      "price_usd": 160.11
+    },
+    "Sudan": {
+      "duration_hours": 1.32,
+      "price_usd": 208.75
+    },
+    "South Sudan": {
+      "duration_hours": 1.32,
+      "price_usd": 208.75
+    },
+    "Yemen": {
+      "duration_hours": 1.46,
+      "price_usd": 224.73
+    }
+  },
+  "Denmark": {
+    "Germany": {
+      "duration_hours": 0.24,
+      "price_usd": 78.37
+    },
+    "Netherlands": {
+      "duration_hours": 0.61,
+      "price_usd": 123.1
+    },
+    "Poland": {
+      "duration_hours": 0.66,
+      "price_usd": 128.68
+    },
+    "Latvia": {
+      "duration_hours": 0.66,
+      "price_usd": 128.92
+    },
+    "Lithuania": {
+      "duration_hours": 0.82,
+      "price_usd": 148.71
+    },
+    "Belarus": {
+      "duration_hours": 0.9,
+      "price_usd": 157.89
+    },
+    "Estonia": {
+      "duration_hours": 0.94,
+      "price_usd": 162.68
+    },
+    "Luxembourg": {
+      "duration_hours": 0.94,
+      "price_usd": 163.39
+    }
+  },
+  "Dominican Republic": {
+    "Haiti": {
+      "duration_hours": 0.2,
+      "price_usd": 73.46
+    },
+    "Puerto Rico": {
+      "duration_hours": 0.73,
+      "price_usd": 137.98
+    },
+    "Jamaica": {
+      "duration_hours": 0.79,
+      "price_usd": 144.65
+    },
+    "The Bahamas": {
+      "duration_hours": 0.94,
+      "price_usd": 162.57
+    },
+    "Venezuela": {
+      "duration_hours": 1.1,
+      "price_usd": 181.9
+    },
+    "Cuba": {
+      "duration_hours": 1.45,
+      "price_usd": 223.91
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 1.83,
+      "price_usd": 269.45
+    },
+    "Panama": {
+      "duration_hours": 1.92,
+      "price_usd": 280.14
+    }
+  },
+  "Algeria": {
+    "Libya": {
+      "duration_hours": 0.37,
+      "price_usd": 94.95
+    },
+    "Tunisia": {
+      "duration_hours": 1.0,
+      "price_usd": 169.64
+    },
+    "Chad": {
+      "duration_hours": 1.5,
+      "price_usd": 230.58
+    },
+    "Niger": {
+      "duration_hours": 2.06,
+      "price_usd": 297.14
+    },
+    "Italy": {
+      "duration_hours": 2.09,
+      "price_usd": 300.54
+    },
+    "Greece": {
+      "duration_hours": 2.21,
+      "price_usd": 314.66
+    },
+    "Central African Republic": {
+      "duration_hours": 2.26,
+      "price_usd": 321.55
+    },
+    "Nigeria": {
+      "duration_hours": 2.63,
+      "price_usd": 365.44
+    }
+  },
+  "Ecuador": {
+    "Colombia": {
+      "duration_hours": 0.82,
+      "price_usd": 148.37
+    },
+    "Panama": {
+      "duration_hours": 1.51,
+      "price_usd": 230.85
+    },
+    "Costa Rica": {
+      "duration_hours": 1.65,
+      "price_usd": 247.94
+    },
+    "Nicaragua": {
+      "duration_hours": 2.14,
+      "price_usd": 306.67
+    },
+    "Venezuela": {
+      "duration_hours": 2.44,
+      "price_usd": 342.58
+    },
+    "Peru": {
+      "duration_hours": 2.44,
+      "price_usd": 343.4
+    },
+    "Honduras": {
+      "duration_hours": 2.46,
+      "price_usd": 345.71
+    },
+    "El Salvador": {
+      "duration_hours": 2.54,
+      "price_usd": 354.93
+    }
+  },
+  "Egypt": {
+    "Jordan": {
+      "duration_hours": 0.41,
+      "price_usd": 98.93
+    },
+    "West Bank": {
+      "duration_hours": 0.41,
+      "price_usd": 98.93
+    },
+    "Israel": {
+      "duration_hours": 0.45,
+      "price_usd": 104.55
+    },
+    "Lebanon": {
+      "duration_hours": 0.53,
+      "price_usd": 114.1
+    },
+    "Syria": {
+      "duration_hours": 0.71,
+      "price_usd": 134.86
+    },
+    "Cyprus": {
+      "duration_hours": 0.78,
+      "price_usd": 143.4
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.82,
+      "price_usd": 148.76
+    },
+    "Iraq": {
+      "duration_hours": 1.52,
+      "price_usd": 232.54
+    }
+  },
+  "Eritrea": {
+    "Djibouti": {
+      "duration_hours": 0.1,
+      "price_usd": 62.17
+    },
+    "Saudi Arabia": {
+      "duration_hours": 0.53,
+      "price_usd": 113.54
+    },
+    "Ethiopia": {
+      "duration_hours": 0.69,
+      "price_usd": 132.52
+    },
+    "Somaliland": {
+      "duration_hours": 1.0,
+      "price_usd": 169.52
+    },
+    "Somalia": {
+      "duration_hours": 1.01,
+      "price_usd": 171.53
+    },
+    "Sudan": {
+      "duration_hours": 1.22,
+      "price_usd": 196.66
+    },
+    "South Sudan": {
+      "duration_hours": 1.22,
+      "price_usd": 196.66
+    },
+    "Yemen": {
+      "duration_hours": 1.56,
+      "price_usd": 236.7
+    }
+  },
+  "Spain": {
+    "Portugal": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Morocco": {
+      "duration_hours": 0.95,
+      "price_usd": 163.58
+    },
+    "Ireland": {
+      "duration_hours": 1.69,
+      "price_usd": 252.4
+    },
+    "Belgium": {
+      "duration_hours": 1.76,
+      "price_usd": 261.67
+    },
+    "England": {
+      "duration_hours": 1.79,
+      "price_usd": 264.64
+    },
+    "Luxembourg": {
+      "duration_hours": 1.85,
+      "price_usd": 272.0
+    },
+    "Switzerland": {
+      "duration_hours": 2.0,
+      "price_usd": 289.85
+    },
+    "Western Sahara": {
+      "duration_hours": 2.05,
+      "price_usd": 295.63
+    }
+  },
+  "Estonia": {
+    "Latvia": {
+      "duration_hours": 0.35,
+      "price_usd": 91.85
+    },
+    "Lithuania": {
+      "duration_hours": 0.5,
+      "price_usd": 109.74
+    },
+    "Belarus": {
+      "duration_hours": 0.54,
+      "price_usd": 115.28
+    },
+    "Denmark": {
+      "duration_hours": 0.94,
+      "price_usd": 162.68
+    },
+    "Ukraine": {
+      "duration_hours": 0.99,
+      "price_usd": 168.99
+    },
+    "Sweden": {
+      "duration_hours": 1.11,
+      "price_usd": 183.61
+    },
+    "Germany": {
+      "duration_hours": 1.18,
+      "price_usd": 191.02
+    },
+    "Poland": {
+      "duration_hours": 1.2,
+      "price_usd": 193.42
+    }
+  },
+  "Ethiopia": {
+    "Saudi Arabia": {
+      "duration_hours": 0.68,
+      "price_usd": 131.69
+    },
+    "Eritrea": {
+      "duration_hours": 0.69,
+      "price_usd": 132.52
+    },
+    "Djibouti": {
+      "duration_hours": 0.77,
+      "price_usd": 141.92
+    },
+    "Sudan": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "South Sudan": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Somalia": {
+      "duration_hours": 1.67,
+      "price_usd": 250.15
+    },
+    "Somaliland": {
+      "duration_hours": 1.68,
+      "price_usd": 251.86
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 1.86,
+      "price_usd": 272.77
+    }
+  },
+  "Finland": {
+    "Norway": {
+      "duration_hours": 0.3,
+      "price_usd": 85.57
+    },
+    "Sweden": {
+      "duration_hours": 0.58,
+      "price_usd": 119.39
+    },
+    "Estonia": {
+      "duration_hours": 1.59,
+      "price_usd": 241.05
+    },
+    "Latvia": {
+      "duration_hours": 1.88,
+      "price_usd": 275.12
+    },
+    "Lithuania": {
+      "duration_hours": 2.09,
+      "price_usd": 300.42
+    },
+    "Denmark": {
+      "duration_hours": 2.12,
+      "price_usd": 304.86
+    },
+    "Belarus": {
+      "duration_hours": 2.14,
+      "price_usd": 306.32
+    },
+    "Iceland": {
+      "duration_hours": 2.26,
+      "price_usd": 320.75
+    }
+  },
+  "Fiji": {
+    "Vanuatu": {
+      "duration_hours": 1.41,
+      "price_usd": 218.86
+    },
+    "New Caledonia": {
+      "duration_hours": 1.73,
+      "price_usd": 258.04
+    },
+    "Solomon Islands": {
+      "duration_hours": 2.39,
+      "price_usd": 336.81
+    },
+    "New Zealand": {
+      "duration_hours": 3.33,
+      "price_usd": 449.55
+    },
+    "Papua New Guinea": {
+      "duration_hours": 3.38,
+      "price_usd": 456.08
+    },
+    "Australia": {
+      "duration_hours": 5.11,
+      "price_usd": 663.33
+    },
+    "United States": {
+      "duration_hours": 6.17,
+      "price_usd": 790.58
+    },
+    "East Timor": {
+      "duration_hours": 7.31,
+      "price_usd": 927.21
+    }
+  },
+  "Falkland Islands": {
+    "Argentina": {
+      "duration_hours": 0.59,
+      "price_usd": 120.38
+    },
+    "Chile": {
+      "duration_hours": 0.64,
+      "price_usd": 127.25
+    },
+    "Brazil": {
+      "duration_hours": 3.03,
+      "price_usd": 413.08
+    },
+    "Uruguay": {
+      "duration_hours": 3.03,
+      "price_usd": 413.08
+    },
+    "Antarctica": {
+      "duration_hours": 3.93,
+      "price_usd": 521.53
+    },
+    "Paraguay": {
+      "duration_hours": 4.11,
+      "price_usd": 543.17
+    },
+    "Bolivia": {
+      "duration_hours": 4.14,
+      "price_usd": 546.8
+    },
+    "Peru": {
+      "duration_hours": 4.84,
+      "price_usd": 631.0
+    }
+  },
+  "France": {
+    "Suriname": {
+      "duration_hours": 0.8,
+      "price_usd": 145.67
+    },
+    "Guyana": {
+      "duration_hours": 1.28,
+      "price_usd": 204.19
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 1.7,
+      "price_usd": 253.99
+    },
+    "Venezuela": {
+      "duration_hours": 2.89,
+      "price_usd": 396.7
+    },
+    "Puerto Rico": {
+      "duration_hours": 2.9,
+      "price_usd": 397.84
+    },
+    "Colombia": {
+      "duration_hours": 3.2,
+      "price_usd": 433.42
+    },
+    "Dominican Republic": {
+      "duration_hours": 3.53,
+      "price_usd": 473.35
+    },
+    "Panama": {
+      "duration_hours": 3.57,
+      "price_usd": 478.43
+    }
+  },
+  "Gabon": {
+    "Republic of the Congo": {
+      "duration_hours": 0.29,
+      "price_usd": 84.35
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 0.72,
+      "price_usd": 136.95
+    },
+    "Angola": {
+      "duration_hours": 0.77,
+      "price_usd": 142.57
+    },
+    "Cameroon": {
+      "duration_hours": 0.91,
+      "price_usd": 158.75
+    },
+    "Nigeria": {
+      "duration_hours": 1.26,
+      "price_usd": 201.46
+    },
+    "Central African Republic": {
+      "duration_hours": 1.68,
+      "price_usd": 251.55
+    },
+    "Benin": {
+      "duration_hours": 1.83,
+      "price_usd": 270.13
+    },
+    "Togo": {
+      "duration_hours": 1.9,
+      "price_usd": 277.72
+    }
+  },
+  "England": {
+    "Ireland": {
+      "duration_hours": 0.11,
+      "price_usd": 62.61
+    },
+    "Belgium": {
+      "duration_hours": 0.88,
+      "price_usd": 155.05
+    },
+    "Netherlands": {
+      "duration_hours": 0.97,
+      "price_usd": 166.52
+    },
+    "Luxembourg": {
+      "duration_hours": 1.17,
+      "price_usd": 190.37
+    },
+    "Germany": {
+      "duration_hours": 1.25,
+      "price_usd": 200.31
+    },
+    "Denmark": {
+      "duration_hours": 1.47,
+      "price_usd": 226.16
+    },
+    "Switzerland": {
+      "duration_hours": 1.65,
+      "price_usd": 248.11
+    },
+    "Iceland": {
+      "duration_hours": 1.76,
+      "price_usd": 261.36
+    }
+  },
+  "Georgia": {
+    "Armenia": {
+      "duration_hours": 0.22,
+      "price_usd": 76.53
+    },
+    "Azerbaijan": {
+      "duration_hours": 0.44,
+      "price_usd": 102.99
+    },
+    "Turkey": {
+      "duration_hours": 0.49,
+      "price_usd": 108.27
+    },
+    "Iraq": {
+      "duration_hours": 0.88,
+      "price_usd": 155.36
+    },
+    "Syria": {
+      "duration_hours": 1.17,
+      "price_usd": 190.63
+    },
+    "Cyprus": {
+      "duration_hours": 1.22,
+      "price_usd": 196.59
+    },
+    "Lebanon": {
+      "duration_hours": 1.31,
+      "price_usd": 207.06
+    },
+    "Northern Cyprus": {
+      "duration_hours": 1.31,
+      "price_usd": 207.09
+    }
+  },
+  "Ghana": {
+    "Togo": {
+      "duration_hours": 0.12,
+      "price_usd": 63.83
+    },
+    "Benin": {
+      "duration_hours": 0.23,
+      "price_usd": 77.64
+    },
+    "Ivory Coast": {
+      "duration_hours": 0.56,
+      "price_usd": 116.92
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.74,
+      "price_usd": 139.06
+    },
+    "Niger": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Nigeria": {
+      "duration_hours": 1.04,
+      "price_usd": 175.17
+    },
+    "Liberia": {
+      "duration_hours": 1.23,
+      "price_usd": 198.18
+    },
+    "Guinea": {
+      "duration_hours": 1.33,
+      "price_usd": 210.18
+    }
+  },
+  "Guinea": {
+    "Sierra Leone": {
+      "duration_hours": 0.43,
+      "price_usd": 101.88
+    },
+    "Liberia": {
+      "duration_hours": 0.47,
+      "price_usd": 106.4
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.82,
+      "price_usd": 148.16
+    },
+    "Ivory Coast": {
+      "duration_hours": 0.86,
+      "price_usd": 152.85
+    },
+    "Guinea Bissau": {
+      "duration_hours": 1.03,
+      "price_usd": 173.48
+    },
+    "Mali": {
+      "duration_hours": 1.09,
+      "price_usd": 180.22
+    },
+    "Mauritania": {
+      "duration_hours": 1.09,
+      "price_usd": 180.22
+    },
+    "Ghana": {
+      "duration_hours": 1.33,
+      "price_usd": 210.18
+    }
+  },
+  "Gambia": {
+    "Senegal": {
+      "duration_hours": 0.06,
+      "price_usd": 57.65
+    },
+    "Guinea Bissau": {
+      "duration_hours": 0.37,
+      "price_usd": 94.81
+    },
+    "Mali": {
+      "duration_hours": 0.66,
+      "price_usd": 129.53
+    },
+    "Mauritania": {
+      "duration_hours": 0.66,
+      "price_usd": 129.53
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.15,
+      "price_usd": 187.99
+    },
+    "Guinea": {
+      "duration_hours": 1.38,
+      "price_usd": 215.08
+    },
+    "Liberia": {
+      "duration_hours": 1.75,
+      "price_usd": 259.54
+    },
+    "Burkina Faso": {
+      "duration_hours": 1.97,
+      "price_usd": 286.63
+    }
+  },
+  "Guinea Bissau": {
+    "Gambia": {
+      "duration_hours": 0.37,
+      "price_usd": 94.81
+    },
+    "Senegal": {
+      "duration_hours": 0.41,
+      "price_usd": 99.64
+    },
+    "Mali": {
+      "duration_hours": 0.64,
+      "price_usd": 126.45
+    },
+    "Mauritania": {
+      "duration_hours": 0.64,
+      "price_usd": 126.45
+    },
+    "Sierra Leone": {
+      "duration_hours": 0.78,
+      "price_usd": 143.22
+    },
+    "Guinea": {
+      "duration_hours": 1.03,
+      "price_usd": 173.48
+    },
+    "Liberia": {
+      "duration_hours": 1.38,
+      "price_usd": 215.28
+    },
+    "Burkina Faso": {
+      "duration_hours": 1.7,
+      "price_usd": 253.42
+    }
+  },
+  "Equatorial Guinea": {
+    "Cameroon": {
+      "duration_hours": 0.53,
+      "price_usd": 113.33
+    },
+    "Nigeria": {
+      "duration_hours": 0.54,
+      "price_usd": 114.55
+    },
+    "Gabon": {
+      "duration_hours": 0.72,
+      "price_usd": 136.95
+    },
+    "Republic of the Congo": {
+      "duration_hours": 0.94,
+      "price_usd": 162.43
+    },
+    "Benin": {
+      "duration_hours": 1.19,
+      "price_usd": 192.88
+    },
+    "Central African Republic": {
+      "duration_hours": 1.2,
+      "price_usd": 193.48
+    },
+    "Togo": {
+      "duration_hours": 1.27,
+      "price_usd": 202.95
+    },
+    "Angola": {
+      "duration_hours": 1.34,
+      "price_usd": 211.35
+    }
+  },
+  "Greece": {
+    "Albania": {
+      "duration_hours": 0.92,
+      "price_usd": 160.12
+    },
+    "Macedonia": {
+      "duration_hours": 0.92,
+      "price_usd": 160.12
+    },
+    "Kosovo": {
+      "duration_hours": 0.94,
+      "price_usd": 162.37
+    },
+    "Italy": {
+      "duration_hours": 0.98,
+      "price_usd": 167.02
+    },
+    "Northern Cyprus": {
+      "duration_hours": 1.03,
+      "price_usd": 173.35
+    },
+    "Montenegro": {
+      "duration_hours": 1.03,
+      "price_usd": 173.91
+    },
+    "Cyprus": {
+      "duration_hours": 1.17,
+      "price_usd": 190.37
+    },
+    "Bulgaria": {
+      "duration_hours": 1.19,
+      "price_usd": 192.69
+    }
+  },
+  "Greenland": {
+    "Iceland": {
+      "duration_hours": 2.47,
+      "price_usd": 346.79
+    },
+    "Norway": {
+      "duration_hours": 2.55,
+      "price_usd": 356.26
+    },
+    "Finland": {
+      "duration_hours": 2.83,
+      "price_usd": 390.06
+    },
+    "Sweden": {
+      "duration_hours": 3.16,
+      "price_usd": 428.97
+    },
+    "England": {
+      "duration_hours": 4.21,
+      "price_usd": 555.79
+    },
+    "Estonia": {
+      "duration_hours": 4.26,
+      "price_usd": 561.07
+    },
+    "Ireland": {
+      "duration_hours": 4.3,
+      "price_usd": 566.24
+    },
+    "Denmark": {
+      "duration_hours": 4.35,
+      "price_usd": 572.35
+    }
+  },
+  "Guatemala": {
+    "El Salvador": {
+      "duration_hours": 0.32,
+      "price_usd": 87.83
+    },
+    "Honduras": {
+      "duration_hours": 0.39,
+      "price_usd": 96.84
+    },
+    "Belize": {
+      "duration_hours": 0.58,
+      "price_usd": 119.32
+    },
+    "Nicaragua": {
+      "duration_hours": 0.7,
+      "price_usd": 133.9
+    },
+    "Costa Rica": {
+      "duration_hours": 1.24,
+      "price_usd": 198.36
+    },
+    "Cuba": {
+      "duration_hours": 1.67,
+      "price_usd": 249.91
+    },
+    "Jamaica": {
+      "duration_hours": 1.8,
+      "price_usd": 265.84
+    },
+    "Panama": {
+      "duration_hours": 1.9,
+      "price_usd": 277.7
+    }
+  },
+  "Guyana": {
+    "Trinidad and Tobago": {
+      "duration_hours": 0.42,
+      "price_usd": 100.77
+    },
+    "Suriname": {
+      "duration_hours": 0.49,
+      "price_usd": 108.72
+    },
+    "France": {
+      "duration_hours": 1.28,
+      "price_usd": 204.19
+    },
+    "Venezuela": {
+      "duration_hours": 1.65,
+      "price_usd": 248.48
+    },
+    "Puerto Rico": {
+      "duration_hours": 1.66,
+      "price_usd": 248.89
+    },
+    "Dominican Republic": {
+      "duration_hours": 2.25,
+      "price_usd": 319.86
+    },
+    "Haiti": {
+      "duration_hours": 2.41,
+      "price_usd": 339.57
+    },
+    "Colombia": {
+      "duration_hours": 2.46,
+      "price_usd": 345.77
+    }
+  },
+  "Honduras": {
+    "El Salvador": {
+      "duration_hours": 0.08,
+      "price_usd": 60.2
+    },
+    "Nicaragua": {
+      "duration_hours": 0.34,
+      "price_usd": 90.94
+    },
+    "Guatemala": {
+      "duration_hours": 0.39,
+      "price_usd": 96.84
+    },
+    "Belize": {
+      "duration_hours": 0.71,
+      "price_usd": 135.29
+    },
+    "Costa Rica": {
+      "duration_hours": 0.89,
+      "price_usd": 156.46
+    },
+    "Jamaica": {
+      "duration_hours": 1.51,
+      "price_usd": 231.32
+    },
+    "Panama": {
+      "duration_hours": 1.52,
+      "price_usd": 232.14
+    },
+    "Cuba": {
+      "duration_hours": 1.56,
+      "price_usd": 237.36
+    }
+  },
+  "Croatia": {
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.15,
+      "price_usd": 67.6
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.21,
+      "price_usd": 75.27
+    },
+    "Hungary": {
+      "duration_hours": 0.28,
+      "price_usd": 84.16
+    },
+    "Austria": {
+      "duration_hours": 0.35,
+      "price_usd": 92.53
+    },
+    "Czech Republic": {
+      "duration_hours": 0.41,
+      "price_usd": 99.6
+    },
+    "Bulgaria": {
+      "duration_hours": 0.44,
+      "price_usd": 103.12
+    },
+    "Romania": {
+      "duration_hours": 0.46,
+      "price_usd": 105.22
+    },
+    "Montenegro": {
+      "duration_hours": 0.48,
+      "price_usd": 108.0
+    }
+  },
+  "Haiti": {
+    "Dominican Republic": {
+      "duration_hours": 0.2,
+      "price_usd": 73.46
+    },
+    "Jamaica": {
+      "duration_hours": 0.61,
+      "price_usd": 123.03
+    },
+    "The Bahamas": {
+      "duration_hours": 0.77,
+      "price_usd": 142.81
+    },
+    "Puerto Rico": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    },
+    "Venezuela": {
+      "duration_hours": 1.15,
+      "price_usd": 188.36
+    },
+    "Cuba": {
+      "duration_hours": 1.26,
+      "price_usd": 201.12
+    },
+    "Panama": {
+      "duration_hours": 1.87,
+      "price_usd": 273.92
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 2.0,
+      "price_usd": 289.51
+    }
+  },
+  "Hungary": {
+    "Austria": {
+      "duration_hours": 0.19,
+      "price_usd": 72.95
+    },
+    "Slovenia": {
+      "duration_hours": 0.23,
+      "price_usd": 78.08
+    },
+    "Czech Republic": {
+      "duration_hours": 0.25,
+      "price_usd": 80.32
+    },
+    "Croatia": {
+      "duration_hours": 0.28,
+      "price_usd": 84.16
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.39,
+      "price_usd": 96.57
+    },
+    "Slovakia": {
+      "duration_hours": 0.44,
+      "price_usd": 103.09
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.49,
+      "price_usd": 109.2
+    },
+    "Poland": {
+      "duration_hours": 0.6,
+      "price_usd": 122.15
+    }
+  },
+  "Indonesia": {
+    "East Timor": {
+      "duration_hours": 0.61,
+      "price_usd": 123.51
+    },
+    "Brunei": {
+      "duration_hours": 2.23,
+      "price_usd": 317.8
+    },
+    "Philippines": {
+      "duration_hours": 2.7,
+      "price_usd": 373.42
+    },
+    "Malaysia": {
+      "duration_hours": 3.55,
+      "price_usd": 475.54
+    },
+    "Cambodia": {
+      "duration_hours": 3.74,
+      "price_usd": 499.02
+    },
+    "Thailand": {
+      "duration_hours": 3.99,
+      "price_usd": 528.39
+    },
+    "Laos": {
+      "duration_hours": 4.01,
+      "price_usd": 530.84
+    },
+    "China": {
+      "duration_hours": 4.24,
+      "price_usd": 559.3
+    }
+  },
+  "India": {
+    "Pakistan": {
+      "duration_hours": 0.38,
+      "price_usd": 95.24
+    },
+    "Tajikistan": {
+      "duration_hours": 1.0,
+      "price_usd": 169.78
+    },
+    "Kazakhstan": {
+      "duration_hours": 1.2,
+      "price_usd": 193.85
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 1.2,
+      "price_usd": 193.85
+    },
+    "Uzbekistan": {
+      "duration_hours": 1.29,
+      "price_usd": 205.29
+    },
+    "Nepal": {
+      "duration_hours": 1.61,
+      "price_usd": 243.28
+    },
+    "Afghanistan": {
+      "duration_hours": 1.88,
+      "price_usd": 275.82
+    },
+    "Turkmenistan": {
+      "duration_hours": 1.88,
+      "price_usd": 275.82
+    }
+  },
+  "Ireland": {
+    "England": {
+      "duration_hours": 0.11,
+      "price_usd": 62.61
+    },
+    "Belgium": {
+      "duration_hours": 0.88,
+      "price_usd": 155.33
+    },
+    "Netherlands": {
+      "duration_hours": 1.01,
+      "price_usd": 171.6
+    },
+    "Luxembourg": {
+      "duration_hours": 1.17,
+      "price_usd": 190.46
+    },
+    "Germany": {
+      "duration_hours": 1.31,
+      "price_usd": 207.68
+    },
+    "Denmark": {
+      "duration_hours": 1.53,
+      "price_usd": 234.19
+    },
+    "Switzerland": {
+      "duration_hours": 1.64,
+      "price_usd": 247.36
+    },
+    "Spain": {
+      "duration_hours": 1.69,
+      "price_usd": 252.4
+    }
+  },
+  "Iran": {
+    "Afghanistan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Turkmenistan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Iraq": {
+      "duration_hours": 0.97,
+      "price_usd": 165.87
+    },
+    "Azerbaijan": {
+      "duration_hours": 1.03,
+      "price_usd": 174.12
+    },
+    "Kuwait": {
+      "duration_hours": 1.22,
+      "price_usd": 195.86
+    },
+    "Armenia": {
+      "duration_hours": 1.24,
+      "price_usd": 198.79
+    },
+    "Uzbekistan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.47
+    },
+    "Georgia": {
+      "duration_hours": 1.46,
+      "price_usd": 225.21
+    }
+  },
+  "Iraq": {
+    "Azerbaijan": {
+      "duration_hours": 0.52,
+      "price_usd": 112.88
+    },
+    "Armenia": {
+      "duration_hours": 0.74,
+      "price_usd": 138.48
+    },
+    "Syria": {
+      "duration_hours": 0.84,
+      "price_usd": 150.83
+    },
+    "Georgia": {
+      "duration_hours": 0.88,
+      "price_usd": 155.36
+    },
+    "Kuwait": {
+      "duration_hours": 0.88,
+      "price_usd": 156.06
+    },
+    "Iran": {
+      "duration_hours": 0.97,
+      "price_usd": 165.87
+    },
+    "Lebanon": {
+      "duration_hours": 1.16,
+      "price_usd": 189.4
+    },
+    "Turkey": {
+      "duration_hours": 1.19,
+      "price_usd": 192.35
+    }
+  },
+  "Iceland": {
+    "England": {
+      "duration_hours": 1.76,
+      "price_usd": 261.36
+    },
+    "Ireland": {
+      "duration_hours": 1.84,
+      "price_usd": 271.01
+    },
+    "Sweden": {
+      "duration_hours": 2.05,
+      "price_usd": 295.73
+    },
+    "Norway": {
+      "duration_hours": 2.2,
+      "price_usd": 313.64
+    },
+    "Finland": {
+      "duration_hours": 2.26,
+      "price_usd": 320.75
+    },
+    "Germany": {
+      "duration_hours": 2.28,
+      "price_usd": 323.7
+    },
+    "Netherlands": {
+      "duration_hours": 2.28,
+      "price_usd": 323.88
+    },
+    "Denmark": {
+      "duration_hours": 2.35,
+      "price_usd": 331.49
+    }
+  },
+  "Israel": {
+    "Jordan": {
+      "duration_hours": 0.05,
+      "price_usd": 55.79
+    },
+    "West Bank": {
+      "duration_hours": 0.05,
+      "price_usd": 55.79
+    },
+    "Lebanon": {
+      "duration_hours": 0.08,
+      "price_usd": 59.56
+    },
+    "Syria": {
+      "duration_hours": 0.37,
+      "price_usd": 94.46
+    },
+    "Cyprus": {
+      "duration_hours": 0.38,
+      "price_usd": 95.99
+    },
+    "Egypt": {
+      "duration_hours": 0.45,
+      "price_usd": 104.55
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.48,
+      "price_usd": 107.9
+    },
+    "Iraq": {
+      "duration_hours": 1.2,
+      "price_usd": 194.42
+    }
+  },
+  "Italy": {
+    "Macedonia": {
+      "duration_hours": 0.74,
+      "price_usd": 138.6
+    },
+    "Albania": {
+      "duration_hours": 0.74,
+      "price_usd": 138.6
+    },
+    "Montenegro": {
+      "duration_hours": 0.75,
+      "price_usd": 139.59
+    },
+    "Kosovo": {
+      "duration_hours": 0.77,
+      "price_usd": 142.37
+    },
+    "Greece": {
+      "duration_hours": 0.98,
+      "price_usd": 167.02
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.99,
+      "price_usd": 168.71
+    },
+    "Bulgaria": {
+      "duration_hours": 1.12,
+      "price_usd": 184.27
+    },
+    "Croatia": {
+      "duration_hours": 1.12,
+      "price_usd": 184.32
+    }
+  },
+  "Jamaica": {
+    "Haiti": {
+      "duration_hours": 0.61,
+      "price_usd": 123.03
+    },
+    "The Bahamas": {
+      "duration_hours": 0.73,
+      "price_usd": 137.51
+    },
+    "Dominican Republic": {
+      "duration_hours": 0.79,
+      "price_usd": 144.65
+    },
+    "Cuba": {
+      "duration_hours": 0.89,
+      "price_usd": 157.07
+    },
+    "Venezuela": {
+      "duration_hours": 1.25,
+      "price_usd": 200.06
+    },
+    "Puerto Rico": {
+      "duration_hours": 1.49,
+      "price_usd": 228.76
+    },
+    "Nicaragua": {
+      "duration_hours": 1.5,
+      "price_usd": 229.87
+    },
+    "Honduras": {
+      "duration_hours": 1.51,
+      "price_usd": 231.32
+    }
+  },
+  "Jordan": {
+    "West Bank": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Israel": {
+      "duration_hours": 0.05,
+      "price_usd": 55.79
+    },
+    "Lebanon": {
+      "duration_hours": 0.13,
+      "price_usd": 65.2
+    },
+    "Syria": {
+      "duration_hours": 0.4,
+      "price_usd": 98.42
+    },
+    "Egypt": {
+      "duration_hours": 0.41,
+      "price_usd": 98.93
+    },
+    "Cyprus": {
+      "duration_hours": 0.41,
+      "price_usd": 99.42
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.5,
+      "price_usd": 110.13
+    },
+    "Iraq": {
+      "duration_hours": 1.24,
+      "price_usd": 198.9
+    }
+  },
+  "Japan": {
+    "South Korea": {
+      "duration_hours": 0.94,
+      "price_usd": 162.56
+    },
+    "North Korea": {
+      "duration_hours": 1.22,
+      "price_usd": 196.94
+    },
+    "Taiwan": {
+      "duration_hours": 2.06,
+      "price_usd": 297.49
+    },
+    "Russia": {
+      "duration_hours": 2.48,
+      "price_usd": 347.55
+    },
+    "Vietnam": {
+      "duration_hours": 3.69,
+      "price_usd": 493.17
+    },
+    "China": {
+      "duration_hours": 3.69,
+      "price_usd": 493.32
+    },
+    "Philippines": {
+      "duration_hours": 3.72,
+      "price_usd": 495.92
+    },
+    "Laos": {
+      "duration_hours": 4.61,
+      "price_usd": 603.17
+    }
+  },
+  "Kazakhstan": {
+    "Kyrgyzstan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Tajikistan": {
+      "duration_hours": 0.28,
+      "price_usd": 83.69
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.83,
+      "price_usd": 149.6
+    },
+    "Pakistan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.07
+    },
+    "India": {
+      "duration_hours": 1.2,
+      "price_usd": 193.85
+    },
+    "Afghanistan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Turkmenistan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Mongolia": {
+      "duration_hours": 1.9,
+      "price_usd": 277.49
+    }
+  },
+  "Kenya": {
+    "United Republic of Tanzania": {
+      "duration_hours": 0.99,
+      "price_usd": 168.37
+    },
+    "Uganda": {
+      "duration_hours": 1.27,
+      "price_usd": 202.4
+    },
+    "Rwanda": {
+      "duration_hours": 1.47,
+      "price_usd": 226.59
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 1.54,
+      "price_usd": 234.38
+    },
+    "Zambia": {
+      "duration_hours": 1.62,
+      "price_usd": 244.96
+    },
+    "Burundi": {
+      "duration_hours": 1.7,
+      "price_usd": 253.51
+    },
+    "Mozambique": {
+      "duration_hours": 1.72,
+      "price_usd": 256.52
+    },
+    "Malawi": {
+      "duration_hours": 1.72,
+      "price_usd": 256.52
+    }
+  },
+  "Kyrgyzstan": {
+    "Kazakhstan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Tajikistan": {
+      "duration_hours": 0.28,
+      "price_usd": 83.69
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.83,
+      "price_usd": 149.6
+    },
+    "Pakistan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.07
+    },
+    "India": {
+      "duration_hours": 1.2,
+      "price_usd": 193.85
+    },
+    "Afghanistan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Turkmenistan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Mongolia": {
+      "duration_hours": 1.9,
+      "price_usd": 277.49
+    }
+  },
+  "Cambodia": {
+    "Thailand": {
+      "duration_hours": 0.25,
+      "price_usd": 79.8
+    },
+    "Laos": {
+      "duration_hours": 0.56,
+      "price_usd": 116.61
+    },
+    "Malaysia": {
+      "duration_hours": 0.7,
+      "price_usd": 133.64
+    },
+    "Myanmar": {
+      "duration_hours": 1.42,
+      "price_usd": 220.85
+    },
+    "China": {
+      "duration_hours": 1.44,
+      "price_usd": 223.29
+    },
+    "Vietnam": {
+      "duration_hours": 1.63,
+      "price_usd": 245.38
+    },
+    "Brunei": {
+      "duration_hours": 1.7,
+      "price_usd": 254.06
+    },
+    "Bangladesh": {
+      "duration_hours": 2.14,
+      "price_usd": 306.58
+    }
+  },
+  "South Korea": {
+    "North Korea": {
+      "duration_hours": 0.58,
+      "price_usd": 119.4
+    },
+    "Japan": {
+      "duration_hours": 0.94,
+      "price_usd": 162.56
+    },
+    "Taiwan": {
+      "duration_hours": 2.12,
+      "price_usd": 304.15
+    },
+    "Russia": {
+      "duration_hours": 2.26,
+      "price_usd": 320.99
+    },
+    "Vietnam": {
+      "duration_hours": 3.39,
+      "price_usd": 456.37
+    },
+    "China": {
+      "duration_hours": 3.52,
+      "price_usd": 472.04
+    },
+    "Philippines": {
+      "duration_hours": 4.19,
+      "price_usd": 552.62
+    },
+    "Mongolia": {
+      "duration_hours": 4.27,
+      "price_usd": 562.95
+    }
+  },
+  "Kosovo": {
+    "Albania": {
+      "duration_hours": 0.03,
+      "price_usd": 53.91
+    },
+    "Macedonia": {
+      "duration_hours": 0.03,
+      "price_usd": 53.91
+    },
+    "Montenegro": {
+      "duration_hours": 0.12,
+      "price_usd": 64.04
+    },
+    "Bulgaria": {
+      "duration_hours": 0.36,
+      "price_usd": 93.1
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.43,
+      "price_usd": 101.43
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.47,
+      "price_usd": 106.09
+    },
+    "Croatia": {
+      "duration_hours": 0.57,
+      "price_usd": 118.36
+    },
+    "Italy": {
+      "duration_hours": 0.77,
+      "price_usd": 142.37
+    }
+  },
+  "Kuwait": {
+    "Qatar": {
+      "duration_hours": 0.8,
+      "price_usd": 146.43
+    },
+    "Iraq": {
+      "duration_hours": 0.88,
+      "price_usd": 156.06
+    },
+    "United Arab Emirates": {
+      "duration_hours": 0.91,
+      "price_usd": 159.28
+    },
+    "Syria": {
+      "duration_hours": 1.19,
+      "price_usd": 192.26
+    },
+    "Iran": {
+      "duration_hours": 1.22,
+      "price_usd": 195.86
+    },
+    "Azerbaijan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.49
+    },
+    "Israel": {
+      "duration_hours": 1.51,
+      "price_usd": 230.61
+    },
+    "Lebanon": {
+      "duration_hours": 1.51,
+      "price_usd": 231.33
+    }
+  },
+  "Laos": {
+    "Thailand": {
+      "duration_hours": 0.46,
+      "price_usd": 105.07
+    },
+    "Cambodia": {
+      "duration_hours": 0.56,
+      "price_usd": 116.61
+    },
+    "China": {
+      "duration_hours": 0.92,
+      "price_usd": 159.86
+    },
+    "Vietnam": {
+      "duration_hours": 1.07,
+      "price_usd": 178.94
+    },
+    "Myanmar": {
+      "duration_hours": 1.11,
+      "price_usd": 183.51
+    },
+    "Malaysia": {
+      "duration_hours": 1.25,
+      "price_usd": 200.16
+    },
+    "Brunei": {
+      "duration_hours": 1.83,
+      "price_usd": 269.11
+    },
+    "Bangladesh": {
+      "duration_hours": 1.98,
+      "price_usd": 287.04
+    }
+  },
+  "Lebanon": {
+    "Israel": {
+      "duration_hours": 0.08,
+      "price_usd": 59.56
+    },
+    "Jordan": {
+      "duration_hours": 0.13,
+      "price_usd": 65.2
+    },
+    "West Bank": {
+      "duration_hours": 0.13,
+      "price_usd": 65.2
+    },
+    "Cyprus": {
+      "duration_hours": 0.33,
+      "price_usd": 89.13
+    },
+    "Syria": {
+      "duration_hours": 0.35,
+      "price_usd": 91.53
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.44,
+      "price_usd": 102.76
+    },
+    "Egypt": {
+      "duration_hours": 0.53,
+      "price_usd": 114.1
+    },
+    "Turkey": {
+      "duration_hours": 1.12,
+      "price_usd": 184.93
+    }
+  },
+  "Liberia": {
+    "Guinea": {
+      "duration_hours": 0.47,
+      "price_usd": 106.4
+    },
+    "Sierra Leone": {
+      "duration_hours": 0.62,
+      "price_usd": 123.81
+    },
+    "Ivory Coast": {
+      "duration_hours": 0.68,
+      "price_usd": 131.49
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.99,
+      "price_usd": 169.23
+    },
+    "Ghana": {
+      "duration_hours": 1.23,
+      "price_usd": 198.18
+    },
+    "Togo": {
+      "duration_hours": 1.35,
+      "price_usd": 211.95
+    },
+    "Guinea Bissau": {
+      "duration_hours": 1.38,
+      "price_usd": 215.28
+    },
+    "Benin": {
+      "duration_hours": 1.47,
+      "price_usd": 225.8
+    }
+  },
+  "Libya": {
+    "Algeria": {
+      "duration_hours": 0.37,
+      "price_usd": 94.95
+    },
+    "Tunisia": {
+      "duration_hours": 1.23,
+      "price_usd": 197.4
+    },
+    "Chad": {
+      "duration_hours": 1.38,
+      "price_usd": 216.18
+    },
+    "Greece": {
+      "duration_hours": 2.08,
+      "price_usd": 299.16
+    },
+    "Italy": {
+      "duration_hours": 2.13,
+      "price_usd": 305.75
+    },
+    "Central African Republic": {
+      "duration_hours": 2.14,
+      "price_usd": 306.39
+    },
+    "Niger": {
+      "duration_hours": 2.26,
+      "price_usd": 321.4
+    },
+    "Nigeria": {
+      "duration_hours": 2.64,
+      "price_usd": 367.26
+    }
+  },
+  "Sri Lanka": {
+    "Bangladesh": {
+      "duration_hours": 2.48,
+      "price_usd": 347.92
+    },
+    "Malaysia": {
+      "duration_hours": 2.67,
+      "price_usd": 370.49
+    },
+    "Thailand": {
+      "duration_hours": 2.92,
+      "price_usd": 400.66
+    },
+    "Nepal": {
+      "duration_hours": 2.94,
+      "price_usd": 402.43
+    },
+    "Myanmar": {
+      "duration_hours": 2.97,
+      "price_usd": 405.84
+    },
+    "Cambodia": {
+      "duration_hours": 3.01,
+      "price_usd": 411.59
+    },
+    "Bhutan": {
+      "duration_hours": 3.09,
+      "price_usd": 420.88
+    },
+    "Laos": {
+      "duration_hours": 3.33,
+      "price_usd": 449.9
+    }
+  },
+  "Lesotho": {
+    "South Africa": {
+      "duration_hours": 0.31,
+      "price_usd": 87.46
+    },
+    "Swaziland": {
+      "duration_hours": 0.49,
+      "price_usd": 108.76
+    },
+    "Zimbabwe": {
+      "duration_hours": 0.97,
+      "price_usd": 166.28
+    },
+    "Botswana": {
+      "duration_hours": 1.5,
+      "price_usd": 230.41
+    },
+    "Namibia": {
+      "duration_hours": 1.54,
+      "price_usd": 235.08
+    },
+    "Mozambique": {
+      "duration_hours": 2.52,
+      "price_usd": 352.34
+    },
+    "Malawi": {
+      "duration_hours": 2.52,
+      "price_usd": 352.34
+    },
+    "Zambia": {
+      "duration_hours": 2.77,
+      "price_usd": 382.86
+    }
+  },
+  "Lithuania": {
+    "Belarus": {
+      "duration_hours": 0.08,
+      "price_usd": 60.13
+    },
+    "Latvia": {
+      "duration_hours": 0.27,
+      "price_usd": 82.64
+    },
+    "Estonia": {
+      "duration_hours": 0.5,
+      "price_usd": 109.74
+    },
+    "Slovakia": {
+      "duration_hours": 0.75,
+      "price_usd": 139.99
+    },
+    "Poland": {
+      "duration_hours": 0.79,
+      "price_usd": 144.81
+    },
+    "Ukraine": {
+      "duration_hours": 0.82,
+      "price_usd": 147.96
+    },
+    "Denmark": {
+      "duration_hours": 0.82,
+      "price_usd": 148.71
+    },
+    "Romania": {
+      "duration_hours": 0.9,
+      "price_usd": 157.56
+    }
+  },
+  "Luxembourg": {
+    "Belgium": {
+      "duration_hours": 0.29,
+      "price_usd": 85.31
+    },
+    "Netherlands": {
+      "duration_hours": 0.47,
+      "price_usd": 106.45
+    },
+    "Switzerland": {
+      "duration_hours": 0.49,
+      "price_usd": 108.43
+    },
+    "Germany": {
+      "duration_hours": 0.75,
+      "price_usd": 140.1
+    },
+    "Poland": {
+      "duration_hours": 0.8,
+      "price_usd": 146.59
+    },
+    "Slovenia": {
+      "duration_hours": 0.88,
+      "price_usd": 155.28
+    },
+    "Denmark": {
+      "duration_hours": 0.94,
+      "price_usd": 163.39
+    },
+    "Czech Republic": {
+      "duration_hours": 1.01,
+      "price_usd": 171.55
+    }
+  },
+  "Latvia": {
+    "Lithuania": {
+      "duration_hours": 0.27,
+      "price_usd": 82.64
+    },
+    "Estonia": {
+      "duration_hours": 0.35,
+      "price_usd": 91.85
+    },
+    "Belarus": {
+      "duration_hours": 0.35,
+      "price_usd": 92.37
+    },
+    "Denmark": {
+      "duration_hours": 0.66,
+      "price_usd": 128.92
+    },
+    "Poland": {
+      "duration_hours": 0.85,
+      "price_usd": 151.7
+    },
+    "Germany": {
+      "duration_hours": 0.89,
+      "price_usd": 156.84
+    },
+    "Slovakia": {
+      "duration_hours": 0.93,
+      "price_usd": 161.32
+    },
+    "Ukraine": {
+      "duration_hours": 1.03,
+      "price_usd": 173.93
+    }
+  },
+  "Morocco": {
+    "Spain": {
+      "duration_hours": 0.95,
+      "price_usd": 163.58
+    },
+    "Portugal": {
+      "duration_hours": 0.95,
+      "price_usd": 163.58
+    },
+    "Western Sahara": {
+      "duration_hours": 1.27,
+      "price_usd": 202.48
+    },
+    "Tunisia": {
+      "duration_hours": 1.87,
+      "price_usd": 274.42
+    },
+    "Switzerland": {
+      "duration_hours": 2.24,
+      "price_usd": 318.54
+    },
+    "Luxembourg": {
+      "duration_hours": 2.3,
+      "price_usd": 325.5
+    },
+    "Italy": {
+      "duration_hours": 2.33,
+      "price_usd": 329.05
+    },
+    "Belgium": {
+      "duration_hours": 2.33,
+      "price_usd": 329.09
+    }
+  },
+  "Moldova": {
+    "Romania": {
+      "duration_hours": 0.37,
+      "price_usd": 94.07
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.67,
+      "price_usd": 130.66
+    },
+    "Bulgaria": {
+      "duration_hours": 0.67,
+      "price_usd": 130.71
+    },
+    "Ukraine": {
+      "duration_hours": 0.71,
+      "price_usd": 135.16
+    },
+    "Slovakia": {
+      "duration_hours": 0.73,
+      "price_usd": 138.04
+    },
+    "Croatia": {
+      "duration_hours": 0.81,
+      "price_usd": 146.71
+    },
+    "Belarus": {
+      "duration_hours": 0.84,
+      "price_usd": 150.51
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.87,
+      "price_usd": 153.92
+    }
+  },
+  "Madagascar": {
+    "Kenya": {
+      "duration_hours": 1.99,
+      "price_usd": 289.05
+    },
+    "Mozambique": {
+      "duration_hours": 2.04,
+      "price_usd": 295.24
+    },
+    "Malawi": {
+      "duration_hours": 2.04,
+      "price_usd": 295.24
+    },
+    "Zambia": {
+      "duration_hours": 2.34,
+      "price_usd": 330.41
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 2.68,
+      "price_usd": 371.8
+    },
+    "Zimbabwe": {
+      "duration_hours": 2.78,
+      "price_usd": 384.11
+    },
+    "Uganda": {
+      "duration_hours": 2.91,
+      "price_usd": 398.8
+    },
+    "Burundi": {
+      "duration_hours": 2.99,
+      "price_usd": 408.63
+    }
+  },
+  "Mexico": {
+    "Belize": {
+      "duration_hours": 1.52,
+      "price_usd": 232.39
+    },
+    "Guatemala": {
+      "duration_hours": 1.91,
+      "price_usd": 279.78
+    },
+    "Cuba": {
+      "duration_hours": 1.92,
+      "price_usd": 280.26
+    },
+    "El Salvador": {
+      "duration_hours": 2.12,
+      "price_usd": 303.95
+    },
+    "Honduras": {
+      "duration_hours": 2.2,
+      "price_usd": 313.78
+    },
+    "The Bahamas": {
+      "duration_hours": 2.49,
+      "price_usd": 349.09
+    },
+    "Nicaragua": {
+      "duration_hours": 2.54,
+      "price_usd": 354.56
+    },
+    "Jamaica": {
+      "duration_hours": 2.72,
+      "price_usd": 376.13
+    }
+  },
+  "Macedonia": {
+    "Albania": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Kosovo": {
+      "duration_hours": 0.03,
+      "price_usd": 53.91
+    },
+    "Montenegro": {
+      "duration_hours": 0.12,
+      "price_usd": 64.52
+    },
+    "Bulgaria": {
+      "duration_hours": 0.39,
+      "price_usd": 97.01
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.45,
+      "price_usd": 103.65
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.5,
+      "price_usd": 109.45
+    },
+    "Croatia": {
+      "duration_hours": 0.59,
+      "price_usd": 120.81
+    },
+    "Italy": {
+      "duration_hours": 0.74,
+      "price_usd": 138.6
+    }
+  },
+  "Mali": {
+    "Mauritania": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Senegal": {
+      "duration_hours": 0.63,
+      "price_usd": 125.51
+    },
+    "Guinea Bissau": {
+      "duration_hours": 0.64,
+      "price_usd": 126.45
+    },
+    "Gambia": {
+      "duration_hours": 0.66,
+      "price_usd": 129.53
+    },
+    "Guinea": {
+      "duration_hours": 1.09,
+      "price_usd": 180.22
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.09,
+      "price_usd": 180.48
+    },
+    "Burkina Faso": {
+      "duration_hours": 1.44,
+      "price_usd": 223.4
+    },
+    "Liberia": {
+      "duration_hours": 1.54,
+      "price_usd": 235.23
+    }
+  },
+  "Myanmar": {
+    "Bangladesh": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    },
+    "Laos": {
+      "duration_hours": 1.11,
+      "price_usd": 183.51
+    },
+    "Vietnam": {
+      "duration_hours": 1.12,
+      "price_usd": 184.69
+    },
+    "Thailand": {
+      "duration_hours": 1.18,
+      "price_usd": 191.46
+    },
+    "Cambodia": {
+      "duration_hours": 1.42,
+      "price_usd": 220.85
+    },
+    "China": {
+      "duration_hours": 1.43,
+      "price_usd": 221.86
+    },
+    "Bhutan": {
+      "duration_hours": 1.45,
+      "price_usd": 223.76
+    },
+    "Nepal": {
+      "duration_hours": 1.8,
+      "price_usd": 265.9
+    }
+  },
+  "Montenegro": {
+    "Kosovo": {
+      "duration_hours": 0.12,
+      "price_usd": 64.04
+    },
+    "Macedonia": {
+      "duration_hours": 0.12,
+      "price_usd": 64.52
+    },
+    "Albania": {
+      "duration_hours": 0.12,
+      "price_usd": 64.52
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.34,
+      "price_usd": 90.49
+    },
+    "Bulgaria": {
+      "duration_hours": 0.38,
+      "price_usd": 95.17
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.42,
+      "price_usd": 100.29
+    },
+    "Croatia": {
+      "duration_hours": 0.48,
+      "price_usd": 108.0
+    },
+    "Hungary": {
+      "duration_hours": 0.7,
+      "price_usd": 134.21
+    }
+  },
+  "Mongolia": {
+    "Kazakhstan": {
+      "duration_hours": 1.9,
+      "price_usd": 277.49
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 1.9,
+      "price_usd": 277.49
+    },
+    "Tajikistan": {
+      "duration_hours": 2.07,
+      "price_usd": 298.6
+    },
+    "Pakistan": {
+      "duration_hours": 2.11,
+      "price_usd": 303.54
+    },
+    "India": {
+      "duration_hours": 2.17,
+      "price_usd": 310.03
+    },
+    "Uzbekistan": {
+      "duration_hours": 2.7,
+      "price_usd": 374.08
+    },
+    "Nepal": {
+      "duration_hours": 2.97,
+      "price_usd": 406.72
+    },
+    "Bhutan": {
+      "duration_hours": 3.02,
+      "price_usd": 412.0
+    }
+  },
+  "Mozambique": {
+    "Malawi": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Zambia": {
+      "duration_hours": 0.4,
+      "price_usd": 98.14
+    },
+    "Burundi": {
+      "duration_hours": 1.21,
+      "price_usd": 194.93
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 1.46,
+      "price_usd": 225.68
+    },
+    "Uganda": {
+      "duration_hours": 1.5,
+      "price_usd": 229.69
+    },
+    "Botswana": {
+      "duration_hours": 1.54,
+      "price_usd": 234.89
+    },
+    "Rwanda": {
+      "duration_hours": 1.55,
+      "price_usd": 235.44
+    },
+    "Zimbabwe": {
+      "duration_hours": 1.55,
+      "price_usd": 236.08
+    }
+  },
+  "Mauritania": {
+    "Mali": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Senegal": {
+      "duration_hours": 0.63,
+      "price_usd": 125.51
+    },
+    "Guinea Bissau": {
+      "duration_hours": 0.64,
+      "price_usd": 126.45
+    },
+    "Gambia": {
+      "duration_hours": 0.66,
+      "price_usd": 129.53
+    },
+    "Guinea": {
+      "duration_hours": 1.09,
+      "price_usd": 180.22
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.09,
+      "price_usd": 180.48
+    },
+    "Burkina Faso": {
+      "duration_hours": 1.44,
+      "price_usd": 223.4
+    },
+    "Liberia": {
+      "duration_hours": 1.54,
+      "price_usd": 235.23
+    }
+  },
+  "Malawi": {
+    "Mozambique": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Zambia": {
+      "duration_hours": 0.4,
+      "price_usd": 98.14
+    },
+    "Burundi": {
+      "duration_hours": 1.21,
+      "price_usd": 194.93
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 1.46,
+      "price_usd": 225.68
+    },
+    "Uganda": {
+      "duration_hours": 1.5,
+      "price_usd": 229.69
+    },
+    "Botswana": {
+      "duration_hours": 1.54,
+      "price_usd": 234.89
+    },
+    "Rwanda": {
+      "duration_hours": 1.55,
+      "price_usd": 235.44
+    },
+    "Zimbabwe": {
+      "duration_hours": 1.55,
+      "price_usd": 236.08
+    }
+  },
+  "Malaysia": {
+    "Cambodia": {
+      "duration_hours": 0.7,
+      "price_usd": 133.64
+    },
+    "Thailand": {
+      "duration_hours": 0.85,
+      "price_usd": 152.31
+    },
+    "Laos": {
+      "duration_hours": 1.25,
+      "price_usd": 200.16
+    },
+    "Brunei": {
+      "duration_hours": 1.83,
+      "price_usd": 270.02
+    },
+    "Myanmar": {
+      "duration_hours": 1.94,
+      "price_usd": 283.36
+    },
+    "China": {
+      "duration_hours": 2.13,
+      "price_usd": 306.05
+    },
+    "Vietnam": {
+      "duration_hours": 2.32,
+      "price_usd": 328.53
+    },
+    "Bangladesh": {
+      "duration_hours": 2.46,
+      "price_usd": 345.74
+    }
+  },
+  "Namibia": {
+    "Lesotho": {
+      "duration_hours": 1.54,
+      "price_usd": 235.08
+    },
+    "Botswana": {
+      "duration_hours": 1.83,
+      "price_usd": 269.18
+    },
+    "South Africa": {
+      "duration_hours": 1.85,
+      "price_usd": 272.12
+    },
+    "Swaziland": {
+      "duration_hours": 1.96,
+      "price_usd": 284.6
+    },
+    "Zimbabwe": {
+      "duration_hours": 2.06,
+      "price_usd": 297.2
+    },
+    "Angola": {
+      "duration_hours": 3.14,
+      "price_usd": 426.87
+    },
+    "Republic of the Congo": {
+      "duration_hours": 3.32,
+      "price_usd": 448.6
+    },
+    "Mozambique": {
+      "duration_hours": 3.34,
+      "price_usd": 451.26
+    }
+  },
+  "New Caledonia": {
+    "Vanuatu": {
+      "duration_hours": 0.69,
+      "price_usd": 133.27
+    },
+    "Solomon Islands": {
+      "duration_hours": 1.55,
+      "price_usd": 235.45
+    },
+    "Fiji": {
+      "duration_hours": 1.73,
+      "price_usd": 258.04
+    },
+    "Papua New Guinea": {
+      "duration_hours": 2.38,
+      "price_usd": 335.66
+    },
+    "New Zealand": {
+      "duration_hours": 2.88,
+      "price_usd": 395.54
+    },
+    "Australia": {
+      "duration_hours": 3.64,
+      "price_usd": 486.86
+    },
+    "East Timor": {
+      "duration_hours": 5.72,
+      "price_usd": 736.41
+    },
+    "Indonesia": {
+      "duration_hours": 6.2,
+      "price_usd": 794.02
+    }
+  },
+  "Niger": {
+    "Burkina Faso": {
+      "duration_hours": 0.75,
+      "price_usd": 140.18
+    },
+    "Benin": {
+      "duration_hours": 0.79,
+      "price_usd": 144.67
+    },
+    "Togo": {
+      "duration_hours": 0.8,
+      "price_usd": 146.31
+    },
+    "Ghana": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Ivory Coast": {
+      "duration_hours": 1.18,
+      "price_usd": 191.84
+    },
+    "Nigeria": {
+      "duration_hours": 1.32,
+      "price_usd": 208.49
+    },
+    "Guinea": {
+      "duration_hours": 1.57,
+      "price_usd": 238.02
+    },
+    "Chad": {
+      "duration_hours": 1.68,
+      "price_usd": 251.85
+    }
+  },
+  "Nigeria": {
+    "Equatorial Guinea": {
+      "duration_hours": 0.54,
+      "price_usd": 114.55
+    },
+    "Cameroon": {
+      "duration_hours": 0.72,
+      "price_usd": 136.84
+    },
+    "Benin": {
+      "duration_hours": 0.83,
+      "price_usd": 149.64
+    },
+    "Togo": {
+      "duration_hours": 0.94,
+      "price_usd": 162.61
+    },
+    "Central African Republic": {
+      "duration_hours": 1.01,
+      "price_usd": 170.83
+    },
+    "Ghana": {
+      "duration_hours": 1.04,
+      "price_usd": 175.17
+    },
+    "Gabon": {
+      "duration_hours": 1.26,
+      "price_usd": 201.46
+    },
+    "Niger": {
+      "duration_hours": 1.32,
+      "price_usd": 208.49
+    }
+  },
+  "Nicaragua": {
+    "Honduras": {
+      "duration_hours": 0.34,
+      "price_usd": 90.94
+    },
+    "El Salvador": {
+      "duration_hours": 0.43,
+      "price_usd": 101.03
+    },
+    "Costa Rica": {
+      "duration_hours": 0.55,
+      "price_usd": 115.58
+    },
+    "Guatemala": {
+      "duration_hours": 0.7,
+      "price_usd": 133.9
+    },
+    "Belize": {
+      "duration_hours": 1.04,
+      "price_usd": 174.55
+    },
+    "Panama": {
+      "duration_hours": 1.2,
+      "price_usd": 194.12
+    },
+    "Jamaica": {
+      "duration_hours": 1.5,
+      "price_usd": 229.87
+    },
+    "Cuba": {
+      "duration_hours": 1.74,
+      "price_usd": 258.23
+    }
+  },
+  "Netherlands": {
+    "Germany": {
+      "duration_hours": 0.37,
+      "price_usd": 94.94
+    },
+    "Belgium": {
+      "duration_hours": 0.38,
+      "price_usd": 95.8
+    },
+    "Luxembourg": {
+      "duration_hours": 0.47,
+      "price_usd": 106.45
+    },
+    "Denmark": {
+      "duration_hours": 0.61,
+      "price_usd": 123.1
+    },
+    "Poland": {
+      "duration_hours": 0.83,
+      "price_usd": 149.81
+    },
+    "Switzerland": {
+      "duration_hours": 0.89,
+      "price_usd": 156.63
+    },
+    "England": {
+      "duration_hours": 0.97,
+      "price_usd": 166.52
+    },
+    "Ireland": {
+      "duration_hours": 1.01,
+      "price_usd": 171.6
+    }
+  },
+  "Norway": {
+    "Finland": {
+      "duration_hours": 0.3,
+      "price_usd": 85.57
+    },
+    "Sweden": {
+      "duration_hours": 0.82,
+      "price_usd": 148.4
+    },
+    "Estonia": {
+      "duration_hours": 1.88,
+      "price_usd": 275.55
+    },
+    "Latvia": {
+      "duration_hours": 2.15,
+      "price_usd": 308.42
+    },
+    "Iceland": {
+      "duration_hours": 2.2,
+      "price_usd": 313.64
+    },
+    "Denmark": {
+      "duration_hours": 2.36,
+      "price_usd": 333.08
+    },
+    "Lithuania": {
+      "duration_hours": 2.37,
+      "price_usd": 334.62
+    },
+    "Belarus": {
+      "duration_hours": 2.42,
+      "price_usd": 340.8
+    }
+  },
+  "Nepal": {
+    "Bhutan": {
+      "duration_hours": 0.44,
+      "price_usd": 102.88
+    },
+    "Bangladesh": {
+      "duration_hours": 0.99,
+      "price_usd": 168.95
+    },
+    "India": {
+      "duration_hours": 1.61,
+      "price_usd": 243.28
+    },
+    "Myanmar": {
+      "duration_hours": 1.8,
+      "price_usd": 265.9
+    },
+    "Pakistan": {
+      "duration_hours": 1.99,
+      "price_usd": 288.52
+    },
+    "Tajikistan": {
+      "duration_hours": 2.61,
+      "price_usd": 362.75
+    },
+    "Vietnam": {
+      "duration_hours": 2.66,
+      "price_usd": 369.72
+    },
+    "Kazakhstan": {
+      "duration_hours": 2.78,
+      "price_usd": 384.05
+    }
+  },
+  "New Zealand": {
+    "New Caledonia": {
+      "duration_hours": 2.88,
+      "price_usd": 395.54
+    },
+    "Australia": {
+      "duration_hours": 2.9,
+      "price_usd": 397.9
+    },
+    "Fiji": {
+      "duration_hours": 3.33,
+      "price_usd": 449.55
+    },
+    "Vanuatu": {
+      "duration_hours": 3.44,
+      "price_usd": 463.37
+    },
+    "Solomon Islands": {
+      "duration_hours": 4.42,
+      "price_usd": 580.77
+    },
+    "Papua New Guinea": {
+      "duration_hours": 5.18,
+      "price_usd": 671.52
+    },
+    "East Timor": {
+      "duration_hours": 7.38,
+      "price_usd": 935.63
+    },
+    "Indonesia": {
+      "duration_hours": 7.67,
+      "price_usd": 970.33
+    }
+  },
+  "Oman": {
+    "Yemen": {
+      "duration_hours": 0.98,
+      "price_usd": 167.26
+    },
+    "United Arab Emirates": {
+      "duration_hours": 1.03,
+      "price_usd": 173.68
+    },
+    "Qatar": {
+      "duration_hours": 1.15,
+      "price_usd": 187.8
+    },
+    "Somalia": {
+      "duration_hours": 1.8,
+      "price_usd": 265.43
+    },
+    "Kuwait": {
+      "duration_hours": 1.84,
+      "price_usd": 270.26
+    },
+    "Afghanistan": {
+      "duration_hours": 2.03,
+      "price_usd": 294.08
+    },
+    "Turkmenistan": {
+      "duration_hours": 2.03,
+      "price_usd": 294.08
+    },
+    "Somaliland": {
+      "duration_hours": 2.09,
+      "price_usd": 300.83
+    }
+  },
+  "Pakistan": {
+    "India": {
+      "duration_hours": 0.38,
+      "price_usd": 95.24
+    },
+    "Tajikistan": {
+      "duration_hours": 0.62,
+      "price_usd": 124.87
+    },
+    "Kazakhstan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.07
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 0.84,
+      "price_usd": 151.07
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.96,
+      "price_usd": 165.0
+    },
+    "Afghanistan": {
+      "duration_hours": 1.58,
+      "price_usd": 239.13
+    },
+    "Turkmenistan": {
+      "duration_hours": 1.58,
+      "price_usd": 239.13
+    },
+    "Nepal": {
+      "duration_hours": 1.99,
+      "price_usd": 288.52
+    }
+  },
+  "Panama": {
+    "Costa Rica": {
+      "duration_hours": 0.71,
+      "price_usd": 135.75
+    },
+    "Colombia": {
+      "duration_hours": 1.08,
+      "price_usd": 179.28
+    },
+    "Venezuela": {
+      "duration_hours": 1.1,
+      "price_usd": 181.67
+    },
+    "Nicaragua": {
+      "duration_hours": 1.2,
+      "price_usd": 194.12
+    },
+    "Ecuador": {
+      "duration_hours": 1.51,
+      "price_usd": 230.85
+    },
+    "Honduras": {
+      "duration_hours": 1.52,
+      "price_usd": 232.14
+    },
+    "Jamaica": {
+      "duration_hours": 1.56,
+      "price_usd": 237.04
+    },
+    "El Salvador": {
+      "duration_hours": 1.6,
+      "price_usd": 242.19
+    }
+  },
+  "Peru": {
+    "Bolivia": {
+      "duration_hours": 1.08,
+      "price_usd": 179.22
+    },
+    "Paraguay": {
+      "duration_hours": 1.11,
+      "price_usd": 183.28
+    },
+    "Brazil": {
+      "duration_hours": 2.32,
+      "price_usd": 327.93
+    },
+    "Uruguay": {
+      "duration_hours": 2.32,
+      "price_usd": 327.93
+    },
+    "Ecuador": {
+      "duration_hours": 2.44,
+      "price_usd": 343.4
+    },
+    "Colombia": {
+      "duration_hours": 2.54,
+      "price_usd": 354.37
+    },
+    "Panama": {
+      "duration_hours": 3.61,
+      "price_usd": 483.63
+    },
+    "France": {
+      "duration_hours": 3.63,
+      "price_usd": 485.53
+    }
+  },
+  "Philippines": {
+    "Brunei": {
+      "duration_hours": 1.77,
+      "price_usd": 261.98
+    },
+    "Taiwan": {
+      "duration_hours": 2.29,
+      "price_usd": 325.23
+    },
+    "East Timor": {
+      "duration_hours": 2.4,
+      "price_usd": 338.04
+    },
+    "China": {
+      "duration_hours": 2.59,
+      "price_usd": 360.77
+    },
+    "Indonesia": {
+      "duration_hours": 2.7,
+      "price_usd": 373.42
+    },
+    "Laos": {
+      "duration_hours": 3.0,
+      "price_usd": 409.58
+    },
+    "Vietnam": {
+      "duration_hours": 3.06,
+      "price_usd": 416.69
+    },
+    "Cambodia": {
+      "duration_hours": 3.15,
+      "price_usd": 428.51
+    }
+  },
+  "Papua New Guinea": {
+    "Solomon Islands": {
+      "duration_hours": 1.0,
+      "price_usd": 169.57
+    },
+    "Vanuatu": {
+      "duration_hours": 2.11,
+      "price_usd": 302.61
+    },
+    "New Caledonia": {
+      "duration_hours": 2.38,
+      "price_usd": 335.66
+    },
+    "Fiji": {
+      "duration_hours": 3.38,
+      "price_usd": 456.08
+    },
+    "East Timor": {
+      "duration_hours": 4.27,
+      "price_usd": 562.35
+    },
+    "Philippines": {
+      "duration_hours": 4.6,
+      "price_usd": 602.34
+    },
+    "Indonesia": {
+      "duration_hours": 4.86,
+      "price_usd": 633.19
+    },
+    "Australia": {
+      "duration_hours": 4.88,
+      "price_usd": 635.76
+    }
+  },
+  "Poland": {
+    "Czech Republic": {
+      "duration_hours": 0.39,
+      "price_usd": 96.82
+    },
+    "Slovakia": {
+      "duration_hours": 0.41,
+      "price_usd": 99.01
+    },
+    "Austria": {
+      "duration_hours": 0.45,
+      "price_usd": 104.12
+    },
+    "Hungary": {
+      "duration_hours": 0.6,
+      "price_usd": 122.15
+    },
+    "Slovenia": {
+      "duration_hours": 0.65,
+      "price_usd": 127.84
+    },
+    "Denmark": {
+      "duration_hours": 0.66,
+      "price_usd": 128.68
+    },
+    "Germany": {
+      "duration_hours": 0.69,
+      "price_usd": 132.51
+    },
+    "Switzerland": {
+      "duration_hours": 0.7,
+      "price_usd": 134.03
+    }
+  },
+  "Puerto Rico": {
+    "Dominican Republic": {
+      "duration_hours": 0.73,
+      "price_usd": 137.98
+    },
+    "Haiti": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    },
+    "Venezuela": {
+      "duration_hours": 1.15,
+      "price_usd": 188.29
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 1.24,
+      "price_usd": 198.61
+    },
+    "Jamaica": {
+      "duration_hours": 1.49,
+      "price_usd": 228.76
+    },
+    "The Bahamas": {
+      "duration_hours": 1.63,
+      "price_usd": 245.66
+    },
+    "Guyana": {
+      "duration_hours": 1.66,
+      "price_usd": 248.89
+    },
+    "Suriname": {
+      "duration_hours": 2.13,
+      "price_usd": 305.81
+    }
+  },
+  "North Korea": {
+    "South Korea": {
+      "duration_hours": 0.58,
+      "price_usd": 119.4
+    },
+    "Japan": {
+      "duration_hours": 1.22,
+      "price_usd": 196.94
+    },
+    "Russia": {
+      "duration_hours": 1.7,
+      "price_usd": 253.84
+    },
+    "Taiwan": {
+      "duration_hours": 2.7,
+      "price_usd": 373.55
+    },
+    "Vietnam": {
+      "duration_hours": 3.91,
+      "price_usd": 518.96
+    },
+    "China": {
+      "duration_hours": 4.07,
+      "price_usd": 538.06
+    },
+    "Mongolia": {
+      "duration_hours": 4.21,
+      "price_usd": 555.57
+    },
+    "Philippines": {
+      "duration_hours": 4.74,
+      "price_usd": 618.22
+    }
+  },
+  "Portugal": {
+    "Spain": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Morocco": {
+      "duration_hours": 0.95,
+      "price_usd": 163.58
+    },
+    "Ireland": {
+      "duration_hours": 1.69,
+      "price_usd": 252.4
+    },
+    "Belgium": {
+      "duration_hours": 1.76,
+      "price_usd": 261.67
+    },
+    "England": {
+      "duration_hours": 1.79,
+      "price_usd": 264.64
+    },
+    "Luxembourg": {
+      "duration_hours": 1.85,
+      "price_usd": 272.0
+    },
+    "Switzerland": {
+      "duration_hours": 2.0,
+      "price_usd": 289.85
+    },
+    "Western Sahara": {
+      "duration_hours": 2.05,
+      "price_usd": 295.63
+    }
+  },
+  "Paraguay": {
+    "Bolivia": {
+      "duration_hours": 0.04,
+      "price_usd": 54.34
+    },
+    "Peru": {
+      "duration_hours": 1.11,
+      "price_usd": 183.28
+    },
+    "Brazil": {
+      "duration_hours": 1.27,
+      "price_usd": 202.53
+    },
+    "Uruguay": {
+      "duration_hours": 1.27,
+      "price_usd": 202.53
+    },
+    "Colombia": {
+      "duration_hours": 3.51,
+      "price_usd": 470.78
+    },
+    "Ecuador": {
+      "duration_hours": 3.53,
+      "price_usd": 473.34
+    },
+    "France": {
+      "duration_hours": 3.69,
+      "price_usd": 492.73
+    },
+    "Suriname": {
+      "duration_hours": 3.97,
+      "price_usd": 526.96
+    }
+  },
+  "Qatar": {
+    "United Arab Emirates": {
+      "duration_hours": 0.12,
+      "price_usd": 64.44
+    },
+    "Kuwait": {
+      "duration_hours": 0.8,
+      "price_usd": 146.43
+    },
+    "Oman": {
+      "duration_hours": 1.15,
+      "price_usd": 187.8
+    },
+    "Yemen": {
+      "duration_hours": 1.16,
+      "price_usd": 189.28
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.56,
+      "price_usd": 237.69
+    },
+    "Iraq": {
+      "duration_hours": 1.68,
+      "price_usd": 252.06
+    },
+    "Iran": {
+      "duration_hours": 1.76,
+      "price_usd": 261.66
+    },
+    "Somalia": {
+      "duration_hours": 1.83,
+      "price_usd": 269.43
+    }
+  },
+  "Romania": {
+    "Moldova": {
+      "duration_hours": 0.37,
+      "price_usd": 94.07
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.39,
+      "price_usd": 96.2
+    },
+    "Slovakia": {
+      "duration_hours": 0.42,
+      "price_usd": 100.39
+    },
+    "Croatia": {
+      "duration_hours": 0.46,
+      "price_usd": 105.22
+    },
+    "Bulgaria": {
+      "duration_hours": 0.51,
+      "price_usd": 110.81
+    },
+    "Austria": {
+      "duration_hours": 0.54,
+      "price_usd": 114.26
+    },
+    "Czech Republic": {
+      "duration_hours": 0.54,
+      "price_usd": 115.15
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.55,
+      "price_usd": 116.07
+    }
+  },
+  "Russia": {
+    "North Korea": {
+      "duration_hours": 1.7,
+      "price_usd": 253.84
+    },
+    "South Korea": {
+      "duration_hours": 2.26,
+      "price_usd": 320.99
+    },
+    "Japan": {
+      "duration_hours": 2.48,
+      "price_usd": 347.55
+    },
+    "Taiwan": {
+      "duration_hours": 4.35,
+      "price_usd": 571.48
+    },
+    "Mongolia": {
+      "duration_hours": 4.89,
+      "price_usd": 636.82
+    },
+    "Vietnam": {
+      "duration_hours": 5.6,
+      "price_usd": 721.71
+    },
+    "China": {
+      "duration_hours": 5.77,
+      "price_usd": 741.9
+    },
+    "Philippines": {
+      "duration_hours": 6.2,
+      "price_usd": 793.46
+    }
+  },
+  "Rwanda": {
+    "Uganda": {
+      "duration_hours": 0.2,
+      "price_usd": 74.22
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 0.49,
+      "price_usd": 108.26
+    },
+    "Burundi": {
+      "duration_hours": 0.49,
+      "price_usd": 108.65
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 0.64,
+      "price_usd": 127.33
+    },
+    "Zambia": {
+      "duration_hours": 1.17,
+      "price_usd": 189.81
+    },
+    "Kenya": {
+      "duration_hours": 1.47,
+      "price_usd": 226.59
+    },
+    "Sudan": {
+      "duration_hours": 1.55,
+      "price_usd": 235.43
+    },
+    "South Sudan": {
+      "duration_hours": 1.55,
+      "price_usd": 235.43
+    }
+  },
+  "Western Sahara": {
+    "Morocco": {
+      "duration_hours": 1.27,
+      "price_usd": 202.48
+    },
+    "Mali": {
+      "duration_hours": 1.79,
+      "price_usd": 264.21
+    },
+    "Mauritania": {
+      "duration_hours": 1.79,
+      "price_usd": 264.21
+    },
+    "Spain": {
+      "duration_hours": 2.05,
+      "price_usd": 295.63
+    },
+    "Portugal": {
+      "duration_hours": 2.05,
+      "price_usd": 295.63
+    },
+    "Senegal": {
+      "duration_hours": 2.14,
+      "price_usd": 306.38
+    },
+    "Gambia": {
+      "duration_hours": 2.2,
+      "price_usd": 313.87
+    },
+    "Tunisia": {
+      "duration_hours": 2.27,
+      "price_usd": 322.73
+    }
+  },
+  "Saudi Arabia": {
+    "Djibouti": {
+      "duration_hours": 0.51,
+      "price_usd": 110.75
+    },
+    "Eritrea": {
+      "duration_hours": 0.53,
+      "price_usd": 113.54
+    },
+    "Ethiopia": {
+      "duration_hours": 0.68,
+      "price_usd": 131.69
+    },
+    "Somalia": {
+      "duration_hours": 1.15,
+      "price_usd": 187.62
+    },
+    "Somaliland": {
+      "duration_hours": 1.27,
+      "price_usd": 202.1
+    },
+    "Yemen": {
+      "duration_hours": 1.38,
+      "price_usd": 215.48
+    },
+    "Sudan": {
+      "duration_hours": 1.53,
+      "price_usd": 233.34
+    },
+    "South Sudan": {
+      "duration_hours": 1.53,
+      "price_usd": 233.34
+    }
+  },
+  "Sudan": {
+    "South Sudan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Ethiopia": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Eritrea": {
+      "duration_hours": 1.22,
+      "price_usd": 196.66
+    },
+    "Djibouti": {
+      "duration_hours": 1.32,
+      "price_usd": 208.75
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 1.44,
+      "price_usd": 222.75
+    },
+    "Uganda": {
+      "duration_hours": 1.48,
+      "price_usd": 227.49
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.53,
+      "price_usd": 233.34
+    }
+  },
+  "South Sudan": {
+    "Sudan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Ethiopia": {
+      "duration_hours": 0.93,
+      "price_usd": 161.59
+    },
+    "Eritrea": {
+      "duration_hours": 1.22,
+      "price_usd": 196.66
+    },
+    "Djibouti": {
+      "duration_hours": 1.32,
+      "price_usd": 208.75
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 1.44,
+      "price_usd": 222.75
+    },
+    "Uganda": {
+      "duration_hours": 1.48,
+      "price_usd": 227.49
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.53,
+      "price_usd": 233.34
+    }
+  },
+  "Senegal": {
+    "Gambia": {
+      "duration_hours": 0.06,
+      "price_usd": 57.65
+    },
+    "Guinea Bissau": {
+      "duration_hours": 0.41,
+      "price_usd": 99.64
+    },
+    "Mali": {
+      "duration_hours": 0.63,
+      "price_usd": 125.51
+    },
+    "Mauritania": {
+      "duration_hours": 0.63,
+      "price_usd": 125.51
+    },
+    "Sierra Leone": {
+      "duration_hours": 1.19,
+      "price_usd": 192.37
+    },
+    "Guinea": {
+      "duration_hours": 1.4,
+      "price_usd": 217.44
+    },
+    "Liberia": {
+      "duration_hours": 1.78,
+      "price_usd": 263.18
+    },
+    "Burkina Faso": {
+      "duration_hours": 1.97,
+      "price_usd": 286.36
+    }
+  },
+  "Solomon Islands": {
+    "Papua New Guinea": {
+      "duration_hours": 1.0,
+      "price_usd": 169.57
+    },
+    "Vanuatu": {
+      "duration_hours": 1.13,
+      "price_usd": 186.01
+    },
+    "New Caledonia": {
+      "duration_hours": 1.55,
+      "price_usd": 235.45
+    },
+    "Fiji": {
+      "duration_hours": 2.39,
+      "price_usd": 336.81
+    },
+    "New Zealand": {
+      "duration_hours": 4.42,
+      "price_usd": 580.77
+    },
+    "Australia": {
+      "duration_hours": 4.67,
+      "price_usd": 610.87
+    },
+    "East Timor": {
+      "duration_hours": 5.1,
+      "price_usd": 661.78
+    },
+    "Philippines": {
+      "duration_hours": 5.6,
+      "price_usd": 721.64
+    }
+  },
+  "Sierra Leone": {
+    "Guinea": {
+      "duration_hours": 0.43,
+      "price_usd": 101.88
+    },
+    "Liberia": {
+      "duration_hours": 0.62,
+      "price_usd": 123.81
+    },
+    "Guinea Bissau": {
+      "duration_hours": 0.78,
+      "price_usd": 143.22
+    },
+    "Mali": {
+      "duration_hours": 1.09,
+      "price_usd": 180.48
+    },
+    "Mauritania": {
+      "duration_hours": 1.09,
+      "price_usd": 180.48
+    },
+    "Gambia": {
+      "duration_hours": 1.15,
+      "price_usd": 187.99
+    },
+    "Senegal": {
+      "duration_hours": 1.19,
+      "price_usd": 192.37
+    },
+    "Ivory Coast": {
+      "duration_hours": 1.21,
+      "price_usd": 195.62
+    }
+  },
+  "El Salvador": {
+    "Honduras": {
+      "duration_hours": 0.08,
+      "price_usd": 60.2
+    },
+    "Guatemala": {
+      "duration_hours": 0.32,
+      "price_usd": 87.83
+    },
+    "Nicaragua": {
+      "duration_hours": 0.43,
+      "price_usd": 101.03
+    },
+    "Belize": {
+      "duration_hours": 0.64,
+      "price_usd": 126.57
+    },
+    "Costa Rica": {
+      "duration_hours": 0.97,
+      "price_usd": 166.59
+    },
+    "Jamaica": {
+      "duration_hours": 1.54,
+      "price_usd": 234.7
+    },
+    "Cuba": {
+      "duration_hours": 1.54,
+      "price_usd": 234.79
+    },
+    "Panama": {
+      "duration_hours": 1.6,
+      "price_usd": 242.19
+    }
+  },
+  "Somaliland": {
+    "Somalia": {
+      "duration_hours": 0.31,
+      "price_usd": 87.6
+    },
+    "Djibouti": {
+      "duration_hours": 0.92,
+      "price_usd": 160.07
+    },
+    "Eritrea": {
+      "duration_hours": 1.0,
+      "price_usd": 169.52
+    },
+    "Yemen": {
+      "duration_hours": 1.14,
+      "price_usd": 187.37
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.27,
+      "price_usd": 202.1
+    },
+    "Ethiopia": {
+      "duration_hours": 1.68,
+      "price_usd": 251.86
+    },
+    "Kenya": {
+      "duration_hours": 1.8,
+      "price_usd": 266.11
+    },
+    "Sudan": {
+      "duration_hours": 2.06,
+      "price_usd": 296.65
+    }
+  },
+  "Somalia": {
+    "Somaliland": {
+      "duration_hours": 0.31,
+      "price_usd": 87.6
+    },
+    "Yemen": {
+      "duration_hours": 0.84,
+      "price_usd": 150.4
+    },
+    "Djibouti": {
+      "duration_hours": 0.92,
+      "price_usd": 160.11
+    },
+    "Eritrea": {
+      "duration_hours": 1.01,
+      "price_usd": 171.53
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.15,
+      "price_usd": 187.62
+    },
+    "Ethiopia": {
+      "duration_hours": 1.67,
+      "price_usd": 250.15
+    },
+    "United Arab Emirates": {
+      "duration_hours": 1.77,
+      "price_usd": 262.33
+    },
+    "Oman": {
+      "duration_hours": 1.8,
+      "price_usd": 265.43
+    }
+  },
+  "Republic of Serbia": {
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.2,
+      "price_usd": 73.92
+    },
+    "Croatia": {
+      "duration_hours": 0.21,
+      "price_usd": 75.27
+    },
+    "Bulgaria": {
+      "duration_hours": 0.24,
+      "price_usd": 78.9
+    },
+    "Romania": {
+      "duration_hours": 0.39,
+      "price_usd": 96.2
+    },
+    "Montenegro": {
+      "duration_hours": 0.42,
+      "price_usd": 100.29
+    },
+    "Kosovo": {
+      "duration_hours": 0.47,
+      "price_usd": 106.09
+    },
+    "Hungary": {
+      "duration_hours": 0.49,
+      "price_usd": 109.2
+    },
+    "Macedonia": {
+      "duration_hours": 0.5,
+      "price_usd": 109.45
+    }
+  },
+  "Suriname": {
+    "Guyana": {
+      "duration_hours": 0.49,
+      "price_usd": 108.72
+    },
+    "France": {
+      "duration_hours": 0.8,
+      "price_usd": 145.67
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 0.91,
+      "price_usd": 159.14
+    },
+    "Venezuela": {
+      "duration_hours": 2.11,
+      "price_usd": 302.95
+    },
+    "Puerto Rico": {
+      "duration_hours": 2.13,
+      "price_usd": 305.81
+    },
+    "Colombia": {
+      "duration_hours": 2.67,
+      "price_usd": 370.33
+    },
+    "Dominican Republic": {
+      "duration_hours": 2.74,
+      "price_usd": 378.51
+    },
+    "Panama": {
+      "duration_hours": 2.87,
+      "price_usd": 394.53
+    }
+  },
+  "Slovakia": {
+    "Czech Republic": {
+      "duration_hours": 0.21,
+      "price_usd": 75.61
+    },
+    "Austria": {
+      "duration_hours": 0.26,
+      "price_usd": 80.83
+    },
+    "Poland": {
+      "duration_hours": 0.41,
+      "price_usd": 99.01
+    },
+    "Romania": {
+      "duration_hours": 0.42,
+      "price_usd": 100.39
+    },
+    "Hungary": {
+      "duration_hours": 0.44,
+      "price_usd": 103.09
+    },
+    "Croatia": {
+      "duration_hours": 0.5,
+      "price_usd": 109.83
+    },
+    "Republic of Serbia": {
+      "duration_hours": 0.6,
+      "price_usd": 121.77
+    },
+    "Slovenia": {
+      "duration_hours": 0.63,
+      "price_usd": 125.29
+    }
+  },
+  "Slovenia": {
+    "Hungary": {
+      "duration_hours": 0.23,
+      "price_usd": 78.08
+    },
+    "Austria": {
+      "duration_hours": 0.37,
+      "price_usd": 94.93
+    },
+    "Czech Republic": {
+      "duration_hours": 0.41,
+      "price_usd": 99.79
+    },
+    "Switzerland": {
+      "duration_hours": 0.42,
+      "price_usd": 100.93
+    },
+    "Croatia": {
+      "duration_hours": 0.49,
+      "price_usd": 108.99
+    },
+    "Bosnia and Herzegovina": {
+      "duration_hours": 0.56,
+      "price_usd": 116.67
+    },
+    "Slovakia": {
+      "duration_hours": 0.63,
+      "price_usd": 125.29
+    },
+    "Poland": {
+      "duration_hours": 0.65,
+      "price_usd": 127.84
+    }
+  },
+  "Sweden": {
+    "Finland": {
+      "duration_hours": 0.58,
+      "price_usd": 119.39
+    },
+    "Norway": {
+      "duration_hours": 0.82,
+      "price_usd": 148.4
+    },
+    "Estonia": {
+      "duration_hours": 1.11,
+      "price_usd": 183.61
+    },
+    "Latvia": {
+      "duration_hours": 1.35,
+      "price_usd": 212.26
+    },
+    "Denmark": {
+      "duration_hours": 1.55,
+      "price_usd": 235.63
+    },
+    "Lithuania": {
+      "duration_hours": 1.59,
+      "price_usd": 240.5
+    },
+    "Belarus": {
+      "duration_hours": 1.65,
+      "price_usd": 247.67
+    },
+    "Germany": {
+      "duration_hours": 1.71,
+      "price_usd": 255.4
+    }
+  },
+  "Swaziland": {
+    "South Africa": {
+      "duration_hours": 0.36,
+      "price_usd": 92.73
+    },
+    "Lesotho": {
+      "duration_hours": 0.49,
+      "price_usd": 108.76
+    },
+    "Zimbabwe": {
+      "duration_hours": 0.63,
+      "price_usd": 125.67
+    },
+    "Botswana": {
+      "duration_hours": 1.4,
+      "price_usd": 218.3
+    },
+    "Namibia": {
+      "duration_hours": 1.96,
+      "price_usd": 284.6
+    },
+    "Mozambique": {
+      "duration_hours": 2.13,
+      "price_usd": 305.63
+    },
+    "Malawi": {
+      "duration_hours": 2.13,
+      "price_usd": 305.63
+    },
+    "Zambia": {
+      "duration_hours": 2.42,
+      "price_usd": 340.81
+    }
+  },
+  "Syria": {
+    "Lebanon": {
+      "duration_hours": 0.35,
+      "price_usd": 91.53
+    },
+    "Israel": {
+      "duration_hours": 0.37,
+      "price_usd": 94.46
+    },
+    "Jordan": {
+      "duration_hours": 0.4,
+      "price_usd": 98.42
+    },
+    "West Bank": {
+      "duration_hours": 0.4,
+      "price_usd": 98.42
+    },
+    "Cyprus": {
+      "duration_hours": 0.6,
+      "price_usd": 122.22
+    },
+    "Egypt": {
+      "duration_hours": 0.71,
+      "price_usd": 134.86
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.74,
+      "price_usd": 138.69
+    },
+    "Iraq": {
+      "duration_hours": 0.84,
+      "price_usd": 150.83
+    }
+  },
+  "Chad": {
+    "Central African Republic": {
+      "duration_hours": 0.76,
+      "price_usd": 141.13
+    },
+    "Libya": {
+      "duration_hours": 1.38,
+      "price_usd": 216.18
+    },
+    "Nigeria": {
+      "duration_hours": 1.39,
+      "price_usd": 216.65
+    },
+    "Cameroon": {
+      "duration_hours": 1.48,
+      "price_usd": 227.28
+    },
+    "Algeria": {
+      "duration_hours": 1.5,
+      "price_usd": 230.58
+    },
+    "Niger": {
+      "duration_hours": 1.68,
+      "price_usd": 251.85
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 1.78,
+      "price_usd": 263.29
+    },
+    "Benin": {
+      "duration_hours": 1.86,
+      "price_usd": 273.0
+    }
+  },
+  "Togo": {
+    "Ghana": {
+      "duration_hours": 0.12,
+      "price_usd": 63.83
+    },
+    "Benin": {
+      "duration_hours": 0.12,
+      "price_usd": 63.86
+    },
+    "Ivory Coast": {
+      "duration_hours": 0.67,
+      "price_usd": 130.74
+    },
+    "Niger": {
+      "duration_hours": 0.8,
+      "price_usd": 146.31
+    },
+    "Burkina Faso": {
+      "duration_hours": 0.81,
+      "price_usd": 146.93
+    },
+    "Nigeria": {
+      "duration_hours": 0.94,
+      "price_usd": 162.61
+    },
+    "Equatorial Guinea": {
+      "duration_hours": 1.27,
+      "price_usd": 202.95
+    },
+    "Liberia": {
+      "duration_hours": 1.35,
+      "price_usd": 211.95
+    }
+  },
+  "Thailand": {
+    "Cambodia": {
+      "duration_hours": 0.25,
+      "price_usd": 79.8
+    },
+    "Laos": {
+      "duration_hours": 0.46,
+      "price_usd": 105.07
+    },
+    "Malaysia": {
+      "duration_hours": 0.85,
+      "price_usd": 152.31
+    },
+    "Myanmar": {
+      "duration_hours": 1.18,
+      "price_usd": 191.46
+    },
+    "China": {
+      "duration_hours": 1.37,
+      "price_usd": 214.84
+    },
+    "Vietnam": {
+      "duration_hours": 1.49,
+      "price_usd": 228.27
+    },
+    "Bangladesh": {
+      "duration_hours": 1.9,
+      "price_usd": 277.41
+    },
+    "Brunei": {
+      "duration_hours": 1.92,
+      "price_usd": 280.09
+    }
+  },
+  "Tajikistan": {
+    "Kazakhstan": {
+      "duration_hours": 0.28,
+      "price_usd": 83.69
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 0.28,
+      "price_usd": 83.69
+    },
+    "Pakistan": {
+      "duration_hours": 0.62,
+      "price_usd": 124.87
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.63,
+      "price_usd": 125.7
+    },
+    "India": {
+      "duration_hours": 1.0,
+      "price_usd": 169.78
+    },
+    "Afghanistan": {
+      "duration_hours": 1.25,
+      "price_usd": 200.05
+    },
+    "Turkmenistan": {
+      "duration_hours": 1.25,
+      "price_usd": 200.05
+    },
+    "Iran": {
+      "duration_hours": 1.9,
+      "price_usd": 278.27
+    }
+  },
+  "Turkmenistan": {
+    "Afghanistan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Uzbekistan": {
+      "duration_hours": 0.64,
+      "price_usd": 126.8
+    },
+    "Iran": {
+      "duration_hours": 0.84,
+      "price_usd": 151.35
+    },
+    "Tajikistan": {
+      "duration_hours": 1.25,
+      "price_usd": 200.05
+    },
+    "Kazakhstan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 1.4,
+      "price_usd": 217.76
+    },
+    "Pakistan": {
+      "duration_hours": 1.58,
+      "price_usd": 239.13
+    },
+    "Kuwait": {
+      "duration_hours": 1.74,
+      "price_usd": 258.26
+    }
+  },
+  "East Timor": {
+    "Indonesia": {
+      "duration_hours": 0.61,
+      "price_usd": 123.51
+    },
+    "Brunei": {
+      "duration_hours": 2.38,
+      "price_usd": 335.75
+    },
+    "Philippines": {
+      "duration_hours": 2.4,
+      "price_usd": 338.04
+    },
+    "Malaysia": {
+      "duration_hours": 3.92,
+      "price_usd": 519.98
+    },
+    "Cambodia": {
+      "duration_hours": 4.02,
+      "price_usd": 531.84
+    },
+    "Laos": {
+      "duration_hours": 4.21,
+      "price_usd": 554.69
+    },
+    "Thailand": {
+      "duration_hours": 4.25,
+      "price_usd": 560.17
+    },
+    "Papua New Guinea": {
+      "duration_hours": 4.27,
+      "price_usd": 562.35
+    }
+  },
+  "Trinidad and Tobago": {
+    "Guyana": {
+      "duration_hours": 0.42,
+      "price_usd": 100.77
+    },
+    "Suriname": {
+      "duration_hours": 0.91,
+      "price_usd": 159.14
+    },
+    "Puerto Rico": {
+      "duration_hours": 1.24,
+      "price_usd": 198.61
+    },
+    "Venezuela": {
+      "duration_hours": 1.32,
+      "price_usd": 208.96
+    },
+    "France": {
+      "duration_hours": 1.7,
+      "price_usd": 253.99
+    },
+    "Dominican Republic": {
+      "duration_hours": 1.83,
+      "price_usd": 269.45
+    },
+    "Haiti": {
+      "duration_hours": 2.0,
+      "price_usd": 289.51
+    },
+    "Panama": {
+      "duration_hours": 2.28,
+      "price_usd": 323.53
+    }
+  },
+  "Tunisia": {
+    "Algeria": {
+      "duration_hours": 1.0,
+      "price_usd": 169.64
+    },
+    "Libya": {
+      "duration_hours": 1.23,
+      "price_usd": 197.4
+    },
+    "Italy": {
+      "duration_hours": 1.3,
+      "price_usd": 205.92
+    },
+    "Greece": {
+      "duration_hours": 1.82,
+      "price_usd": 268.29
+    },
+    "Morocco": {
+      "duration_hours": 1.87,
+      "price_usd": 274.42
+    },
+    "Macedonia": {
+      "duration_hours": 2.03,
+      "price_usd": 293.4
+    },
+    "Albania": {
+      "duration_hours": 2.03,
+      "price_usd": 293.4
+    },
+    "Montenegro": {
+      "duration_hours": 2.05,
+      "price_usd": 295.47
+    }
+  },
+  "Turkey": {
+    "Georgia": {
+      "duration_hours": 0.49,
+      "price_usd": 108.27
+    },
+    "Armenia": {
+      "duration_hours": 0.7,
+      "price_usd": 133.98
+    },
+    "Azerbaijan": {
+      "duration_hours": 0.88,
+      "price_usd": 156.13
+    },
+    "Cyprus": {
+      "duration_hours": 0.93,
+      "price_usd": 161.4
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.97,
+      "price_usd": 166.82
+    },
+    "Syria": {
+      "duration_hours": 1.12,
+      "price_usd": 184.78
+    },
+    "Lebanon": {
+      "duration_hours": 1.12,
+      "price_usd": 184.93
+    },
+    "Iraq": {
+      "duration_hours": 1.19,
+      "price_usd": 192.35
+    }
+  },
+  "Taiwan": {
+    "China": {
+      "duration_hours": 1.68,
+      "price_usd": 251.38
+    },
+    "Vietnam": {
+      "duration_hours": 1.8,
+      "price_usd": 266.26
+    },
+    "Japan": {
+      "duration_hours": 2.06,
+      "price_usd": 297.49
+    },
+    "South Korea": {
+      "duration_hours": 2.12,
+      "price_usd": 304.15
+    },
+    "Philippines": {
+      "duration_hours": 2.29,
+      "price_usd": 325.23
+    },
+    "Laos": {
+      "duration_hours": 2.58,
+      "price_usd": 359.95
+    },
+    "North Korea": {
+      "duration_hours": 2.7,
+      "price_usd": 373.55
+    },
+    "Myanmar": {
+      "duration_hours": 2.92,
+      "price_usd": 400.3
+    }
+  },
+  "United Republic of Tanzania": {
+    "Uganda": {
+      "duration_hours": 0.28,
+      "price_usd": 84.04
+    },
+    "Rwanda": {
+      "duration_hours": 0.49,
+      "price_usd": 108.26
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 0.75,
+      "price_usd": 139.97
+    },
+    "Burundi": {
+      "duration_hours": 0.8,
+      "price_usd": 146.23
+    },
+    "Kenya": {
+      "duration_hours": 0.99,
+      "price_usd": 168.37
+    },
+    "Zambia": {
+      "duration_hours": 1.16,
+      "price_usd": 188.67
+    },
+    "Sudan": {
+      "duration_hours": 1.44,
+      "price_usd": 222.75
+    },
+    "South Sudan": {
+      "duration_hours": 1.44,
+      "price_usd": 222.75
+    }
+  },
+  "Uganda": {
+    "Rwanda": {
+      "duration_hours": 0.2,
+      "price_usd": 74.22
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 0.28,
+      "price_usd": 84.04
+    },
+    "Burundi": {
+      "duration_hours": 0.59,
+      "price_usd": 121.36
+    },
+    "Democratic Republic of the Congo": {
+      "duration_hours": 0.64,
+      "price_usd": 127.19
+    },
+    "Zambia": {
+      "duration_hours": 1.14,
+      "price_usd": 186.88
+    },
+    "Kenya": {
+      "duration_hours": 1.27,
+      "price_usd": 202.4
+    },
+    "Sudan": {
+      "duration_hours": 1.48,
+      "price_usd": 227.49
+    },
+    "South Sudan": {
+      "duration_hours": 1.48,
+      "price_usd": 227.49
+    }
+  },
+  "Ukraine": {
+    "Moldova": {
+      "duration_hours": 0.71,
+      "price_usd": 135.16
+    },
+    "Belarus": {
+      "duration_hours": 0.74,
+      "price_usd": 138.82
+    },
+    "Lithuania": {
+      "duration_hours": 0.82,
+      "price_usd": 147.96
+    },
+    "Estonia": {
+      "duration_hours": 0.99,
+      "price_usd": 168.99
+    },
+    "Romania": {
+      "duration_hours": 1.0,
+      "price_usd": 170.21
+    },
+    "Latvia": {
+      "duration_hours": 1.03,
+      "price_usd": 173.93
+    },
+    "Slovakia": {
+      "duration_hours": 1.19,
+      "price_usd": 193.28
+    },
+    "Republic of Serbia": {
+      "duration_hours": 1.36,
+      "price_usd": 213.74
+    }
+  },
+  "Uruguay": {
+    "Brazil": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Paraguay": {
+      "duration_hours": 1.27,
+      "price_usd": 202.53
+    },
+    "Bolivia": {
+      "duration_hours": 1.31,
+      "price_usd": 206.85
+    },
+    "Peru": {
+      "duration_hours": 2.32,
+      "price_usd": 327.93
+    },
+    "Falkland Islands": {
+      "duration_hours": 3.03,
+      "price_usd": 413.08
+    },
+    "Chile": {
+      "duration_hours": 3.31,
+      "price_usd": 447.14
+    },
+    "Argentina": {
+      "duration_hours": 3.56,
+      "price_usd": 476.78
+    },
+    "France": {
+      "duration_hours": 4.58,
+      "price_usd": 599.14
+    }
+  },
+  "United States": {
+    "Fiji": {
+      "duration_hours": 6.17,
+      "price_usd": 790.58
+    },
+    "Vanuatu": {
+      "duration_hours": 7.02,
+      "price_usd": 892.24
+    },
+    "Solomon Islands": {
+      "duration_hours": 7.1,
+      "price_usd": 902.17
+    },
+    "Mexico": {
+      "duration_hours": 7.51,
+      "price_usd": 951.56
+    },
+    "Papua New Guinea": {
+      "duration_hours": 7.56,
+      "price_usd": 957.27
+    },
+    "New Caledonia": {
+      "duration_hours": 7.66,
+      "price_usd": 968.61
+    },
+    "Russia": {
+      "duration_hours": 7.93,
+      "price_usd": 1001.31
+    },
+    "Belize": {
+      "duration_hours": 8.71,
+      "price_usd": 1095.61
+    }
+  },
+  "Uzbekistan": {
+    "Tajikistan": {
+      "duration_hours": 0.63,
+      "price_usd": 125.7
+    },
+    "Afghanistan": {
+      "duration_hours": 0.64,
+      "price_usd": 126.8
+    },
+    "Turkmenistan": {
+      "duration_hours": 0.64,
+      "price_usd": 126.8
+    },
+    "Kazakhstan": {
+      "duration_hours": 0.83,
+      "price_usd": 149.6
+    },
+    "Kyrgyzstan": {
+      "duration_hours": 0.83,
+      "price_usd": 149.6
+    },
+    "Pakistan": {
+      "duration_hours": 0.96,
+      "price_usd": 165.0
+    },
+    "India": {
+      "duration_hours": 1.29,
+      "price_usd": 205.29
+    },
+    "Iran": {
+      "duration_hours": 1.4,
+      "price_usd": 217.47
+    }
+  },
+  "Venezuela": {
+    "Panama": {
+      "duration_hours": 1.1,
+      "price_usd": 181.67
+    },
+    "Dominican Republic": {
+      "duration_hours": 1.1,
+      "price_usd": 181.9
+    },
+    "Puerto Rico": {
+      "duration_hours": 1.15,
+      "price_usd": 188.29
+    },
+    "Haiti": {
+      "duration_hours": 1.15,
+      "price_usd": 188.36
+    },
+    "Jamaica": {
+      "duration_hours": 1.25,
+      "price_usd": 200.06
+    },
+    "Trinidad and Tobago": {
+      "duration_hours": 1.32,
+      "price_usd": 208.96
+    },
+    "Guyana": {
+      "duration_hours": 1.65,
+      "price_usd": 248.48
+    },
+    "Costa Rica": {
+      "duration_hours": 1.67,
+      "price_usd": 250.16
+    }
+  },
+  "Vietnam": {
+    "China": {
+      "duration_hours": 0.5,
+      "price_usd": 109.72
+    },
+    "Laos": {
+      "duration_hours": 1.07,
+      "price_usd": 178.94
+    },
+    "Myanmar": {
+      "duration_hours": 1.12,
+      "price_usd": 184.69
+    },
+    "Thailand": {
+      "duration_hours": 1.49,
+      "price_usd": 228.27
+    },
+    "Cambodia": {
+      "duration_hours": 1.63,
+      "price_usd": 245.38
+    },
+    "Taiwan": {
+      "duration_hours": 1.8,
+      "price_usd": 266.26
+    },
+    "Bangladesh": {
+      "duration_hours": 1.99,
+      "price_usd": 288.56
+    },
+    "Bhutan": {
+      "duration_hours": 2.24,
+      "price_usd": 318.63
+    }
+  },
+  "Vanuatu": {
+    "New Caledonia": {
+      "duration_hours": 0.69,
+      "price_usd": 133.27
+    },
+    "Solomon Islands": {
+      "duration_hours": 1.13,
+      "price_usd": 186.01
+    },
+    "Fiji": {
+      "duration_hours": 1.41,
+      "price_usd": 218.86
+    },
+    "Papua New Guinea": {
+      "duration_hours": 2.11,
+      "price_usd": 302.61
+    },
+    "New Zealand": {
+      "duration_hours": 3.44,
+      "price_usd": 463.37
+    },
+    "Australia": {
+      "duration_hours": 4.32,
+      "price_usd": 568.2
+    },
+    "East Timor": {
+      "duration_hours": 5.9,
+      "price_usd": 758.41
+    },
+    "Indonesia": {
+      "duration_hours": 6.43,
+      "price_usd": 821.1
+    }
+  },
+  "West Bank": {
+    "Jordan": {
+      "duration_hours": 0.0,
+      "price_usd": 50.0
+    },
+    "Israel": {
+      "duration_hours": 0.05,
+      "price_usd": 55.79
+    },
+    "Lebanon": {
+      "duration_hours": 0.13,
+      "price_usd": 65.2
+    },
+    "Syria": {
+      "duration_hours": 0.4,
+      "price_usd": 98.42
+    },
+    "Egypt": {
+      "duration_hours": 0.41,
+      "price_usd": 98.93
+    },
+    "Cyprus": {
+      "duration_hours": 0.41,
+      "price_usd": 99.42
+    },
+    "Northern Cyprus": {
+      "duration_hours": 0.5,
+      "price_usd": 110.13
+    },
+    "Iraq": {
+      "duration_hours": 1.24,
+      "price_usd": 198.9
+    }
+  },
+  "Yemen": {
+    "Somalia": {
+      "duration_hours": 0.84,
+      "price_usd": 150.4
+    },
+    "Oman": {
+      "duration_hours": 0.98,
+      "price_usd": 167.26
+    },
+    "United Arab Emirates": {
+      "duration_hours": 1.07,
+      "price_usd": 178.36
+    },
+    "Somaliland": {
+      "duration_hours": 1.14,
+      "price_usd": 187.37
+    },
+    "Qatar": {
+      "duration_hours": 1.16,
+      "price_usd": 189.28
+    },
+    "Saudi Arabia": {
+      "duration_hours": 1.38,
+      "price_usd": 215.48
+    },
+    "Djibouti": {
+      "duration_hours": 1.46,
+      "price_usd": 224.73
+    },
+    "Eritrea": {
+      "duration_hours": 1.56,
+      "price_usd": 236.7
+    }
+  },
+  "South Africa": {
+    "Lesotho": {
+      "duration_hours": 0.31,
+      "price_usd": 87.46
+    },
+    "Swaziland": {
+      "duration_hours": 0.36,
+      "price_usd": 92.73
+    },
+    "Zimbabwe": {
+      "duration_hours": 0.97,
+      "price_usd": 166.53
+    },
+    "Botswana": {
+      "duration_hours": 1.66,
+      "price_usd": 249.33
+    },
+    "Namibia": {
+      "duration_hours": 1.85,
+      "price_usd": 272.12
+    },
+    "Mozambique": {
+      "duration_hours": 2.49,
+      "price_usd": 348.35
+    },
+    "Malawi": {
+      "duration_hours": 2.49,
+      "price_usd": 348.35
+    },
+    "Zambia": {
+      "duration_hours": 2.78,
+      "price_usd": 383.12
+    }
+  },
+  "Zambia": {
+    "Mozambique": {
+      "duration_hours": 0.4,
+      "price_usd": 98.14
+    },
+    "Malawi": {
+      "duration_hours": 0.4,
+      "price_usd": 98.14
+    },
+    "Burundi": {
+      "duration_hours": 0.81,
+      "price_usd": 146.8
+    },
+    "Uganda": {
+      "duration_hours": 1.14,
+      "price_usd": 186.88
+    },
+    "United Republic of Tanzania": {
+      "duration_hours": 1.16,
+      "price_usd": 188.67
+    },
+    "Rwanda": {
+      "duration_hours": 1.17,
+      "price_usd": 189.81
+    },
+    "Botswana": {
+      "duration_hours": 1.61,
+      "price_usd": 242.62
+    },
+    "Kenya": {
+      "duration_hours": 1.62,
+      "price_usd": 244.96
+    }
+  },
+  "Zimbabwe": {
+    "Swaziland": {
+      "duration_hours": 0.63,
+      "price_usd": 125.67
+    },
+    "Botswana": {
+      "duration_hours": 0.89,
+      "price_usd": 156.46
+    },
+    "Lesotho": {
+      "duration_hours": 0.97,
+      "price_usd": 166.28
+    },
+    "South Africa": {
+      "duration_hours": 0.97,
+      "price_usd": 166.53
+    },
+    "Mozambique": {
+      "duration_hours": 1.55,
+      "price_usd": 236.08
+    },
+    "Malawi": {
+      "duration_hours": 1.55,
+      "price_usd": 236.08
+    },
+    "Zambia": {
+      "duration_hours": 1.81,
+      "price_usd": 267.59
+    },
+    "Namibia": {
+      "duration_hours": 2.06,
+      "price_usd": 297.2
+    }
+  }
+}
