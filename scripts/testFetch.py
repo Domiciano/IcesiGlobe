@@ -28,7 +28,7 @@ for country in countries:
         print(f"Error consultando {country}: {e}")
         failed_countries.append(country)
 
-    # Esperar 500 ms entre peticiones
+    
     print(f"Consulta para {country} existosa.")
     
 

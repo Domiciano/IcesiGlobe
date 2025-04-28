@@ -3,7 +3,7 @@
 dijkstra_flights.py
 ------------------------------------------------------------------------
 Algoritmo de Dijkstra sobre el grafo de vuelos (JSON) construido
-anteriormente.
+anteriormente, usando IDs internos pero mostrando nombres de país.
 
 Uso rápido -------------------------------------------------------------
 $ python dijkstra_flights.py  "Argentina"  "China"  --weight duration_hours
@@ -17,39 +17,47 @@ from pathlib import Path
 from typing import Dict, Tuple, List
 
 # ---------------------------------------------------------------------
-# Carga del grafo
+# Carga del grafo y de countries.json
 # ---------------------------------------------------------------------
 
-JSON_PATH = "../data/full_flight_graph.json"        
+JSON_PATH = "../data/realistic_flight_graph.json"
+COUNTRIES_JSON_PATH = "../data/countries.json"
 
-def load_graph(path: str = JSON_PATH) -> Dict[str, Dict[str, Dict]]:
+def load_graph(path: str = JSON_PATH) -> Dict[str, Dict]:
     if not Path(path).is_file():
         raise FileNotFoundError(f"No se encontró {path}")
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+def load_countries(path: str = COUNTRIES_JSON_PATH) -> Tuple[Dict[str, str], Dict[str, str]]:
+    if not Path(path).is_file():
+        raise FileNotFoundError(f"No se encontró {path}")
+    with open(path, encoding="utf-8") as f:
+        countries = json.load(f)
+    name_to_id = {data['name']: cid for cid, data in countries.items()}
+    id_to_name = {cid: data['name'] for cid, data in countries.items()}
+    return name_to_id, id_to_name
 
 # ---------------------------------------------------------------------
 # Dijkstra genérico
 # ---------------------------------------------------------------------
 
 def dijkstra(
-    graph: Dict[str, Dict[str, Dict]],
+    graph: Dict[str, Dict],
     origin: str,
     target: str,
     weight_key: str = "duration_hours",
 ) -> Tuple[float, List[str]]:
     """
-    Devuelve (distancia_total, ruta) usando weight_key como costo.
+    Devuelve (distancia_total, ruta de IDs) usando weight_key como costo.
     Si no existe ruta, lanza ValueError.
     """
     if origin not in graph:
-        raise ValueError(f"País origen no está en el grafo: {origin}")
+        raise ValueError(f"País origen (ID) no está en el grafo: {origin}")
     if target not in graph:
-        raise ValueError(f"País destino no está en el grafo: {target}")
+        raise ValueError(f"País destino (ID) no está en el grafo: {target}")
 
-    # Min-heap: (dist_acumulada, nodo_actual, ruta_hasta_ahora)
     pq: List[Tuple[float, str, List[str]]] = [(0.0, origin, [origin])]
-    # Distancias definitivas
     best: Dict[str, float] = {origin: 0.0}
 
     while pq:
@@ -57,14 +65,12 @@ def dijkstra(
         if node == target:
             return dist, path
 
-        # Si sacamos del heap un camino peor que el mejor conocido, lo saltamos
         if dist > best.get(node, float("inf")):
             continue
 
-        for neighbour, attrs in graph[node].items():
+        for neighbour, attrs in graph[node]["connections"].items():
             w = attrs.get(weight_key)
             if w is None:
-                # Si ese enlace no tiene el atributo elegido, ignóralo
                 continue
             new_dist = dist + w
             if new_dist < best.get(neighbour, float("inf")):
@@ -74,15 +80,15 @@ def dijkstra(
     raise ValueError(f"No hay ruta entre {origin} y {target}")
 
 # ---------------------------------------------------------------------
-# Ejecución desde CLI
+# CLI
 # ---------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Encuentra la ruta óptima (Dijkstra) entre dos países"
+        description="Encuentra la ruta óptima (Dijkstra) entre dos países (usando nombres)"
     )
-    parser.add_argument("origin", help="País de origen, exactamente como en el JSON")
-    parser.add_argument("target", help="País de destino")
+    parser.add_argument("origin", help="País de origen (nombre)")
+    parser.add_argument("target", help="País de destino (nombre)")
     parser.add_argument(
         "--weight",
         default="duration_hours",
@@ -92,16 +98,33 @@ def main():
     parser.add_argument(
         "--json",
         default=JSON_PATH,
-        help="Ruta al archivo JSON (default: selected_flight_graph.json)",
+        help="Ruta al archivo JSON del grafo (default: realistic_flight_graph.json)",
+    )
+    parser.add_argument(
+        "--countries-json",
+        default=COUNTRIES_JSON_PATH,
+        help="Ruta al archivo JSON de países (default: countries.json)",
     )
     args = parser.parse_args()
 
     graph = load_graph(args.json)
+    name_to_id, id_to_name = load_countries(args.countries_json)
+
+    # Verifica que los nombres existen
+    if args.origin not in name_to_id:
+        raise ValueError(f"Nombre de país origen no encontrado: {args.origin}")
+    if args.target not in name_to_id:
+        raise ValueError(f"Nombre de país destino no encontrado: {args.target}")
+
+    origin_id = name_to_id[args.origin]
+    target_id = name_to_id[args.target]
 
     try:
-        total, path = dijkstra(graph, args.origin, args.target, args.weight)
+        total, path_ids = dijkstra(graph, origin_id, target_id, args.weight)
+        path_names = [id_to_name[pid] for pid in path_ids]
+
         print(f"\nMejor ruta minimizando '{args.weight}':")
-        print("  →  ".join(path))
+        print("  →  ".join(path_names))
         print(f"\nTotal {args.weight}: {total}\n")
     except ValueError as err:
         print(f"ERROR: {err}")

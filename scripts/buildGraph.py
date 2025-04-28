@@ -1,17 +1,3 @@
-#!/usr/bin/env python3
-"""
-Genera realistic_flight_graph.json a partir de OpenFlights
-y la lista de países que te interesa.
-
-* Usa solo rutas directas existentes (sin escalas).
-* Calcula duración = distancia / 900 km/h.
-* Calcula precio  = 50 USD + 0.10 USD/km .
-* Añade 'hops': 0     (todos son vuelos directos).
-
-Requisitos:
-    pip install haversine pandas
-"""
-
 import json, csv, math, argparse
 from collections import defaultdict
 from haversine import haversine
@@ -21,10 +7,6 @@ from haversine import haversine
 # ---------------------------------------------------------------------
 
 def load_airports(path="../graphData/airports.dat"):
-    """
-    Devuelve:  iata -> (country, (lat, lon), is_international)
-    Marcamos is_international=True si type!='small_airport' y tiene IATA.
-    """
     airports = {}
     with open(path, encoding="utf-8") as f:
         reader = csv.reader(f)
@@ -33,7 +15,7 @@ def load_airports(path="../graphData/airports.dat"):
                 _id, name, city, country, iata, icao,
                 lat, lon, alt, tz, dst, tz_db, ttype, src
             ) = row
-            if not iata or len(iata) != 3:           # sin código IATA usable
+            if not iata or len(iata) != 3:
                 continue
             is_intl = ttype not in ("small_airport", "closed")
             airports[iata] = (
@@ -44,14 +26,10 @@ def load_airports(path="../graphData/airports.dat"):
     return airports
 
 # ---------------------------------------------------------------------
-# 2. Carga de rutas (solo directas, sin código compartido)
+# 2. Carga de rutas
 # ---------------------------------------------------------------------
 
 def load_routes(path="../graphData/routes.dat"):
-    """
-    Yields (source_IATA, dest_IATA) para vuelos directos.
-    Ignora rutas con IATA vacíos o códigos '\\N'.
-    """
     with open(path, encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
@@ -63,8 +41,8 @@ def load_routes(path="../graphData/routes.dat"):
 # 3. Construcción del grafo por país
 # ---------------------------------------------------------------------
 
-def build_graph(airports, routes, country_subset=None):
-    graph = defaultdict(lambda: defaultdict(dict))
+def build_graph(airports, routes, country_subset, name_to_id):
+    graph = defaultdict(lambda: {"country_name": "", "connections": {}})
 
     for src, dst in routes:
         if src not in airports or dst not in airports:
@@ -73,14 +51,28 @@ def build_graph(airports, routes, country_subset=None):
         ctry_dst, (lat_d, lon_d), intl_dst = airports[dst]
 
         # Filtra por países que realmente quieres
-        if country_subset and (ctry_src not in country_subset or ctry_dst not in country_subset):
+        if ctry_src not in country_subset or ctry_dst not in country_subset:
             continue
 
-        distance_km = haversine((lat_s, lon_s), (lat_d, lon_d))
-        duration = round(distance_km / 900, 2)                       # h
-        price    = round(50 + 0.10 * distance_km, 2)                # USD
+        # Verificar que ambos países existen en name_to_id
+        if ctry_src not in name_to_id:
+            raise ValueError(f"Error: país de origen '{ctry_src}' no encontrado en countries.json")
+        if ctry_dst not in name_to_id:
+            raise ValueError(f"Error: país destino '{ctry_dst}' no encontrado en countries.json")
 
-        graph[ctry_src][ctry_dst] = {
+        src_id = name_to_id[ctry_src]
+        dst_id = name_to_id[ctry_dst]
+
+        distance_km = haversine((lat_s, lon_s), (lat_d, lon_d))
+        duration = round(distance_km / 900, 2)
+        price    = round(50 + 0.10 * distance_km, 2)
+
+        # Añade el nombre de país si no estaba
+        graph[src_id]["country_name"] = ctry_src
+
+        # Agrega la conexión
+        graph[src_id]["connections"][dst_id] = {
+            "country_name": ctry_dst,
             "duration_hours": duration,
             "price_usd": price,
             "hops": 0
@@ -94,24 +86,30 @@ def build_graph(airports, routes, country_subset=None):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Construye realistic_flight_graph.json con rutas directas reales")
+        description="Construye realistic_flight_graph.json con rutas directas reales usando IDs de países")
     parser.add_argument("--countries-txt", required=True,
                         help="Fichero TXT con la lista de países (uno por línea)")
+    parser.add_argument("--countries-json", required=True,
+                        help="Archivo JSON con la información de países y sus IDs (countries.json)")
     parser.add_argument("--airports", default="airports.dat")
     parser.add_argument("--routes",   default="routes.dat")
     parser.add_argument("--out",      default="realistic_flight_graph.json")
     args = parser.parse_args()
 
-    # lee tu lista de países
+    # Cargar países permitidos
     with open(args.countries_txt, encoding="utf-8") as f:
         wanted = {line.strip() for line in f if line.strip()}
+
+    # Cargar countries.json y mapear name -> id
+    with open(args.countries_json, encoding="utf-8") as f:
+        countries = json.load(f)
+    name_to_id = {data['name']: cid for cid, data in countries.items()}
 
     airports = load_airports(args.airports)
     routes   = load_routes(args.routes)
 
-    graph = build_graph(airports, routes, wanted)
+    graph = build_graph(airports, routes, wanted, name_to_id)
 
-    # Guarda
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(graph, f, indent=2, ensure_ascii=False)
 
