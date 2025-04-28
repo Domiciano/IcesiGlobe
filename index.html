@@ -64,7 +64,7 @@
             return highlightList.includes(countryName);
         }
 
-        fetch('world.json')
+        fetch(' data/world_with_ids.json')
             .then(res => res.json())
             .then(countries => {
                 const world = Globe()(document.getElementById('globeViz'))
