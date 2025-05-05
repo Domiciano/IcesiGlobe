@@ -131,6 +131,19 @@ Este archivo contiene las **geometrías** de cada país (polígonos para renderi
   ]
 }
 ```
+---
+
+### Implemetacion de Dijkstra
+
+se creo el archivo `dijkstra.js` el cual ya contiene el archivo que se quiere para poder usarlo en la aplicacion, ¿como usarlo?
+
+```js
+const filePath = path.resolve('your/path');
+const grafo = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+const camino = dijkstra(grafo, "133", "32") // el primer numero es el origen y el segundo el destino, revisa que esten en el grafo para probar;
+console.log(camino) //por si lo quiere probar;
+```
 
 **Notas:**
 - Cada `Feature` tiene un `properties.name` (nombre del país) y un `properties.id` (ID de `countries.json`).
