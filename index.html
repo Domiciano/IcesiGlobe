@@ -4,10 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <title>Globo Minimalista con Arcos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <style>
-        html, body { margin: 0; height: 100%; background-color: #f0f0f0; }
-        #globeViz { width: 100%; height: 100%; }
+        * {
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #183eb4;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #globeViz {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 60px;
+        }
+
         .controls {
             position: absolute;
             bottom: 20px;
@@ -20,24 +50,26 @@
             display: flex;
             gap: 10px;
             align-items: center;
+            z-index: 100;
         }
-        select {
+
+        select, button {
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 14px;
         }
+
         button {
-            padding: 8px 15px;
             background-color: #007bff;
             color: white;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
-        /* Estilos personalizados para Choices.js */
+
         .choices__inner {
             background-color: white;
             border: 1px solid #ccc;
@@ -45,15 +77,16 @@
             min-width: 200px;
             padding: 4px;
         }
+
         .choices__list--dropdown {
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        /* Estilos para el modal */
+
         .modal {
             display: none;
             position: fixed;
-            top: 20px;
+            top: 80px;
             right: 20px;
             background: white;
             padding: 20px;
@@ -62,7 +95,9 @@
             z-index: 1000;
             max-width: 300px;
         }
+
         .modal h3 { margin-top: 0; }
+
         .modal-close {
             position: absolute;
             top: 10px;
@@ -70,17 +105,34 @@
             cursor: pointer;
             font-weight: bold;
         }
+
+        .trip-info {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            background: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 250px;
+        }
     </style>
 </head>
 
 <body>
+    <header>Icesi Globe</header>
     <div id="globeViz"></div>
+
     <div class="controls">
         <select id="country1"></select>
         <select id="country2"></select>
         <button id="generateArc">Generar Arco</button>
     </div>
+
     <div id="countryModal" class="modal"></div>
+    <div id="tripInfo" class="trip-info"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
@@ -90,23 +142,19 @@
         let countriesData = {};
         const countriesToHighlight = [];
 
-        // Cargar datos de países
         fetch('data/countries.json')
             .then(res => res.json())
             .then(data => countriesData = data)
             .catch(err => console.error('Error loading countries data:', err));
 
-        // Configurar selectores con búsqueda
-        const initSearchSelect = (element) => {
-            return new Choices(element, {
-                searchEnabled: true,
-                removeItemButton: true,
-                classNames: {
-                    containerInner: 'choices__inner',
-                    input: 'choices__input',
-                }
-            });
-        };
+        const initSearchSelect = (element) => new Choices(element, {
+            searchEnabled: true,
+            removeItemButton: true,
+            classNames: {
+                containerInner: 'choices__inner',
+                input: 'choices__input',
+            }
+        });
 
         const selectCountry1 = initSearchSelect('#country1');
         const selectCountry2 = initSearchSelect('#country2');
@@ -121,20 +169,17 @@
                     .backgroundColor('black')
                     (document.getElementById('globeViz'));
 
-                // Manejar clic en países
                 world.onPolygonClick(feature => {
                     const countryName = feature.properties.name;
                     showCountryInfo(countryName);
                 });
 
-                // Llenar selectores
                 const countryNames = countries.features.map(f => f.properties.name).sort();
                 countryNames.forEach(name => {
                     selectCountry1.setChoices([{value: name, label: name}]);
                     selectCountry2.setChoices([{value: name, label: name}]);
                 });
 
-                // Configuración original de polígonos
                 world.polygonsData(countries.features)
                     .polygonCapColor(feature => '#183eb4')
                     .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
@@ -144,24 +189,21 @@
                 generateArcButton.addEventListener('click', () => {
                     const country1 = selectCountry1.getValue(true);
                     const country2 = selectCountry2.getValue(true);
-                    
+
                     if (!country1 || !country2 || country1 === country2) {
                         alert('Por favor, selecciona dos países diferentes.');
                         return;
                     }
 
-                    // Limpiar arcos anteriores
                     arcsData = [];
                     updateArcs(world);
 
-                    // Resaltar países seleccionados
                     countriesToHighlight.length = 0;
                     countriesToHighlight.push(country1, country2);
                     world.polygonCapColor(feature =>
                         countriesToHighlight.includes(feature.properties.name) ? '#386ee4' : '#183eb4'
                     );
 
-                    // Crear nuevo arco
                     createArc(world, country1, country2);
                 });
             })
@@ -186,7 +228,7 @@
 
             try {
                 const [start, end] = await Promise.all([getCoords(country1), getCoords(country2)]);
-                
+
                 arcsData.push({
                     startLat: start.lat,
                     startLng: start.lng,
@@ -194,11 +236,24 @@
                     endLng: end.lng,
                     color: '#fff'
                 });
-                
+
                 updateArcs(world);
+                showTripInfo(country1, country2);
             } catch (error) {
                 console.error('Error creando arco:', error);
             }
+        }
+
+        function showTripInfo(from, to) {
+            const infoBox = document.getElementById('tripInfo');
+            const now = new Date().toLocaleString();
+            infoBox.innerHTML = `
+                <strong>Trip Info</strong>
+                <p>From: ${from}</p>
+                <p>To: ${to}</p>
+                <p>Generated: ${now}</p>
+            `;
+            infoBox.style.display = 'block';
         }
 
         function showCountryInfo(countryName) {
@@ -220,4 +275,5 @@
         }
     </script>
 </body>
+
 </html>
