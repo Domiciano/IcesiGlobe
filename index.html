@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Globo Minimalista con Arcos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
     <style>
         html, body { margin: 0; height: 100%; background-color: #f0f0f0; }
         #globeViz { width: 100%; height: 100%; }
@@ -36,6 +37,39 @@
         button:hover {
             background-color: #0056b3;
         }
+        /* Estilos personalizados para Choices.js */
+        .choices__inner {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 200px;
+            padding: 4px;
+        }
+        .choices__list--dropdown {
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        .modal h3 { margin-top: 0; }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -46,161 +80,144 @@
         <select id="country2"></select>
         <button id="generateArc">Generar Arco</button>
     </div>
+    <div id="countryModal" class="modal"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <script>
-        
-        const arcsData = [
-                   
-                ];
+        let arcsData = [];
+        let countriesData = {};
         const countriesToHighlight = [];
-        const selectCountry1 = document.getElementById('country1');
-        const selectCountry2 = document.getElementById('country2');
+
+        // Cargar datos de países
+        fetch('data/countries.json')
+            .then(res => res.json())
+            .then(data => countriesData = data)
+            .catch(err => console.error('Error loading countries data:', err));
+
+        // Configurar selectores con búsqueda
+        const initSearchSelect = (element) => {
+            return new Choices(element, {
+                searchEnabled: true,
+                removeItemButton: true,
+                classNames: {
+                    containerInner: 'choices__inner',
+                    input: 'choices__input',
+                }
+            });
+        };
+
+        const selectCountry1 = initSearchSelect('#country1');
+        const selectCountry2 = initSearchSelect('#country2');
         const generateArcButton = document.getElementById('generateArc');
 
-        // Función para verificar si un país está en la lista a resaltar
-        function shouldHighlightCountry(countryName, highlightList) {
-            return highlightList.includes(countryName);
-        }
-
-        fetch(' data/world_with_ids.json')
+        fetch('data/world_with_ids.json')
             .then(res => res.json())
             .then(countries => {
-                const world = Globe()(document.getElementById('globeViz'))
-                    .globeImageUrl(null) // Elimina la textura de agua por defecto
+                const world = Globe()
+                    .globeImageUrl('water-texture.png')
                     .backgroundImageUrl('./night-sky.png')
-                    .backgroundColor('black'); // Hace el fondo transparente
+                    .backgroundColor('black')
+                    (document.getElementById('globeViz'));
 
-
-                const allCountryNames = countries.features.map(feature => feature.properties.name).sort();
-                // Llenar los select-options con los nombres de los países
-                allCountryNames.forEach(name => {
-                    const option1 = document.createElement('option');
-                    option1.value = name;
-                    option1.textContent = name;
-                    selectCountry1.appendChild(option1);
-
-                    const option2 = document.createElement('option');
-                    option2.value = name;
-                    option2.textContent = name;
-                    selectCountry2.appendChild(option2);
+                // Manejar clic en países
+                world.onPolygonClick(feature => {
+                    const countryName = feature.properties.name;
+                    showCountryInfo(countryName);
                 });
 
-                let highlightedCountries = [];
-
-                generateArcButton.addEventListener('click', () => {
-                    const countryName1 = selectCountry1.value;
-                    const countryName2 = selectCountry2.value;
-                    console.log(countryName1);
-                    console.log(countryName2);
-                    if (countryName1 && countryName2 && countryName1 !== countryName2) {
-                        countriesToHighlight.push(countryName1);
-                        countriesToHighlight.push(countryName2);
-                        world.polygonsData(countries.features)
-                            .polygonCapColor(feature =>
-                                shouldHighlightCountry(feature.properties.name, countriesToHighlight) ? '#386ee4' : '#183eb4'
-                            )
-                            .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
-                            .polygonStrokeColor(() => '#020a73')
-                            .polygonsTransitionDuration(300);
-
-                        //Arcos
-                        createArc(world, countryName1, countryName2);
-
-                        
-                        
-                    } else if (countryName1 === countryName2) {
-                        alert('Por favor, selecciona dos países diferentes.');
-                    } else {
-                        alert('Por favor, selecciona ambos países.');
-                    }
+                // Llenar selectores
+                const countryNames = countries.features.map(f => f.properties.name).sort();
+                countryNames.forEach(name => {
+                    selectCountry1.setChoices([{value: name, label: name}]);
+                    selectCountry2.setChoices([{value: name, label: name}]);
                 });
 
-
-
-                // Modificar el color del agua después de la inicialización del globo
-                const waterMaterial = world.globeMaterial();
-                if (waterMaterial) {
-                    waterMaterial.color.set('#020a73'); // Cambia el color del agua a un azul RGB
-                }
-
-                
-                // Dibujar los países
+                // Configuración original de polígonos
                 world.polygonsData(countries.features)
                     .polygonCapColor(feature => '#183eb4')
                     .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
                     .polygonStrokeColor(() => '#020a73')
                     .polygonsTransitionDuration(300);
 
-                
-                
+                generateArcButton.addEventListener('click', () => {
+                    const country1 = selectCountry1.getValue(true);
+                    const country2 = selectCountry2.getValue(true);
+                    
+                    if (!country1 || !country2 || country1 === country2) {
+                        alert('Por favor, selecciona dos países diferentes.');
+                        return;
+                    }
 
+                    // Limpiar arcos anteriores
+                    arcsData = [];
+                    updateArcs(world);
 
+                    // Resaltar países seleccionados
+                    countriesToHighlight.length = 0;
+                    countriesToHighlight.push(country1, country2);
+                    world.polygonCapColor(feature =>
+                        countriesToHighlight.includes(feature.properties.name) ? '#386ee4' : '#183eb4'
+                    );
 
-
+                    // Crear nuevo arco
+                    createArc(world, country1, country2);
+                });
             })
             .catch(err => console.error('Error al cargar el archivo JSON:', err));
 
-
-        function updateArcs(world){
-            world.arcsData(arcsData);
-                //world.arcAltitude(0.2);
-                world.arcAltitudeAutoScale(0.5);
-                world.arcStroke(0.5);
-                world.arcDashLength(0.1);
-                world.arcDashGap(0.03);
-                world.arcColor('color');
-                world.arcDashLength(() => 0.1)
-                world.arcDashAnimateTime(() => 3000);
+        function updateArcs(world) {
+            world.arcsData(arcsData)
+                .arcAltitudeAutoScale(0.5)
+                .arcStroke(0.5)
+                .arcDashLength(0.1)
+                .arcDashGap(0.03)
+                .arcColor('color')
+                .arcDashAnimateTime(3000);
         }
 
-        async function createArc(world, country1, country2){
-            const responseCountry1 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country1}&format=jsonv2`);
-            const dataCountry1 = await responseCountry1.json();
-            let startLat = dataCountry1[0].lat;
-            let startLng = dataCountry1[0].lon;
-
-            console.log(startLat);
-            console.log(startLng);
-
-            const responseCountry2 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country2}&format=jsonv2`);
-            const dataCountry2 = await responseCountry2.json();
-            let endLat = dataCountry2[0].lat;
-            let endLng = dataCountry2[0].lon;
-
-            console.log(endLat);
-            console.log(endLng);
-        
-            arcsData.push({
-                            startLat: startLat,
-                            startLng: startLng,
-                            endLat: endLat,
-                            endLng: endLng,
-                            color: '#fff'
-                        });
-
-                        updateArcs(world)
-        }
-
-        async function getCountryName(latitude, longitude) {
-            const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2`;
+        async function createArc(world, country1, country2) {
+            const getCoords = async country => {
+                const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${country}&format=jsonv2`);
+                const data = await res.json();
+                return { lat: data[0].lat, lng: data[0].lon };
+            };
 
             try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.address && data.address.country) {
-                    return data.address.country;
-                } else {
-                    return null; // Indica que no se encontró el país
-                }
+                const [start, end] = await Promise.all([getCoords(country1), getCoords(country2)]);
+                
+                arcsData.push({
+                    startLat: start.lat,
+                    startLng: start.lng,
+                    endLat: end.lat,
+                    endLng: end.lng,
+                    color: '#fff'
+                });
+                
+                updateArcs(world);
             } catch (error) {
-                console.error('Error al geocodificar:', error);
-                return null; // Indica que hubo un error en la solicitud
+                console.error('Error creando arco:', error);
             }
+        }
+
+        function showCountryInfo(countryName) {
+            const country = Object.values(countriesData).find(c => c.name === countryName);
+            if (!country) return;
+
+            const modal = document.getElementById('countryModal');
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="modal-close" onclick="document.getElementById('countryModal').style.display='none'">&times;</span>
+                    <h3>${country.spanish_name}</h3>
+                    <p><strong>Descripción:</strong> ${country.info.description}</p>
+                    <p><strong>Clima:</strong> ${country.info.climate}</p>
+                    <p><strong>Atracciones:</strong> ${country.info.attractions.join(', ')}</p>
+                    <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(', ')}</p>
+                </div>
+            `;
+            modal.style.display = 'block';
         }
     </script>
 </body>
-
 </html>
