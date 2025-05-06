@@ -1,206 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <title>Globo Minimalista con Arcos</title>
+    <title>Icesi Globe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
     <style>
-        html, body { margin: 0; height: 100%; background-color: #f0f0f0; }
-        #globeViz { width: 100%; height: 100%; }
-        .controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            padding: 8px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
+      * {
+        font-family: "Inter", sans-serif;
+        box-sizing: border-box;
+      }
 
-<body>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background-color: #f0f0f0;
+      }
+
+      header {
+        background-color: #183eb4;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+
+      #globeViz {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 60px;
+      }
+
+      .controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        z-index: 100;
+      }
+
+      select,
+      button {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .choices__inner {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        min-width: 200px;
+        padding: 4px;
+      }
+
+      .choices__list--dropdown {
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        max-width: 300px;
+      }
+
+      .modal h3 {
+        margin-top: 0;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .trip-info {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        background: white;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        max-width: 250px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>Icesi Globe</header>
     <div id="globeViz"></div>
+
     <div class="controls">
-        <select id="country1"></select>
-        <select id="country2"></select>
-        <button id="generateArc">Generar Arco</button>
+      <select id="country1"></select>
+      <select id="country2"></select>
+      <button id="generateArc">Generar Ruta</button>
     </div>
 
+    <div id="countryModal" class="modal"></div>
+    <div id="tripInfo" class="trip-info"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <script>
-        
-        const arcsData = [
-                   
-                ];
-        const countriesToHighlight = [];
-        const selectCountry1 = document.getElementById('country1');
-        const selectCountry2 = document.getElementById('country2');
-        const generateArcButton = document.getElementById('generateArc');
+      let arcsData = [];
+      let countriesData = {};
+      let flightGraph = {};
+      let countryCentroids = {};
+      let countryNameToIdMap = {};
+      let idToCountryNameMap = {};
 
-        // Función para verificar si un país está en la lista a resaltar
-        function shouldHighlightCountry(countryName, highlightList) {
-            return highlightList.includes(countryName);
+      function calculateDistance(priceUsd) {
+        return (priceUsd - 50) / 0.1;
+      }
+
+      function dijkstraPath(graph, sourceId, destinationId) {
+        const distances = {};
+        const previous = {};
+        const heap = [];
+
+        for (const node in graph) {
+          distances[node] = Infinity;
         }
 
-        fetch(' data/world_with_ids.json')
-            .then(res => res.json())
-            .then(countries => {
-                const world = Globe()(document.getElementById('globeViz'))
-                    .globeImageUrl(null) // Elimina la textura de agua por defecto
-                    .backgroundImageUrl('./night-sky.png')
-                    .backgroundColor('black'); // Hace el fondo transparente
+        distances[sourceId] = 0;
+        heap.push({ id: sourceId, distance: 0 });
 
+        while (heap.length > 0) {
+          heap.sort((a, b) => a.distance - b.distance);
+          const { id: currentId, distance: currentDistance } = heap.shift();
 
-                const allCountryNames = countries.features.map(feature => feature.properties.name).sort();
-                // Llenar los select-options con los nombres de los países
-                allCountryNames.forEach(name => {
-                    const option1 = document.createElement('option');
-                    option1.value = name;
-                    option1.textContent = name;
-                    selectCountry1.appendChild(option1);
+          if (currentId === destinationId) break;
+          if (!graph[currentId]?.connections) continue;
 
-                    const option2 = document.createElement('option');
-                    option2.value = name;
-                    option2.textContent = name;
-                    selectCountry2.appendChild(option2);
-                });
+          for (const [neighborId, connection] of Object.entries(
+            graph[currentId].connections
+          )) {
+            const edgeWeight = calculateDistance(connection.price_usd);
+            const totalDistance = currentDistance + edgeWeight;
 
-                let highlightedCountries = [];
-
-                generateArcButton.addEventListener('click', () => {
-                    const countryName1 = selectCountry1.value;
-                    const countryName2 = selectCountry2.value;
-                    console.log(countryName1);
-                    console.log(countryName2);
-                    if (countryName1 && countryName2 && countryName1 !== countryName2) {
-                        countriesToHighlight.push(countryName1);
-                        countriesToHighlight.push(countryName2);
-                        world.polygonsData(countries.features)
-                            .polygonCapColor(feature =>
-                                shouldHighlightCountry(feature.properties.name, countriesToHighlight) ? '#386ee4' : '#183eb4'
-                            )
-                            .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
-                            .polygonStrokeColor(() => '#020a73')
-                            .polygonsTransitionDuration(300);
-
-                        //Arcos
-                        createArc(world, countryName1, countryName2);
-
-                        
-                        
-                    } else if (countryName1 === countryName2) {
-                        alert('Por favor, selecciona dos países diferentes.');
-                    } else {
-                        alert('Por favor, selecciona ambos países.');
-                    }
-                });
-
-
-
-                // Modificar el color del agua después de la inicialización del globo
-                const waterMaterial = world.globeMaterial();
-                if (waterMaterial) {
-                    waterMaterial.color.set('#020a73'); // Cambia el color del agua a un azul RGB
-                }
-
-                
-                // Dibujar los países
-                world.polygonsData(countries.features)
-                    .polygonCapColor(feature => '#183eb4')
-                    .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
-                    .polygonStrokeColor(() => '#020a73')
-                    .polygonsTransitionDuration(300);
-
-                
-                
-
-
-
-
-            })
-            .catch(err => console.error('Error al cargar el archivo JSON:', err));
-
-
-        function updateArcs(world){
-            world.arcsData(arcsData);
-                //world.arcAltitude(0.2);
-                world.arcAltitudeAutoScale(0.5);
-                world.arcStroke(0.5);
-                world.arcDashLength(0.1);
-                world.arcDashGap(0.03);
-                world.arcColor('color');
-                world.arcDashLength(() => 0.1)
-                world.arcDashAnimateTime(() => 3000);
-        }
-
-        async function createArc(world, country1, country2){
-            const responseCountry1 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country1}&format=jsonv2`);
-            const dataCountry1 = await responseCountry1.json();
-            let startLat = dataCountry1[0].lat;
-            let startLng = dataCountry1[0].lon;
-
-            console.log(startLat);
-            console.log(startLng);
-
-            const responseCountry2 = await fetch(`https://nominatim.openstreetmap.org/search?q=${country2}&format=jsonv2`);
-            const dataCountry2 = await responseCountry2.json();
-            let endLat = dataCountry2[0].lat;
-            let endLng = dataCountry2[0].lon;
-
-            console.log(endLat);
-            console.log(endLng);
-        
-            arcsData.push({
-                            startLat: startLat,
-                            startLng: startLng,
-                            endLat: endLat,
-                            endLng: endLng,
-                            color: '#fff'
-                        });
-
-                        updateArcs(world)
-        }
-
-        async function getCountryName(latitude, longitude) {
-            const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2`;
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.address && data.address.country) {
-                    return data.address.country;
-                } else {
-                    return null; // Indica que no se encontró el país
-                }
-            } catch (error) {
-                console.error('Error al geocodificar:', error);
-                return null; // Indica que hubo un error en la solicitud
+            if (totalDistance < distances[neighborId]) {
+              distances[neighborId] = totalDistance;
+              previous[neighborId] = currentId;
+              heap.push({ id: neighborId, distance: totalDistance });
             }
+          }
         }
-    </script>
-</body>
 
+        if (distances[destinationId] === Infinity) return [];
+
+        const path = [];
+        let current = destinationId;
+        while (current !== sourceId) {
+          path.push(current);
+          current = previous[current];
+          if (!current) return [];
+        }
+        path.push(sourceId);
+        return path.reverse();
+      }
+
+      // Cargar datos
+      Promise.all([
+        fetch("data/countries.json").then((res) => res.json()),
+        fetch("data/realistic_flight_graph.json").then((res) => res.json()),
+        fetch("data/world_with_ids.json").then((res) => res.json()),
+      ]).then(([countries, graph, worldData]) => {
+        countriesData = countries;
+        flightGraph = graph;
+
+        Object.keys(countriesData).forEach((id) => {
+          countryNameToIdMap[countriesData[id].name] = id;
+          idToCountryNameMap[id] = countriesData[id].name;
+        });
+
+        worldData.features.forEach((feature) => {
+          const centroid = turf.centroid(feature);
+          countryCentroids[feature.properties.name] =
+            centroid.geometry.coordinates;
+        });
+
+        const world = Globe()
+          .globeImageUrl("water-texture.png")
+          .backgroundImageUrl("./night-sky.png")
+          .backgroundColor("black")(document.getElementById("globeViz"));
+
+        world
+          .polygonsData(worldData.features)
+          .polygonCapColor((feature) => "#183eb4")
+          .polygonSideColor(() => "rgba(0, 0, 0, 0.0)")
+          .polygonStrokeColor(() => "#020a73")
+          .onPolygonClick((feature) =>
+            showCountryInfo(feature.properties.name)
+          );
+
+        const countryNames = worldData.features
+          .map((f) => f.properties.name)
+          .sort();
+        const select1 = new Choices("#country1", {
+          searchEnabled: true,
+          removeItemButton: true,
+        });
+        const select2 = new Choices("#country2", {
+          searchEnabled: true,
+          removeItemButton: true,
+        });
+        select1.setChoices(
+          countryNames.map((name) => ({ value: name, label: name }))
+        );
+        select2.setChoices(
+          countryNames.map((name) => ({ value: name, label: name }))
+        );
+
+        document.getElementById("generateArc").addEventListener("click", () => {
+          const country1 = select1.getValue(true);
+          const country2 = select2.getValue(true);
+
+          if (!country1 || !country2 || country1 === country2) {
+            alert("Selecciona dos países diferentes");
+            return;
+          }
+
+          const id1 = countryNameToIdMap[country1];
+          const id2 = countryNameToIdMap[country2];
+
+          const path = dijkstraPath(flightGraph, id1, id2);
+
+          if (!path.length) {
+            alert("No existe una ruta entre estos países.");
+            return;
+          }
+
+          // Calcular precios y distancias
+          let totalPrice = 0;
+          let totalDistance = 0;
+
+          arcsData = [];
+          for (let i = 0; i < path.length - 1; i++) {
+            const fromId = path[i];
+            const toId = path[i + 1];
+            const connection = flightGraph[fromId].connections[toId];
+
+            totalPrice += connection.price_usd;
+
+            const fromName = idToCountryNameMap[fromId];
+            const toName = idToCountryNameMap[toId];
+            const start = countryCentroids[fromName];
+            const end = countryCentroids[toName];
+
+            if (start && end) {
+              const distance = turf.distance(
+                turf.point(start),
+                turf.point(end)
+              );
+              totalDistance += distance;
+
+              arcsData.push({
+                startLat: start[1],
+                startLng: start[0],
+                endLat: end[1],
+                endLng: end[0],
+                color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+              });
+            }
+          }
+
+          // Actualizar el globo
+          world
+            .arcsData(arcsData)
+            .arcAltitudeAutoScale(0.5)
+            .arcStroke(0.5)
+            .arcDashLength(0.1)
+            .arcDashGap(0.03)
+            .arcDashAnimateTime(3000);
+
+          // Resaltar países y mostrar info
+          const routeNames = new Set(path.map((id) => idToCountryNameMap[id]));
+          world.polygonCapColor((feature) =>
+            routeNames.has(feature.properties.name) ? "#386ee4" : "#183eb4"
+          );
+
+          showTripInfo(country1, country2, totalPrice, totalDistance, path);
+        });
+      });
+
+      function showTripInfo(from, to, price, distance, path) {
+        const infoBox = document.getElementById("tripInfo");
+        const flightTime = (distance / 900).toFixed(1); // 900 km/h velocidad promedio
+        const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
+
+        infoBox.innerHTML = `
+        <strong>Información del Viaje</strong>
+        <p>Origen: ${from}</p>
+        <p>Destino: ${to}</p>
+        <p>Ruta: ${stops}</p>
+        <p>Precio total: $${price.toFixed(2)} USD</p>
+        <p>Distancia total: ${distance.toFixed(2)} km</p>
+        <p>Duración estimada: ${flightTime} horas</p>
+    `;
+        infoBox.style.display = "block";
+      }
+
+      function showCountryInfo(countryName) {
+        const country = Object.values(countriesData).find(
+          (c) => c.name === countryName
+        );
+        if (!country) return;
+
+        const modal = document.getElementById("countryModal");
+        modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="modal-close" onclick="modal.style.display='none'">&times;</span>
+                    <h3>${country.spanish_name}</h3>
+                    <p><strong>Descripción:</strong> ${
+                      country.info.description
+                    }</p>
+                    <p><strong>Clima:</strong> ${country.info.climate}</p>
+                    <p><strong>Atracciones:</strong> ${country.info.attractions.join(
+                      ", "
+                    )}</p>
+                    <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(
+                      ", "
+                    )}</p>
+                </div>
+            `;
+        modal.style.display = "block";
+      }
+    </script>
+  </body>
 </html>
