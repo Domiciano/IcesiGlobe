@@ -1,134 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <title>Globo Minimalista con Arcos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <title>Icesi Globe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-        }
+      * {
+        font-family: "Inter", sans-serif;
+        box-sizing: border-box;
+      }
 
-        html, body {
-            margin: 0;
-            height: 100%;
-            background-color: #f0f0f0;
-        }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background-color: #f0f0f0;
+      }
 
-        header {
-            background-color: #183eb4;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+      header {
+        background-color: #183eb4;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+      }
 
-        #globeViz {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 60px;
-        }
+      #globeViz {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 60px;
+      }
 
-        .controls {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            z-index: 100;
-        }
+      .controls {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        z-index: 100;
+      }
 
-        select, button {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-        }
+      select,
+      button {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
 
-        button {
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-        }
+      button {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
 
-        button:hover {
-            background-color: #0056b3;
-        }
+      button:hover {
+        background-color: #0056b3;
+      }
 
-        .choices__inner {
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            min-width: 200px;
-            padding: 4px;
-        }
+      .choices__inner {
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        min-width: 200px;
+        padding: 4px;
+      }
 
-        .choices__list--dropdown {
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+      .choices__list--dropdown {
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            max-width: 300px;
-        }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        max-width: 300px;
+      }
 
-        .modal h3 { margin-top: 0; }
+      .modal h3 {
+        margin-top: 0;
+      }
 
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+      .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-weight: bold;
+      }
 
-        .trip-info {
-            display: none;
-            position: absolute;
-            top: 80px;
-            left: 20px;
-            background: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            z-index: 1000;
-            max-width: 250px;
-        }
+      .trip-info {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 20px;
+        background: white;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        max-width: 250px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>Icesi Globe</header>
     <div id="globeViz"></div>
 
     <div class="controls">
-        <select id="country1"></select>
-        <select id="country2"></select>
-        <button id="generateArc">Generar Arco</button>
+      <select id="country1"></select>
+      <select id="country2"></select>
+      <button id="generateArc">Generar Ruta</button>
     </div>
 
     <div id="countryModal" class="modal"></div>
@@ -138,142 +148,229 @@
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
     <script>
-        let arcsData = [];
-        let countriesData = {};
-        const countriesToHighlight = [];
+      let arcsData = [];
+      let countriesData = {};
+      let flightGraph = {};
+      let countryCentroids = {};
+      let countryNameToIdMap = {};
+      let idToCountryNameMap = {};
 
-        fetch('data/countries.json')
-            .then(res => res.json())
-            .then(data => countriesData = data)
-            .catch(err => console.error('Error loading countries data:', err));
+      function calculateDistance(priceUsd) {
+        return (priceUsd - 50) / 0.1;
+      }
 
-        const initSearchSelect = (element) => new Choices(element, {
-            searchEnabled: true,
-            removeItemButton: true,
-            classNames: {
-                containerInner: 'choices__inner',
-                input: 'choices__input',
+      function dijkstraPath(graph, sourceId, destinationId) {
+        const distances = {};
+        const previous = {};
+        const heap = [];
+
+        for (const node in graph) {
+          distances[node] = Infinity;
+        }
+
+        distances[sourceId] = 0;
+        heap.push({ id: sourceId, distance: 0 });
+
+        while (heap.length > 0) {
+          heap.sort((a, b) => a.distance - b.distance);
+          const { id: currentId, distance: currentDistance } = heap.shift();
+
+          if (currentId === destinationId) break;
+          if (!graph[currentId]?.connections) continue;
+
+          for (const [neighborId, connection] of Object.entries(
+            graph[currentId].connections
+          )) {
+            const edgeWeight = calculateDistance(connection.price_usd);
+            const totalDistance = currentDistance + edgeWeight;
+
+            if (totalDistance < distances[neighborId]) {
+              distances[neighborId] = totalDistance;
+              previous[neighborId] = currentId;
+              heap.push({ id: neighborId, distance: totalDistance });
             }
+          }
+        }
+
+        if (distances[destinationId] === Infinity) return [];
+
+        const path = [];
+        let current = destinationId;
+        while (current !== sourceId) {
+          path.push(current);
+          current = previous[current];
+          if (!current) return [];
+        }
+        path.push(sourceId);
+        return path.reverse();
+      }
+
+      // Cargar datos
+      Promise.all([
+        fetch("data/countries.json").then((res) => res.json()),
+        fetch("data/realistic_flight_graph.json").then((res) => res.json()),
+        fetch("data/world_with_ids.json").then((res) => res.json()),
+      ]).then(([countries, graph, worldData]) => {
+        countriesData = countries;
+        flightGraph = graph;
+
+        Object.keys(countriesData).forEach((id) => {
+          countryNameToIdMap[countriesData[id].name] = id;
+          idToCountryNameMap[id] = countriesData[id].name;
         });
 
-        const selectCountry1 = initSearchSelect('#country1');
-        const selectCountry2 = initSearchSelect('#country2');
-        const generateArcButton = document.getElementById('generateArc');
+        worldData.features.forEach((feature) => {
+          const centroid = turf.centroid(feature);
+          countryCentroids[feature.properties.name] =
+            centroid.geometry.coordinates;
+        });
 
-        fetch('data/world_with_ids.json')
-            .then(res => res.json())
-            .then(countries => {
-                const world = Globe()
-                    .globeImageUrl('water-texture.png')
-                    .backgroundImageUrl('./night-sky.png')
-                    .backgroundColor('black')
-                    (document.getElementById('globeViz'));
+        const world = Globe()
+          .globeImageUrl("water-texture.png")
+          .backgroundImageUrl("./night-sky.png")
+          .backgroundColor("black")(document.getElementById("globeViz"));
 
-                world.onPolygonClick(feature => {
-                    const countryName = feature.properties.name;
-                    showCountryInfo(countryName);
-                });
+        world
+          .polygonsData(worldData.features)
+          .polygonCapColor((feature) => "#183eb4")
+          .polygonSideColor(() => "rgba(0, 0, 0, 0.0)")
+          .polygonStrokeColor(() => "#020a73")
+          .onPolygonClick((feature) =>
+            showCountryInfo(feature.properties.name)
+          );
 
-                const countryNames = countries.features.map(f => f.properties.name).sort();
-                countryNames.forEach(name => {
-                    selectCountry1.setChoices([{value: name, label: name}]);
-                    selectCountry2.setChoices([{value: name, label: name}]);
-                });
+        const countryNames = worldData.features
+          .map((f) => f.properties.name)
+          .sort();
+        const select1 = new Choices("#country1", {
+          searchEnabled: true,
+          removeItemButton: true,
+        });
+        const select2 = new Choices("#country2", {
+          searchEnabled: true,
+          removeItemButton: true,
+        });
+        select1.setChoices(
+          countryNames.map((name) => ({ value: name, label: name }))
+        );
+        select2.setChoices(
+          countryNames.map((name) => ({ value: name, label: name }))
+        );
 
-                world.polygonsData(countries.features)
-                    .polygonCapColor(feature => '#183eb4')
-                    .polygonSideColor(() => 'rgba(0, 0, 0, 0.0)')
-                    .polygonStrokeColor(() => '#020a73')
-                    .polygonsTransitionDuration(300);
+        document.getElementById("generateArc").addEventListener("click", () => {
+          const country1 = select1.getValue(true);
+          const country2 = select2.getValue(true);
 
-                generateArcButton.addEventListener('click', () => {
-                    const country1 = selectCountry1.getValue(true);
-                    const country2 = selectCountry2.getValue(true);
+          if (!country1 || !country2 || country1 === country2) {
+            alert("Selecciona dos países diferentes");
+            return;
+          }
 
-                    if (!country1 || !country2 || country1 === country2) {
-                        alert('Por favor, selecciona dos países diferentes.');
-                        return;
-                    }
+          const id1 = countryNameToIdMap[country1];
+          const id2 = countryNameToIdMap[country2];
 
-                    arcsData = [];
-                    updateArcs(world);
+          const path = dijkstraPath(flightGraph, id1, id2);
 
-                    countriesToHighlight.length = 0;
-                    countriesToHighlight.push(country1, country2);
-                    world.polygonCapColor(feature =>
-                        countriesToHighlight.includes(feature.properties.name) ? '#386ee4' : '#183eb4'
-                    );
+          if (!path.length) {
+            alert("No existe una ruta entre estos países.");
+            return;
+          }
 
-                    createArc(world, country1, country2);
-                });
-            })
-            .catch(err => console.error('Error al cargar el archivo JSON:', err));
+          // Calcular precios y distancias
+          let totalPrice = 0;
+          let totalDistance = 0;
 
-        function updateArcs(world) {
-            world.arcsData(arcsData)
-                .arcAltitudeAutoScale(0.5)
-                .arcStroke(0.5)
-                .arcDashLength(0.1)
-                .arcDashGap(0.03)
-                .arcColor('color')
-                .arcDashAnimateTime(3000);
-        }
+          arcsData = [];
+          for (let i = 0; i < path.length - 1; i++) {
+            const fromId = path[i];
+            const toId = path[i + 1];
+            const connection = flightGraph[fromId].connections[toId];
 
-        async function createArc(world, country1, country2) {
-            const getCoords = async country => {
-                const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${country}&format=jsonv2`);
-                const data = await res.json();
-                return { lat: data[0].lat, lng: data[0].lon };
-            };
+            totalPrice += connection.price_usd;
 
-            try {
-                const [start, end] = await Promise.all([getCoords(country1), getCoords(country2)]);
+            const fromName = idToCountryNameMap[fromId];
+            const toName = idToCountryNameMap[toId];
+            const start = countryCentroids[fromName];
+            const end = countryCentroids[toName];
 
-                arcsData.push({
-                    startLat: start.lat,
-                    startLng: start.lng,
-                    endLat: end.lat,
-                    endLng: end.lng,
-                    color: '#fff'
-                });
+            if (start && end) {
+              const distance = turf.distance(
+                turf.point(start),
+                turf.point(end)
+              );
+              totalDistance += distance;
 
-                updateArcs(world);
-                showTripInfo(country1, country2);
-            } catch (error) {
-                console.error('Error creando arco:', error);
+              arcsData.push({
+                startLat: start[1],
+                startLng: start[0],
+                endLat: end[1],
+                endLng: end[0],
+                color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+              });
             }
-        }
+          }
 
-        function showTripInfo(from, to) {
-            const infoBox = document.getElementById('tripInfo');
-            const now = new Date().toLocaleString();
-            infoBox.innerHTML = `
-                <strong>Trip Info</strong>
-                <p>From: ${from}</p>
-                <p>To: ${to}</p>
-                <p>Generated: ${now}</p>
-            `;
-            infoBox.style.display = 'block';
-        }
+          // Actualizar el globo
+          world
+            .arcsData(arcsData)
+            .arcAltitudeAutoScale(0.5)
+            .arcStroke(0.5)
+            .arcDashLength(0.1)
+            .arcDashGap(0.03)
+            .arcDashAnimateTime(3000);
 
-        function showCountryInfo(countryName) {
-            const country = Object.values(countriesData).find(c => c.name === countryName);
-            if (!country) return;
+          // Resaltar países y mostrar info
+          const routeNames = new Set(path.map((id) => idToCountryNameMap[id]));
+          world.polygonCapColor((feature) =>
+            routeNames.has(feature.properties.name) ? "#386ee4" : "#183eb4"
+          );
 
-            const modal = document.getElementById('countryModal');
-            modal.innerHTML = `
+          showTripInfo(country1, country2, totalPrice, totalDistance, path);
+        });
+      });
+
+      function showTripInfo(from, to, price, distance, path) {
+        const infoBox = document.getElementById("tripInfo");
+        const flightTime = (distance / 900).toFixed(1); // 900 km/h velocidad promedio
+        const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
+
+        infoBox.innerHTML = `
+        <strong>Información del Viaje</strong>
+        <p>Origen: ${from}</p>
+        <p>Destino: ${to}</p>
+        <p>Ruta: ${stops}</p>
+        <p>Precio total: $${price.toFixed(2)} USD</p>
+        <p>Distancia total: ${distance.toFixed(2)} km</p>
+        <p>Duración estimada: ${flightTime} horas</p>
+    `;
+        infoBox.style.display = "block";
+      }
+
+      function showCountryInfo(countryName) {
+        const country = Object.values(countriesData).find(
+          (c) => c.name === countryName
+        );
+        if (!country) return;
+
+        const modal = document.getElementById("countryModal");
+        modal.innerHTML = `
                 <div class="modal-content">
-                    <span class="modal-close" onclick="document.getElementById('countryModal').style.display='none'">&times;</span>
+                    <span class="modal-close" onclick="modal.style.display='none'">&times;</span>
                     <h3>${country.spanish_name}</h3>
-                    <p><strong>Descripción:</strong> ${country.info.description}</p>
+                    <p><strong>Descripción:</strong> ${
+                      country.info.description
+                    }</p>
                     <p><strong>Clima:</strong> ${country.info.climate}</p>
-                    <p><strong>Atracciones:</strong> ${country.info.attractions.join(', ')}</p>
-                    <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(', ')}</p>
+                    <p><strong>Atracciones:</strong> ${country.info.attractions.join(
+                      ", "
+                    )}</p>
+                    <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(
+                      ", "
+                    )}</p>
                 </div>
             `;
-            modal.style.display = 'block';
-        }
+        modal.style.display = "block";
+      }
     </script>
-</body>
-
+  </body>
 </html>
