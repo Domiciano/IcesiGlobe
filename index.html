@@ -1,414 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Icesi Globe</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
-    <style>
-      * {
-        font-family: "Inter", sans-serif;
-        box-sizing: border-box;
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Icesi Globe</title>
+  <link href="css/css2.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/choices.min.css" />
+  <script src="js/turf.min.js"></script>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <header>Icesi Globe</header>
+  <div id="globeViz"></div>
+
+  <div class="controls">
+    <select id="country1"></select>
+    <select id="country2"></select>
+    <button id="generateArc">Generar Ruta</button>
+  </div>
+
+  <div id="countryModal" class="modal"></div>
+  <div id="tripInfo" class="trip-info"></div>
+
+  <script src="js/globe.js"></script>
+  <script src="js/choices.min.js"></script>
+
+  <script>
+    let arcsData = [];
+    let countriesData = {};
+    let flightGraph = {};
+    let countryCentroids = {};
+    let countryNameToIdMap = {};
+    let idToCountryNameMap = {};
+
+    function calculateDistance(priceUsd) {
+      return (priceUsd - 50) / 0.1;
+    }
+
+    function dijkstraPath(graph, sourceId, destinationId) {
+      const distances = {};
+      const previous = {};
+      const heap = [];
+
+      for (const node in graph) {
+        distances[node] = Infinity;
       }
 
-      html,
-      body {
-        margin: 0;
-        height: 100%;
-        background-color: #f0f0f0;
+      distances[sourceId] = 0;
+      heap.push({ id: sourceId, distance: 0 });
+
+      while (heap.length > 0) {
+        heap.sort((a, b) => a.distance - b.distance);
+        const { id: currentId, distance: currentDistance } = heap.shift();
+
+        if (currentId === destinationId) break;
+        if (!graph[currentId]?.connections) continue;
+
+        for (const [neighborId, connection] of Object.entries(
+          graph[currentId].connections
+        )) {
+          const edgeWeight = calculateDistance(connection.price_usd);
+          const totalDistance = currentDistance + edgeWeight;
+
+          if (totalDistance < distances[neighborId]) {
+            distances[neighborId] = totalDistance;
+            previous[neighborId] = currentId;
+            heap.push({ id: neighborId, distance: totalDistance });
+          }
+        }
       }
 
-      header {
-        background-color: #183eb4;
-        color: white;
-        padding: 1rem;
-        text-align: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
+      if (distances[destinationId] === Infinity) return [];
+
+      const path = [];
+      let current = destinationId;
+      while (current !== sourceId) {
+        path.push(current);
+        current = previous[current];
+        if (!current) return [];
       }
+      path.push(sourceId);
+      return path.reverse();
+    }
 
-      #globeViz {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 40px;
 
-      }
+    Promise.all([
+      fetch("data/countries.json").then((res) => res.json()),
+      fetch("data/realistic_flight_graph.json").then((res) => res.json()),
+      fetch("data/world_with_ids.json").then((res) => res.json()),
+    ]).then(([countries, graph, worldData]) => {
+      countriesData = countries;
+      flightGraph = graph;
 
-      .controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-        max-width: 90%;
-        border-radius: 15px;
+      Object.keys(countriesData).forEach((id) => {
+        countryNameToIdMap[countriesData[id].name] = id;
+        idToCountryNameMap[id] = countriesData[id].name;
+      });
+
+      worldData.features.forEach((feature) => {
+        const centroid = turf.centroid(feature);
+        countryCentroids[feature.properties.name] = centroid.geometry.coordinates;
+      });
+
+      const world = Globe()
+        .globeImageUrl("water-texture.png")
+        .backgroundImageUrl("./night-sky.png")
+        .backgroundColor("black")(document.getElementById("globeViz"));
+
+      world
+        .polygonsData(worldData.features)
+        .polygonCapColor(() => "#183eb4")
+        .polygonSideColor(() => "rgba(0, 0, 0, 0.0)")
+        .polygonStrokeColor(() => "#020a73")
+        .onPolygonClick((feature) => showCountryInfo(feature.properties.name));
+
+      const countryNames = worldData.features.map((f) => f.properties.name).sort();
+      const select1 = new Choices("#country1", {
+        searchEnabled: true,
+        removeItemButton: true,
+        placeholderValue: "Selecciona país de origen",
+      });
+      const select2 = new Choices("#country2", {
+        searchEnabled: true,
+        removeItemButton: true,
+        placeholderValue: "Selecciona país destino",
+      });
+      select1.setChoices(countryNames.map((name) => ({ value: name, label: name })));
+      select2.setChoices(countryNames.map((name) => ({ value: name, label: name })));
+
+      document.getElementById("generateArc").addEventListener("click", () => {
+        const country1 = select1.getValue(true);
+        const country2 = select2.getValue(true);
+
+        if (!country1 || !country2 || country1 === country2) {
+          alert("Selecciona dos países diferentes");
+          return;
         }
 
-select, button {
-  height: 35px;
-  line-height: 40px;
-  padding: 0 12px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  width: 59%;
-  
-}
+        const id1 = countryNameToIdMap[country1];
+        const id2 = countryNameToIdMap[country2];
+        const path = dijkstraPath(flightGraph, id1, id2);
 
-button {
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  justify-content: center;
-
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.choices__inner {
-  display: flex;
-  align-items: center;
-    justify-content: center;
-  height: 40px;
-  line-height: 30px;
-  padding: 0 8px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background-color: white;
-  width: 100%;
-}
-
-.choices__list--single {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    gap: 8px;
-  }
-
-
-}
-
-
-  .modal {
-    display: none;
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    max-width: 300px;
-  }
-
-  .modal h3 {
-    margin-top: 0;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-
-      .trip-info {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 20px;
-        background: white;
-        padding: 16px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        max-width: 250px;
-      }
-
-       /* Responsive XS */
-  @media (max-width: 600px) {
-    .controls {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 10px;
-      gap: 8px;
-    }
-    
-    .trip-info, .modal {
-      left: 10px;
-      right: 10px;
-      top: 70px;
-      max-width: none;
-    }
-  }
-
-  /* Responsive SM-MD */
-  @media (max-width: 900px) {
-    header {
-      font-size: 1.2rem;
-      padding: 0.8rem;
-    }
-    .controls {
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 15px;
-    }
-    
-    .trip-info {
-      top: 75px;
-      left: 15px;
-      right: 15px;
-      max-width: 25%;
-      max-height: fit-content;
-      font-size: smaller;
-      z-index: 30;
-    }
-    .modal {
-      top: 75px;
-      left: 450px;
-      right: 15px;
-      max-width: 50%;
-      max-height:min-content;
-      font-size: smaller;
-      z-index: 100;
-    }
-  }
-
-  /* Responsive LG */
-  @media (min-width: 1200px) {
-    .controls {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-  }
-    </style>
-  </head>
-
-  <body>
-    <header>Icesi Globe</header>
-    <div id="globeViz"></div>
-
-    <div class="controls">
-      <select id="country1"></select>
-      <select id="country2"></select>
-      <button id="generateArc">Generar Ruta</button>
-    </div>
-
-    <div id="countryModal" class="modal"></div>
-    <div id="tripInfo" class="trip-info"></div>
-
-    <script src="https://cdn.jsdelivr.net/npm/globe.gl@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-
-    <script>
-      let arcsData = [];
-      let countriesData = {};
-      let flightGraph = {};
-      let countryCentroids = {};
-      let countryNameToIdMap = {};
-      let idToCountryNameMap = {};
-
-      function calculateDistance(priceUsd) {
-        return (priceUsd - 50) / 0.1;
-      }
-
-      function dijkstraPath(graph, sourceId, destinationId) {
-        const distances = {};
-        const previous = {};
-        const heap = [];
-
-        for (const node in graph) {
-          distances[node] = Infinity;
+        if (!path.length) {
+          alert("No existe una ruta entre estos países.");
+          return;
         }
 
-        distances[sourceId] = 0;
-        heap.push({ id: sourceId, distance: 0 });
+        let totalPrice = 0;
+        let totalDistance = 0;
+        arcsData = [];
 
-        while (heap.length > 0) {
-          heap.sort((a, b) => a.distance - b.distance);
-          const { id: currentId, distance: currentDistance } = heap.shift();
+        for (let i = 0; i < path.length - 1; i++) {
+          const fromId = path[i];
+          const toId = path[i + 1];
+          const connection = flightGraph[fromId].connections[toId];
 
-          if (currentId === destinationId) break;
-          if (!graph[currentId]?.connections) continue;
+          totalPrice += connection.price_usd;
 
-          for (const [neighborId, connection] of Object.entries(
-            graph[currentId].connections
-          )) {
-            const edgeWeight = calculateDistance(connection.price_usd);
-            const totalDistance = currentDistance + edgeWeight;
+          const fromName = idToCountryNameMap[fromId];
+          const toName = idToCountryNameMap[toId];
+          const start = countryCentroids[fromName];
+          const end = countryCentroids[toName];
 
-            if (totalDistance < distances[neighborId]) {
-              distances[neighborId] = totalDistance;
-              previous[neighborId] = currentId;
-              heap.push({ id: neighborId, distance: totalDistance });
-            }
+          if (start && end) {
+            const distance = turf.distance(turf.point(start), turf.point(end));
+            totalDistance += distance;
+            arcsData.push({
+              startLat: start[1],
+              startLng: start[0],
+              endLat: end[1],
+              endLng: end[0],
+              color: `hsl(${Math.random() * 360}, 70%, 50%)`,
+            });
           }
         }
 
-        if (distances[destinationId] === Infinity) return [];
+        world
+          .arcsData(arcsData)
+          .arcAltitudeAutoScale(0.5)
+          .arcStroke(0.5)
+          .arcDashLength(0.1)
+          .arcDashGap(0.03)
+          .arcDashAnimateTime(3000);
 
-        const path = [];
-        let current = destinationId;
-        while (current !== sourceId) {
-          path.push(current);
-          current = previous[current];
-          if (!current) return [];
-        }
-        path.push(sourceId);
-        return path.reverse();
-      }
+        const routeNames = new Set(path.map((id) => idToCountryNameMap[id]));
+        world.polygonCapColor((feature) =>
+          routeNames.has(feature.properties.name) ? "#386ee4" : "#183eb4"
+        );
 
-      
-  Promise.all([
-    fetch("data/countries.json").then((res) => res.json()),
-    fetch("data/realistic_flight_graph.json").then((res) => res.json()),
-    fetch("data/world_with_ids.json").then((res) => res.json()),
-  ]).then(([countries, graph, worldData]) => {
-    countriesData = countries;
-    flightGraph = graph;
-
-    Object.keys(countriesData).forEach((id) => {
-      countryNameToIdMap[countriesData[id].name] = id;
-      idToCountryNameMap[id] = countriesData[id].name;
+        showTripInfo(country1, country2, totalPrice, totalDistance, path);
+      });
     });
 
-    worldData.features.forEach((feature) => {
-      const centroid = turf.centroid(feature);
-      countryCentroids[feature.properties.name] = centroid.geometry.coordinates;
-    });
+    function showTripInfo(from, to, price, distance, path) {
+      const infoBox = document.getElementById("tripInfo");
+      const flightTime = (distance / 900).toFixed(1);
+      const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
 
-    const world = Globe()
-      .globeImageUrl("water-texture.png")
-      .backgroundImageUrl("./night-sky.png")
-      .backgroundColor("black")(document.getElementById("globeViz"));
-
-    world
-      .polygonsData(worldData.features)
-      .polygonCapColor(() => "#183eb4")
-      .polygonSideColor(() => "rgba(0, 0, 0, 0.0)")
-      .polygonStrokeColor(() => "#020a73")
-      .onPolygonClick((feature) => showCountryInfo(feature.properties.name));
-
-    const countryNames = worldData.features.map((f) => f.properties.name).sort();
-    const select1 = new Choices("#country1", {
-      searchEnabled: true,
-      removeItemButton: true,
-      placeholderValue: "Selecciona país de origen",
-    });
-    const select2 = new Choices("#country2", {
-      searchEnabled: true,
-      removeItemButton: true,
-      placeholderValue: "Selecciona país destino",
-    });
-    select1.setChoices(countryNames.map((name) => ({ value: name, label: name })));
-    select2.setChoices(countryNames.map((name) => ({ value: name, label: name })));
-
-    document.getElementById("generateArc").addEventListener("click", () => {
-      const country1 = select1.getValue(true);
-      const country2 = select2.getValue(true);
-
-      if (!country1 || !country2 || country1 === country2) {
-        alert("Selecciona dos países diferentes");
-        return;
-      }
-
-      const id1 = countryNameToIdMap[country1];
-      const id2 = countryNameToIdMap[country2];
-      const path = dijkstraPath(flightGraph, id1, id2);
-
-      if (!path.length) {
-        alert("No existe una ruta entre estos países.");
-        return;
-      }
-
-      let totalPrice = 0;
-      let totalDistance = 0;
-      arcsData = [];
-
-      for (let i = 0; i < path.length - 1; i++) {
-        const fromId = path[i];
-        const toId = path[i + 1];
-        const connection = flightGraph[fromId].connections[toId];
-
-        totalPrice += connection.price_usd;
-
-        const fromName = idToCountryNameMap[fromId];
-        const toName = idToCountryNameMap[toId];
-        const start = countryCentroids[fromName];
-        const end = countryCentroids[toName];
-
-        if (start && end) {
-          const distance = turf.distance(turf.point(start), turf.point(end));
-          totalDistance += distance;
-          arcsData.push({
-            startLat: start[1],
-            startLng: start[0],
-            endLat: end[1],
-            endLng: end[0],
-            color: `hsl(${Math.random() * 360}, 70%, 50%)`,
-          });
-        }
-      }
-
-      world
-        .arcsData(arcsData)
-        .arcAltitudeAutoScale(0.5)
-        .arcStroke(0.5)
-        .arcDashLength(0.1)
-        .arcDashGap(0.03)
-        .arcDashAnimateTime(3000);
-
-      const routeNames = new Set(path.map((id) => idToCountryNameMap[id]));
-      world.polygonCapColor((feature) =>
-        routeNames.has(feature.properties.name) ? "#386ee4" : "#183eb4"
-      );
-
-      showTripInfo(country1, country2, totalPrice, totalDistance, path);
-    });
-  });
-
-  function showTripInfo(from, to, price, distance, path) {
-    const infoBox = document.getElementById("tripInfo");
-    const flightTime = (distance / 900).toFixed(1);
-    const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
-
-    infoBox.innerHTML = `
+      infoBox.innerHTML = `
       <strong>Información del Viaje</strong>
       <p>Origen: ${from}</p>
       <p>Destino: ${to}</p>
@@ -417,15 +207,15 @@ button:hover {
       <p>Distancia total: ${distance.toFixed(2)} km</p>
       <p>Duración estimada: ${flightTime} horas</p>
     `;
-    infoBox.style.display = "block";
-  }
+      infoBox.style.display = "block";
+    }
 
-  function showCountryInfo(countryName) {
-    const country = Object.values(countriesData).find((c) => c.name === countryName);
-    if (!country) return;
+    function showCountryInfo(countryName) {
+      const country = Object.values(countriesData).find((c) => c.name === countryName);
+      if (!country) return;
 
-    const modal = document.getElementById("countryModal");
-    modal.innerHTML = `
+      const modal = document.getElementById("countryModal");
+      modal.innerHTML = `
       <div class="modal-content">
         <span class="modal-close">&times;</span>
         <h3>${country.spanish_name}</h3>
@@ -435,12 +225,13 @@ button:hover {
         <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(", ")}</p>
       </div>
     `;
-    modal.style.display = "block";
+      modal.style.display = "block";
 
-    modal.querySelector(".modal-close").addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-  }
-    </script>
-  </body>
+      modal.querySelector(".modal-close").addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+  </script>
+</body>
+
 </html>
