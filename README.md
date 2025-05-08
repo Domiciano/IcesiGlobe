@@ -38,9 +38,11 @@ Este documento describe la estructura, el objetivo y las consideraciones especia
         "El buzkashi, un juego ecuestre de origen nómada, es considerado el deporte nacional.",
         "Fue un importante tramo de la antigua Ruta de la Seda."
       ]
-    }
+    },
+    "lat": 33.7680065,
+    "lon": 66.2385139
   },
-  ...
+...
 }
 ```
 
@@ -51,6 +53,9 @@ Este documento describe la estructura, el objetivo y las consideraciones especia
   - `spanish_name`: Nombre en español (usado para presentaciones en la interfaz).
   - `info`: Objeto con información turística:
     - `description`, `climate`, `attractions`, `curiosities`, todos en **español**.
+  - `lat`: latitud del país.
+  - `lon`: longitud del país.
+
 
 **Notas:**
 - Toda la información turística fue generada con inteligencia artificial para aumentar la precisión y riqueza de detalles.
