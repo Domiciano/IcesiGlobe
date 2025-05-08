@@ -1,11 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
-function calculateDistance(priceUsd) {
-    return (priceUsd - 50) / 0.10;
+function calculateDistance(type, cost) {
+    if(type === 'precio'){
+        return (cost - 50) / 0.10;
+    }else if (type === 'tiempo'){
+        return cost
+    }else if (type === 'escalas'){
+        return cost
+    } else{
+        throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
+    }
 }
 
-function dijkstra(graph, sourceId, destinationId) {
+function dijkstra(graph, sourceId, destinationId, cost) {
     const distances = {};
     const previos = {};
     const heap = [];
@@ -25,9 +33,10 @@ function dijkstra(graph, sourceId, destinationId) {
         if (actualNode === destinationId) break;
 
         const connections = graph[actualNode].connections;
+        var a = 0;
         for (const neighborNode in connections) {
             const conn = connections[neighborNode];
-            const distance = calculateDistance(conn.price_usd);
+            const distance =  calculateDistance(cost, conn.price_usd);
             const newDistance = actualDistance + distance;
 
             if (newDistance < distances[neighborNode]) {
@@ -60,7 +69,7 @@ function dijkstra(graph, sourceId, destinationId) {
         } else {
             const prev = path[i - 1];
             const curr = path[i];
-            const salto = calculateDistance(graph[prev].connections[curr].price_usd);
+            const salto = calculateDistance(cost, graph[prev].connections[curr].price_usd);
             acumulado += salto;
             resultado.push({ id: curr, distance: acumulado });
         }
@@ -73,5 +82,5 @@ function dijkstra(graph, sourceId, destinationId) {
 const filePath = path.resolve('c:/Users/mateo/Desktop/Semestre 8/Interactiva/IcesiGlobe/data/realistic_flight_graph.json');
 const grafo = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-const camino = dijkstra(grafo, "133", "32");
+const camino = dijkstra(grafo, "133", "32", 'precio');
 console.log(camino);
