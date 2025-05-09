@@ -1,3 +1,37 @@
+Goals
+
+[CONTEXTO CON IA Icesi Global Internacional]
+
+En presentación explicamos las coordenadas geodésicas. La proyección Mercator vs la vista esférica.
+
+- Ejercicio 1: Ubicar un marcador sobre Icesi
+
+En presentación explicamos los arcos
+
+- Ejercicio 2: Crear un arco entre Icesi y el lugar al que sueñan viajar
+
+
+En la presentacion explicar variables
+
+- Ejercicio 3: Obtener el nombre de los paises al clcik
+
+
+En presentación explicamos un grafo minimalista a escala de los paises
+
+En presentación explicamos Djikstra como algoritmo para minimizar costo de recorrido
+
+En la presentacion explicar los arreglos
+
+- Ejercicio 4: Obtener el arreglo de djisktra e imprimir en alert lat y lng de [0], [1], ...
+
+- Ejercicio 5: Crear arcos manualmente
+- Ejercicio 5 Alternativo: Crear arcos por medio de for
+
+- Ejercicio FINAL: Boton que haga todo
+
+
+
+
 Tareas:
 - Dijkstra y arreglo de caminos
 Mateo Silva
