@@ -47,7 +47,6 @@
         case 'price':
           return connection.price_usd;
         case 'distance':
-          // Usar la distancia geográfica real entre países
           const fromName = idToCountryNameMap[connection.from];
           const toName = idToCountryNameMap[connection.to];
           const start = countryCentroids[fromName];
@@ -57,9 +56,8 @@
             const endPoint = turf.point(end);
             return turf.distance(startPoint, endPoint);
           }
-          return connection.price_usd; // Fallback a precio si no hay coordenadas
+          return connection.price_usd;
         case 'time':
-          // Estimación de tiempo basada en distancia y velocidad promedio
           const fromCountry = idToCountryNameMap[connection.from];
           const toCountry = idToCountryNameMap[connection.to];
           const startPos = countryCentroids[fromCountry];
@@ -68,10 +66,10 @@
             const startPt = turf.point(startPos);
             const endPt = turf.point(endPos);
             const dist = turf.distance(startPt, endPt);
-            // Tiempo estimado en horas (asumiendo velocidad promedio de 900 km/h)
+            
             return dist / 900;
           }
-          return connection.price_usd / 100; // Fallback
+          return connection.price_usd / 100;
         default:
           return connection.price_usd;
       }
@@ -99,7 +97,6 @@
         for (const [neighborId, connection] of Object.entries(
           graph[currentId].connections
         )) {
-          // Crear un objeto de conexión con from y to para calculateWeight
           const connectionWithFromTo = {
             ...connection,
             from: currentId,
@@ -154,6 +151,39 @@
         .backgroundImageUrl("./night-sky.png")
         .backgroundColor("black")(document.getElementById("globeViz"));
 
+      function centerGlobeView(points) {
+        if (!points || points.length === 0) return;
+        
+        if (points.length === 1) {
+          const [lng, lat] = points[0];
+          world.pointOfView({ lat, lng, altitude: 2.5 }, 1000);
+          return;
+        }
+        
+        let sumLat = 0, sumLng = 0;
+        points.forEach(point => {
+          sumLng += point[0];
+          sumLat += point[1];
+        });
+        
+        const avgLng = sumLng / points.length;
+        const avgLat = sumLat / points.length;
+        
+        let maxDist = 0;
+        for (let i = 0; i < points.length; i++) {
+          for (let j = i + 1; j < points.length; j++) {
+            const startPoint = turf.point(points[i]);
+            const endPoint = turf.point(points[j]);
+            const dist = turf.distance(startPoint, endPoint);
+            maxDist = Math.max(maxDist, dist);
+          }
+        }
+        
+        const altitude = Math.max(1.5, Math.min(4, 1.5 + maxDist / 5000));
+        
+        world.pointOfView({ lat: avgLat, lng: avgLng, altitude }, 1000);
+      }
+
       world
         .polygonsData(worldData.features)
         .polygonCapColor(() => "#183eb4")
@@ -198,6 +228,7 @@
         let totalDistance = 0;
         let totalTime = 0;
         arcsData = [];
+        const routePoints = [];
 
         for (let i = 0; i < path.length - 1; i++) {
           const fromId = path[i];
@@ -212,11 +243,14 @@
           const end = countryCentroids[toName];
 
           if (start && end) {
+            if (!routePoints.includes(start)) routePoints.push(start);
+            if (!routePoints.includes(end)) routePoints.push(end);
+            
             const startPoint = turf.point(start);
             const endPoint = turf.point(end);
             const distance = turf.distance(startPoint, endPoint);
             totalDistance += distance;
-            totalTime += distance / 900; // Tiempo en horas a 900 km/h
+            totalTime += distance / 900;
             arcsData.push({
               startLat: start[1],
               startLng: start[0],
@@ -239,6 +273,8 @@
         world.polygonCapColor((feature) =>
           routeNames.has(feature.properties.name) ? "#386ee4" : "#183eb4"
         );
+
+        centerGlobeView(routePoints);
 
         showTripInfo(country1, country2, totalPrice, totalDistance, path);
       });
