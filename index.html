@@ -17,6 +17,14 @@
   <div class="controls">
     <select id="country1"></select>
     <select id="country2"></select>
+    <div class="optimization-criteria">
+      <label for="criteria">Optimizar por:</label>
+      <select id="criteria">
+        <option value="price" selected>Precio</option>
+        <option value="distance">Distancia</option>
+        <option value="time">Tiempo</option>
+      </select>
+    </div>
     <button id="generateArc">Generar Ruta</button>
   </div>
 
@@ -34,11 +42,42 @@
     let countryNameToIdMap = {};
     let idToCountryNameMap = {};
 
-    function calculateDistance(priceUsd) {
-      return (priceUsd - 50) / 0.1;
+    function calculateWeight(connection, criteria) {
+      switch (criteria) {
+        case 'price':
+          return connection.price_usd;
+        case 'distance':
+          // Usar la distancia geográfica real entre países
+          const fromName = idToCountryNameMap[connection.from];
+          const toName = idToCountryNameMap[connection.to];
+          const start = countryCentroids[fromName];
+          const end = countryCentroids[toName];
+          if (start && end) {
+            const startPoint = turf.point(start);
+            const endPoint = turf.point(end);
+            return turf.distance(startPoint, endPoint);
+          }
+          return connection.price_usd; // Fallback a precio si no hay coordenadas
+        case 'time':
+          // Estimación de tiempo basada en distancia y velocidad promedio
+          const fromCountry = idToCountryNameMap[connection.from];
+          const toCountry = idToCountryNameMap[connection.to];
+          const startPos = countryCentroids[fromCountry];
+          const endPos = countryCentroids[toCountry];
+          if (startPos && endPos) {
+            const startPt = turf.point(startPos);
+            const endPt = turf.point(endPos);
+            const dist = turf.distance(startPt, endPt);
+            // Tiempo estimado en horas (asumiendo velocidad promedio de 900 km/h)
+            return dist / 900;
+          }
+          return connection.price_usd / 100; // Fallback
+        default:
+          return connection.price_usd;
+      }
     }
 
-    function dijkstraPath(graph, sourceId, destinationId) {
+    function dijkstraPath(graph, sourceId, destinationId, criteria = 'price') {
       const distances = {};
       const previous = {};
       const heap = [];
@@ -60,7 +99,13 @@
         for (const [neighborId, connection] of Object.entries(
           graph[currentId].connections
         )) {
-          const edgeWeight = calculateDistance(connection.price_usd);
+          // Crear un objeto de conexión con from y to para calculateWeight
+          const connectionWithFromTo = {
+            ...connection,
+            from: currentId,
+            to: neighborId
+          };
+          const edgeWeight = calculateWeight(connectionWithFromTo, criteria);
           const totalDistance = currentDistance + edgeWeight;
 
           if (totalDistance < distances[neighborId]) {
@@ -84,7 +129,6 @@
       return path.reverse();
     }
 
-
     Promise.all([
       fetch("data/countries.json").then((res) => res.json()),
       fetch("data/realistic_flight_graph.json").then((res) => res.json()),
@@ -98,9 +142,11 @@
         idToCountryNameMap[id] = countriesData[id].name;
       });
 
-      worldData.features.forEach((feature) => {
-        const centroid = turf.centroid(feature);
-        countryCentroids[feature.properties.name] = centroid.geometry.coordinates;
+      Object.keys(countriesData).forEach((id) => {
+        const country = countriesData[id];
+        if (country.lat && country.lon) {
+          countryCentroids[country.name] = [country.lon, country.lat];
+        }
       });
 
       const world = Globe()
@@ -132,6 +178,7 @@
       document.getElementById("generateArc").addEventListener("click", () => {
         const country1 = select1.getValue(true);
         const country2 = select2.getValue(true);
+        const criteria = document.getElementById("criteria").value;
 
         if (!country1 || !country2 || country1 === country2) {
           alert("Selecciona dos países diferentes");
@@ -140,7 +187,7 @@
 
         const id1 = countryNameToIdMap[country1];
         const id2 = countryNameToIdMap[country2];
-        const path = dijkstraPath(flightGraph, id1, id2);
+        const path = dijkstraPath(flightGraph, id1, id2, criteria);
 
         if (!path.length) {
           alert("No existe una ruta entre estos países.");
@@ -149,6 +196,7 @@
 
         let totalPrice = 0;
         let totalDistance = 0;
+        let totalTime = 0;
         arcsData = [];
 
         for (let i = 0; i < path.length - 1; i++) {
@@ -164,8 +212,11 @@
           const end = countryCentroids[toName];
 
           if (start && end) {
-            const distance = turf.distance(turf.point(start), turf.point(end));
+            const startPoint = turf.point(start);
+            const endPoint = turf.point(end);
+            const distance = turf.distance(startPoint, endPoint);
             totalDistance += distance;
+            totalTime += distance / 900; // Tiempo en horas a 900 km/h
             arcsData.push({
               startLat: start[1],
               startLng: start[0],
@@ -197,11 +248,20 @@
       const infoBox = document.getElementById("tripInfo");
       const flightTime = (distance / 900).toFixed(1);
       const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
+      const criteria = document.getElementById("criteria").value;
+      
+      let optimizedBy = "";
+      switch (criteria) {
+        case 'price': optimizedBy = "precio"; break;
+        case 'distance': optimizedBy = "distancia"; break;
+        case 'time': optimizedBy = "tiempo"; break;
+      }
 
       infoBox.innerHTML = `
       <strong>Información del Viaje</strong>
       <p>Origen: ${from}</p>
       <p>Destino: ${to}</p>
+      <p>Ruta optimizada por: ${optimizedBy}</p>
       <p>Ruta: ${stops}</p>
       <p>Precio total: $${price.toFixed(2)} USD</p>
       <p>Distancia total: ${distance.toFixed(2)} km</p>
