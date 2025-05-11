@@ -135,19 +135,79 @@ button:hover {
   position: fixed;
   top: 80px;
   right: 20px;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  max-width: 300px;
-  max-height: calc(100vh - 120px);
+  width: 330px;
+  max-width: calc(100% - 40px);
+  max-height: calc(100vh - 180px);
   overflow-y: auto;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.modal h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+.modal-header {
+  background: linear-gradient(135deg, #1e50cf, #183eb4);
+  color: white;
+  padding: 14px 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-content {
+  padding: 14px 16px;
+}
+
+.modal-section {
+  margin-bottom: 14px;
+}
+
+.modal-section h4 {
+  margin: 0 0 8px 0;
+  color: #183eb4;
+  font-size: 15px;
+}
+
+.modal-section p {
+  margin: 8px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.attraction-list, .curiosity-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.attraction-list li, .curiosity-list li {
+  position: relative;
+  padding: 5px 0 5px 24px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.attraction-list li:before {
+  content: "✈️";
+  position: absolute;
+  left: 0;
+  top: 5px;
+}
+
+.curiosity-list li:before {
+  content: "🔍";
+  position: absolute;
+  left: 0;
+  top: 5px;
 }
 
 .modal-close {
@@ -156,17 +216,18 @@ button:hover {
   right: 10px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   width: 24px;
   height: 24px;
   line-height: 24px;
   text-align: center;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 .modal-close:hover {
-  background-color: #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .trip-info {
@@ -174,26 +235,130 @@ button:hover {
   position: fixed;
   top: 80px;
   left: 20px;
-  background: white;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  width: 280px;
+  width: 320px;
   max-width: calc(100% - 40px);
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 180px);
   overflow-y: auto;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.trip-info strong {
-  display: block;
-  margin-bottom: 10px;
+.trip-info-header {
+  background: linear-gradient(135deg, #1e50cf, #183eb4);
+  color: white;
+  padding: 14px 20px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
   font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.trip-info-content {
+  padding: 14px 16px;
+}
+
+.trip-info-section {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.trip-info-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.trip-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 15px;
+  color: #183eb4;
+}
+
+.trip-info-route {
+  background-color: #f0f4ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 8px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  border-left: 4px solid #183eb4;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.trip-info-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.trip-info-metric {
+  background-color: #f8f9fa;
+  padding: 8px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #183eb4;
+  margin-bottom: 2px;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: #666;
 }
 
 .trip-info p {
-  margin: 8px 0;
-  font-size: 14px;
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #333;
+}
+
+.trip-info strong {
+  color: #183eb4;
+}
+
+.trip-info-badge {
+  display: inline-block;
+  background-color: #e8f0fe;
+  color: #183eb4;
+  padding: 3px 6px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+#closeTripInfo {
+  margin-top: 10px;
+  width: 100%;
+  height: 36px;
+  background: #183eb4;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+#closeTripInfo:hover {
+  background-color: #1233a0;
 }
 
 @media (max-width: 480px) {
@@ -236,23 +401,42 @@ button:hover {
     right: 10px;
     width: calc(100% - 20px);
     max-width: none;
+    max-height: calc(60vh - 20px);
   }
   
-  .modal {
-    left: auto;
-    width: calc(100% - 20px);
+  .trip-info-metrics {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trip-info-header, .modal-header {
+    padding: 10px 14px;
+    font-size: 15px;
   }
   
-  .country-select {
-    width: 100%;
-    margin-bottom: 8px;
-    height: 42px;
-    font-size: 16px;
+  .trip-info-content, .modal-content {
+    padding: 10px 12px;
   }
   
-  #clearRoute {
-    margin-top: 5px;
-    width: 100%;
+  .trip-info::-webkit-scrollbar, .modal::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .mobile-toggle-info {
+    position: fixed;
+    bottom: 140px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: #183eb4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1001;
+    cursor: pointer;
   }
 }
 
@@ -462,4 +646,34 @@ label {
   opacity: 1 !important;
   z-index: 1000 !important;
   pointer-events: auto !important;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.trip-info::-webkit-scrollbar, .modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.trip-info::-webkit-scrollbar-track, .modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.trip-info::-webkit-scrollbar-thumb, .modal::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.trip-info::-webkit-scrollbar-thumb:hover, .modal::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }

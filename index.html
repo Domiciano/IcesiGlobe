@@ -303,6 +303,87 @@
       });
     });
 
+    function showCountryInfo(countryName) {
+      const id = countryNameToIdMap[countryName];
+      if (!id || !countriesData[id]) return;
+      
+      const country = countriesData[id];
+      
+      const modal = document.getElementById("countryModal");
+      modal.innerHTML = `
+        <div class="modal-header">
+          ${country.spanish_name}
+          <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-content">
+          <div class="modal-section">
+            <h4>Descripción</h4>
+            <p>${country.info.description}</p>
+          </div>
+          
+          <div class="modal-section">
+            <h4>Clima</h4>
+            <p>${country.info.climate}</p>
+          </div>
+          
+          <div class="modal-section">
+            <h4>Atracciones Turísticas</h4>
+            <ul class="attraction-list">
+              ${country.info.attractions.map(attraction => `<li>${attraction}</li>`).join('')}
+            </ul>
+          </div>
+          
+          <div class="modal-section">
+            <h4>Curiosidades</h4>
+            <ul class="curiosity-list">
+              ${country.info.curiosities.map(curiosity => `<li>${curiosity}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+      modal.style.display = "block";
+
+      modal.querySelector(".modal-close").addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    }
+    
+    function addMobileToggleButtons() {
+      if (window.innerWidth <= 768) {
+        const tripInfo = document.getElementById("tripInfo");
+        if (tripInfo && tripInfo.style.display === "block") {
+          let toggleBtn = document.querySelector('.mobile-toggle-info');
+          if (!toggleBtn) {
+            toggleBtn = document.createElement('div');
+            toggleBtn.className = 'mobile-toggle-info';
+            toggleBtn.innerHTML = '↕️';
+            toggleBtn.title = 'Expandir/Contraer información';
+            document.body.appendChild(toggleBtn);
+            
+            let isExpanded = true;
+            
+            toggleBtn.addEventListener('click', () => {
+              if (isExpanded) {
+                tripInfo.style.maxHeight = '80px';
+                tripInfo.style.overflow = 'hidden';
+                toggleBtn.innerHTML = '↓';
+              } else {
+                tripInfo.style.maxHeight = 'calc(60vh - 20px)';
+                tripInfo.style.overflow = 'auto';
+                toggleBtn.innerHTML = '↕️';
+              }
+              isExpanded = !isExpanded;
+            });
+          }
+        } else {
+          const existingBtn = document.querySelector('.mobile-toggle-info');
+          if (existingBtn) {
+            existingBtn.remove();
+          }
+        }
+      }
+    }
+    
     function showTripInfo(from, to, price, distance, path) {
       const infoBox = document.getElementById("tripInfo");
       const flightTime = (distance / 900).toFixed(1);
@@ -322,44 +403,60 @@
       }
 
       infoBox.innerHTML = `
-      <strong>Información del Viaje</strong>
-      <p>Origen: ${from}</p>
-      <p>Destino: ${to}</p>
-      <p>Ruta optimizada por: ${optimizedBy}</p>
-      <p>Ruta: ${stops}</p>
-      <p>Precio total: $${price.toFixed(2)} USD</p>
-      <p>Distancia total: ${distance.toFixed(2)} km</p>
-      <p>Duración estimada: ${flightTime} horas</p>
-      <button id="closeTripInfo" style="margin-top: 10px; width: 100%;">Cerrar</button>
-    `;
+        <div class="trip-info-header">
+          Información del Viaje
+        </div>
+        <div class="trip-info-content">
+          <div class="trip-info-section">
+            <h3>Detalles del Itinerario</h3>
+            <p><strong>Origen:</strong> ${from}</p>
+            <p><strong>Destino:</strong> ${to}</p>
+            <p><strong>Optimización:</strong> ${optimizedBy} <span class="trip-info-badge">Ruta óptima</span></p>
+          </div>
+          
+          <div class="trip-info-section">
+            <h3>Ruta del Viaje</h3>
+            <div class="trip-info-route">
+              ${stops}
+            </div>
+            <p><small>La ruta pasa por ${path.length} países</small></p>
+          </div>
+          
+          <div class="trip-info-section">
+            <h3>Métricas del Viaje</h3>
+            <div class="trip-info-metrics">
+              <div class="trip-info-metric">
+                <div class="metric-value">$${price.toFixed(2)}</div>
+                <div class="metric-label">USD</div>
+              </div>
+              <div class="trip-info-metric">
+                <div class="metric-value">${distance.toFixed(0)}</div>
+                <div class="metric-label">kilómetros</div>
+              </div>
+              <div class="trip-info-metric">
+                <div class="metric-value">${flightTime}</div>
+                <div class="metric-label">horas de vuelo</div>
+              </div>
+              <div class="trip-info-metric">
+                <div class="metric-value">${path.length - 1}</div>
+                <div class="metric-label">conexiones</div>
+              </div>
+            </div>
+          </div>
+          
+          <button id="closeTripInfo">Cerrar</button>
+        </div>
+      `;
+      
       infoBox.style.display = "block";
+      
       document.getElementById("closeTripInfo").addEventListener("click", () => {
         infoBox.style.display = "none";
+        const toggleBtn = document.querySelector('.mobile-toggle-info');
+        if (toggleBtn) toggleBtn.remove();
       });
-    }
-
-    function showCountryInfo(countryName) {
-      const id = countryNameToIdMap[countryName];
-      if (!id || !countriesData[id]) return;
       
-      const country = countriesData[id];
-      
-      const modal = document.getElementById("countryModal");
-      modal.innerHTML = `
-      <div class="modal-content">
-        <span class="modal-close">&times;</span>
-        <h3>${country.spanish_name}</h3>
-        <p><strong>Descripción:</strong> ${country.info.description}</p>
-        <p><strong>Clima:</strong> ${country.info.climate}</p>
-        <p><strong>Atracciones:</strong> ${country.info.attractions.join(", ")}</p>
-        <p><strong>Curiosidades:</strong> ${country.info.curiosities.join(", ")}</p>
-      </div>
-    `;
-      modal.style.display = "block";
-
-      modal.querySelector(".modal-close").addEventListener("click", () => {
-        modal.style.display = "none";
-      });
+      addMobileToggleButtons();
     }
     
     window.addEventListener('resize', () => {
@@ -376,6 +473,8 @@
           centerGlobeView(routePoints);
         }
       }
+      
+      addMobileToggleButtons();
     });
     
     // ------------ Para dispositivos móviles ------------
