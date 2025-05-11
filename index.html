@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Icesi Globe</title>
   <link href="css/css2.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/choices.min.css" />
   <script src="js/turf.min.js"></script>
   <link rel="stylesheet" href="css/index.css" />
 </head>
@@ -15,8 +15,8 @@
   <div id="globeViz"></div>
 
   <div class="controls">
-    <select id="country1"></select>
-    <select id="country2"></select>
+    <select id="country1" class="country-select"></select>
+    <select id="country2" class="country-select"></select>
     <div class="optimization-criteria">
       <label for="criteria">Optimizar por:</label>
       <select id="criteria">
@@ -32,7 +32,6 @@
   <div id="tripInfo" class="trip-info"></div>
 
   <script src="js/globe.js"></script>
-  <script src="js/choices.min.js"></script>
 
   <script>
     let arcsData = [];
@@ -191,23 +190,35 @@
         .polygonStrokeColor(() => "#020a73")
         .onPolygonClick((feature) => showCountryInfo(feature.properties.name));
 
-      const countryNames = worldData.features.map((f) => f.properties.name).sort();
-      const select1 = new Choices("#country1", {
-        searchEnabled: true,
-        removeItemButton: true,
-        placeholderValue: "Selecciona país de origen",
+      let countryNames = [];
+      
+      if (worldData.features && worldData.features.length > 0) {
+        countryNames = worldData.features.map((f) => f.properties.name).sort();
+      } else {
+        countryNames = Object.values(countriesData).map(country => country.name).sort();
+      }
+      
+      const country1Select = document.getElementById("country1");
+      const country2Select = document.getElementById("country2");
+      
+      country1Select.innerHTML = '<option value="" disabled selected>País de origen</option>';
+      country2Select.innerHTML = '<option value="" disabled selected>País de destino</option>';
+      
+      countryNames.forEach((name, index) => {
+        const option1 = document.createElement('option');
+        option1.value = name;
+        option1.textContent = name;
+        country1Select.appendChild(option1);
+        
+        const option2 = document.createElement('option');
+        option2.value = name;
+        option2.textContent = name;
+        country2Select.appendChild(option2);
       });
-      const select2 = new Choices("#country2", {
-        searchEnabled: true,
-        removeItemButton: true,
-        placeholderValue: "Selecciona país destino",
-      });
-      select1.setChoices(countryNames.map((name) => ({ value: name, label: name })));
-      select2.setChoices(countryNames.map((name) => ({ value: name, label: name })));
 
       document.getElementById("generateArc").addEventListener("click", () => {
-        const country1 = select1.getValue(true);
-        const country2 = select2.getValue(true);
+        const country1 = country1Select.value;
+        const country2 = country2Select.value;
         const criteria = document.getElementById("criteria").value;
 
         if (!country1 || !country2 || country1 === country2) {
@@ -302,8 +313,13 @@
       <p>Precio total: $${price.toFixed(2)} USD</p>
       <p>Distancia total: ${distance.toFixed(2)} km</p>
       <p>Duración estimada: ${flightTime} horas</p>
+      <button id="closeTripInfo" style="margin-top: 10px; width: 100%;">Cerrar</button>
     `;
       infoBox.style.display = "block";
+      
+      document.getElementById("closeTripInfo").addEventListener("click", () => {
+        infoBox.style.display = "none";
+      });
     }
 
     function showCountryInfo(countryName) {
@@ -327,6 +343,79 @@
         modal.style.display = "none";
       });
     }
+    
+    window.addEventListener('resize', () => {
+      if (arcsData.length > 0) {
+        const routePoints = [];
+        arcsData.forEach(arc => {
+          const startPoint = [arc.startLng, arc.startLat];
+          const endPoint = [arc.endLng, arc.endLat];
+          if (!routePoints.includes(startPoint)) routePoints.push(startPoint);
+          if (!routePoints.includes(endPoint)) routePoints.push(endPoint);
+        });
+        
+        if (typeof centerGlobeView === 'function' && routePoints.length > 0) {
+          centerGlobeView(routePoints);
+        }
+      }
+    });
+    
+    // ------------ Para dispositivos móviles ------------
+    document.addEventListener('touchstart', (e) => {
+      const modal = document.getElementById("countryModal");
+      const tripInfo = document.getElementById("tripInfo");
+      const controls = document.querySelector('.controls');
+      
+      if (modal.style.display === 'block' && 
+          !modal.contains(e.target) && 
+          e.target !== modal) {
+        modal.style.display = 'none';
+      }
+      
+    });
+
+    function setupTouchInteractions() {
+      document.getElementById('globeViz').addEventListener('touchmove', function(e) {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+      
+      window.addEventListener('orientationchange', function() {
+        setTimeout(() => {
+          if (arcsData.length > 0) {
+            const routePoints = [];
+            arcsData.forEach(arc => {
+              const startPoint = [arc.startLng, arc.startLat];
+              const endPoint = [arc.endLng, arc.endLat];
+              if (!routePoints.includes(startPoint)) routePoints.push(startPoint);
+              if (!routePoints.includes(endPoint)) routePoints.push(endPoint);
+            });
+            
+            if (typeof centerGlobeView === 'function' && routePoints.length > 0) {
+              centerGlobeView(routePoints);
+            }
+          }
+        }, 300);
+      });
+    }
+    
+    function updateMobileUI() {
+      const isMobile = window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
+      
+      if (isMobile) {
+        document.body.classList.add('mobile-device');
+      } else {
+        document.body.classList.remove('mobile-device');
+      }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      setupTouchInteractions();
+      updateMobileUI();
+    });
+    
+    window.addEventListener('resize', updateMobileUI);
   </script>
 </body>
 
