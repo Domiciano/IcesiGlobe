@@ -41,6 +41,7 @@
     let countryCentroids = {};
     let countryNameToIdMap = {};
     let idToCountryNameMap = {};
+    let countryNamesToSpanish = {};
 
     function calculateWeight(connection, criteria) {
       switch (criteria) {
@@ -138,6 +139,10 @@
         countryNameToIdMap[countriesData[id].name] = id;
         idToCountryNameMap[id] = countriesData[id].name;
       });
+      
+      Object.values(countriesData).forEach(country => {
+        countryNamesToSpanish[country.name] = country.spanish_name;
+      });
 
       Object.keys(countriesData).forEach((id) => {
         const country = countriesData[id];
@@ -207,15 +212,17 @@
       country1Select.innerHTML = '<option value="" disabled selected>País de origen</option>';
       country2Select.innerHTML = '<option value="" disabled selected>País de destino</option>';
       
-      countryNames.forEach((name, index) => {
+      countryNames.forEach((name) => {
+        const spanishName = countryNamesToSpanish[name] || name;
+        
         const option1 = document.createElement('option');
         option1.value = name;
-        option1.textContent = name;
+        option1.textContent = spanishName;
         country1Select.appendChild(option1);
         
         const option2 = document.createElement('option');
         option2.value = name;
-        option2.textContent = name;
+        option2.textContent = spanishName;
         country2Select.appendChild(option2);
       });
 
@@ -290,14 +297,21 @@
 
         centerGlobeView(routePoints);
 
-        showTripInfo(country1, country2, totalPrice, totalDistance, path);
+        const country1Spanish = countryNamesToSpanish[country1] || country1;
+        const country2Spanish = countryNamesToSpanish[country2] || country2;
+        showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path);
       });
     });
 
     function showTripInfo(from, to, price, distance, path) {
       const infoBox = document.getElementById("tripInfo");
       const flightTime = (distance / 900).toFixed(1);
-      const stops = path.map((id) => idToCountryNameMap[id]).join(" → ");
+      
+      const stops = path.map((id) => {
+        const engName = idToCountryNameMap[id];
+        return countryNamesToSpanish[engName] || engName;
+      }).join(" → ");
+      
       const criteria = document.getElementById("criteria").value;
       
       let optimizedBy = "";
@@ -319,16 +333,17 @@
       <button id="closeTripInfo" style="margin-top: 10px; width: 100%;">Cerrar</button>
     `;
       infoBox.style.display = "block";
-      
       document.getElementById("closeTripInfo").addEventListener("click", () => {
         infoBox.style.display = "none";
       });
     }
 
     function showCountryInfo(countryName) {
-      const country = Object.values(countriesData).find((c) => c.name === countryName);
-      if (!country) return;
-
+      const id = countryNameToIdMap[countryName];
+      if (!id || !countriesData[id]) return;
+      
+      const country = countriesData[id];
+      
       const modal = document.getElementById("countryModal");
       modal.innerHTML = `
       <div class="modal-content">
