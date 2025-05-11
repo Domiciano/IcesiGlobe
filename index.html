@@ -20,9 +20,9 @@
     <div class="optimization-criteria">
       <label for="criteria">Optimizar por:</label>
       <select id="criteria">
-        <option value="price" selected>Precio</option>
-        <option value="distance">Distancia</option>
-        <option value="time">Tiempo</option>
+        <option value="precio" selected>Precio</option>
+        <option value="tiempo">Tiempo</option>
+        <option value="escalas">Escalas</option>
       </select>
     </div>
     <button id="generateArc">Generar Ruta</button>
@@ -44,39 +44,18 @@
     let countryNamesToSpanish = {};
 
     function calculateWeight(connection, criteria) {
-      switch (criteria) {
-        case 'price':
-          return connection.price_usd;
-        case 'distance':
-          const fromName = idToCountryNameMap[connection.from];
-          const toName = idToCountryNameMap[connection.to];
-          const start = countryCentroids[fromName];
-          const end = countryCentroids[toName];
-          if (start && end) {
-            const startPoint = turf.point(start);
-            const endPoint = turf.point(end);
-            return turf.distance(startPoint, endPoint);
-          }
-          return connection.price_usd;
-        case 'time':
-          const fromCountry = idToCountryNameMap[connection.from];
-          const toCountry = idToCountryNameMap[connection.to];
-          const startPos = countryCentroids[fromCountry];
-          const endPos = countryCentroids[toCountry];
-          if (startPos && endPos) {
-            const startPt = turf.point(startPos);
-            const endPt = turf.point(endPos);
-            const dist = turf.distance(startPt, endPt);
-            
-            return dist / 900;
-          }
-          return connection.price_usd / 100;
-        default:
-          return connection.price_usd;
+      if (criteria === 'precio') {
+        return (connection.price_usd - 50) / 0.10;
+      } else if (criteria === 'tiempo') {
+        return connection.price_usd; // Asumimos que price_usd representa horas para el cálculo de tiempo
+      } else if (criteria === 'escalas') {
+        return 1; // Todas las conexiones cuentan como 1 (minimizar número de escalas)
+      } else {
+        throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
       }
     }
 
-    function dijkstraPath(graph, sourceId, destinationId, criteria = 'price') {
+    function dijkstraPath(graph, sourceId, destinationId, criteria = 'precio') {
       const distances = {};
       const previous = {};
       const heap = [];
@@ -125,6 +104,19 @@
       }
       path.push(sourceId);
       return path.reverse();
+    }
+
+    // Implementación de la fórmula Haversine para calcular distancias
+    function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371; // Radio de la Tierra en km
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      return R * c;
     }
 
     Promise.all([
@@ -260,23 +252,35 @@
 
           const fromName = idToCountryNameMap[fromId];
           const toName = idToCountryNameMap[toId];
-          const start = countryCentroids[fromName];
-          const end = countryCentroids[toName];
+          
+          // Usamos las coordenadas de countriesData en lugar de los centroids
+          const startLat = countriesData[fromId].lat;
+          const startLon = countriesData[fromId].lon;
+          const endLat = countriesData[toId].lat;
+          const endLon = countriesData[toId].lon;
 
-          if (start && end) {
-            if (!routePoints.includes(start)) routePoints.push(start);
-            if (!routePoints.includes(end)) routePoints.push(end);
+          if (startLat && startLon && endLat && endLon) {
+            // Añadir puntos para centrar el globo
+            const startPoint = [startLon, startLat];
+            const endPoint = [endLon, endLat];
             
-            const startPoint = turf.point(start);
-            const endPoint = turf.point(end);
-            const distance = turf.distance(startPoint, endPoint);
+            // Verificar si los puntos ya existen en el array usando una comparación más precisa
+            const startExists = routePoints.some(p => p[0] === startLon && p[1] === startLat);
+            const endExists = routePoints.some(p => p[0] === endLon && p[1] === endLat);
+            
+            if (!startExists) routePoints.push(startPoint);
+            if (!endExists) routePoints.push(endPoint);
+            
+            // Calculamos distancia usando la fórmula Haversine
+            const distance = calculateHaversineDistance(startLat, startLon, endLat, endLon);
             totalDistance += distance;
-            totalTime += distance / 900;
+            totalTime += distance / 900; // Velocidad promedio 900 km/h
+            
             arcsData.push({
-              startLat: start[1],
-              startLng: start[0],
-              endLat: end[1],
-              endLng: end[0],
+              startLat: startLat,
+              startLng: startLon,
+              endLat: endLat,
+              endLng: endLon,
               color: `hsl(${Math.random() * 360}, 70%, 50%)`,
             });
           }
@@ -299,7 +303,7 @@
 
         const country1Spanish = countryNamesToSpanish[country1] || country1;
         const country2Spanish = countryNamesToSpanish[country2] || country2;
-        showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path);
+        showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path, criteria);
       });
     });
 
@@ -384,7 +388,7 @@
       }
     }
     
-    function showTripInfo(from, to, price, distance, path) {
+    function showTripInfo(from, to, price, distance, path, criteria) {
       const infoBox = document.getElementById("tripInfo");
       const flightTime = (distance / 900).toFixed(1);
       
@@ -393,14 +397,7 @@
         return countryNamesToSpanish[engName] || engName;
       }).join(" → ");
       
-      const criteria = document.getElementById("criteria").value;
-      
-      let optimizedBy = "";
-      switch (criteria) {
-        case 'price': optimizedBy = "precio"; break;
-        case 'distance': optimizedBy = "distancia"; break;
-        case 'time': optimizedBy = "tiempo"; break;
-      }
+      let optimizedBy = getOptimizationName(criteria);
 
       infoBox.innerHTML = `
         <div class="trip-info-header">
@@ -419,7 +416,7 @@
             <div class="trip-info-route">
               ${stops}
             </div>
-            <p><small>La ruta pasa por ${path.length} países</small></p>
+            <p><small>La ruta pasa por ${path.length} países con ${path.length - 2} escalas</small></p>
           </div>
           
           <div class="trip-info-section">
@@ -438,8 +435,8 @@
                 <div class="metric-label">horas de vuelo</div>
               </div>
               <div class="trip-info-metric">
-                <div class="metric-value">${path.length - 1}</div>
-                <div class="metric-label">conexiones</div>
+                <div class="metric-value">${path.length - 2}</div>
+                <div class="metric-label">escalas</div>
               </div>
             </div>
           </div>
@@ -459,14 +456,28 @@
       addMobileToggleButtons();
     }
     
+    function getOptimizationName(type) {
+      const names = {
+        'precio': 'Menor precio',
+        'tiempo': 'Menor tiempo',
+        'escalas': 'Menos escalas'
+      };
+      return names[type] || type;
+    }
+    
     window.addEventListener('resize', () => {
       if (arcsData.length > 0) {
         const routePoints = [];
         arcsData.forEach(arc => {
           const startPoint = [arc.startLng, arc.startLat];
           const endPoint = [arc.endLng, arc.endLat];
-          if (!routePoints.includes(startPoint)) routePoints.push(startPoint);
-          if (!routePoints.includes(endPoint)) routePoints.push(endPoint);
+          
+          // Verificar si los puntos ya existen en el array usando una comparación más precisa
+          const startExists = routePoints.some(p => p[0] === arc.startLng && p[1] === arc.startLat);
+          const endExists = routePoints.some(p => p[0] === arc.endLng && p[1] === arc.endLat);
+          
+          if (!startExists) routePoints.push(startPoint);
+          if (!endExists) routePoints.push(endPoint);
         });
         
         if (typeof centerGlobeView === 'function' && routePoints.length > 0) {
@@ -505,8 +516,13 @@
             arcsData.forEach(arc => {
               const startPoint = [arc.startLng, arc.startLat];
               const endPoint = [arc.endLng, arc.endLat];
-              if (!routePoints.includes(startPoint)) routePoints.push(startPoint);
-              if (!routePoints.includes(endPoint)) routePoints.push(endPoint);
+              
+              // Verificar si los puntos ya existen en el array usando una comparación más precisa
+              const startExists = routePoints.some(p => p[0] === arc.startLng && p[1] === arc.startLat);
+              const endExists = routePoints.some(p => p[0] === arc.endLng && p[1] === arc.endLat);
+              
+              if (!startExists) routePoints.push(startPoint);
+              if (!endExists) routePoints.push(endPoint);
             });
             
             if (typeof centerGlobeView === 'function' && routePoints.length > 0) {
@@ -528,12 +544,11 @@
     }
     
     // ------------ Función de borrar ruta ------------
+    document.getElementById("clearRoute").addEventListener("click", clearCurrentRoute);
 
     document.addEventListener('DOMContentLoaded', function() {
       setupTouchInteractions();
       updateMobileUI();
-      
-      document.getElementById('clearRoute').addEventListener('click', clearCurrentRoute);
       
       document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
