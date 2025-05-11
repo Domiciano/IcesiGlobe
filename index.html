@@ -47,9 +47,9 @@
       if (criteria === 'precio') {
         return (connection.price_usd - 50) / 0.10;
       } else if (criteria === 'tiempo') {
-        return connection.price_usd; // Asumimos que price_usd representa horas para el cálculo de tiempo
+        return connection.price_usd;
       } else if (criteria === 'escalas') {
-        return 1; // Todas las conexiones cuentan como 1 (minimizar número de escalas)
+        return 1;
       } else {
         throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
       }
@@ -253,28 +253,24 @@
           const fromName = idToCountryNameMap[fromId];
           const toName = idToCountryNameMap[toId];
           
-          // Usamos las coordenadas de countriesData en lugar de los centroids
           const startLat = countriesData[fromId].lat;
           const startLon = countriesData[fromId].lon;
           const endLat = countriesData[toId].lat;
           const endLon = countriesData[toId].lon;
 
           if (startLat && startLon && endLat && endLon) {
-            // Añadir puntos para centrar el globo
             const startPoint = [startLon, startLat];
             const endPoint = [endLon, endLat];
             
-            // Verificar si los puntos ya existen en el array usando una comparación más precisa
             const startExists = routePoints.some(p => p[0] === startLon && p[1] === startLat);
             const endExists = routePoints.some(p => p[0] === endLon && p[1] === endLat);
             
             if (!startExists) routePoints.push(startPoint);
             if (!endExists) routePoints.push(endPoint);
             
-            // Calculamos distancia usando la fórmula Haversine
             const distance = calculateHaversineDistance(startLat, startLon, endLat, endLon);
             totalDistance += distance;
-            totalTime += distance / 900; // Velocidad promedio 900 km/h
+            totalTime += distance / 900;
             
             arcsData.push({
               startLat: startLat,
@@ -472,7 +468,6 @@
           const startPoint = [arc.startLng, arc.startLat];
           const endPoint = [arc.endLng, arc.endLat];
           
-          // Verificar si los puntos ya existen en el array usando una comparación más precisa
           const startExists = routePoints.some(p => p[0] === arc.startLng && p[1] === arc.startLat);
           const endExists = routePoints.some(p => p[0] === arc.endLng && p[1] === arc.endLat);
           
@@ -517,7 +512,6 @@
               const startPoint = [arc.startLng, arc.startLat];
               const endPoint = [arc.endLng, arc.endLat];
               
-              // Verificar si los puntos ya existen en el array usando una comparación más precisa
               const startExists = routePoints.some(p => p[0] === arc.startLng && p[1] === arc.startLat);
               const endExists = routePoints.some(p => p[0] === arc.endLng && p[1] === arc.endLat);
               
