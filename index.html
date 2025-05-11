@@ -33,6 +33,7 @@
   <div id="tripInfo" class="trip-info"></div>
 
   <script src="js/globe.js"></script>
+  <script src="scripts/dijkstra.js"></script>
 
   <script>
     let arcsData = [];
@@ -42,69 +43,6 @@
     let countryNameToIdMap = {};
     let idToCountryNameMap = {};
     let countryNamesToSpanish = {};
-
-    function calculateWeight(connection, criteria) {
-      if (criteria === 'precio') {
-        return (connection.price_usd - 50) / 0.10;
-      } else if (criteria === 'tiempo') {
-        return connection.price_usd;
-      } else if (criteria === 'escalas') {
-        return 1;
-      } else {
-        throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
-      }
-    }
-
-    function dijkstraPath(graph, sourceId, destinationId, criteria = 'precio') {
-      const distances = {};
-      const previous = {};
-      const heap = [];
-
-      for (const node in graph) {
-        distances[node] = Infinity;
-      }
-
-      distances[sourceId] = 0;
-      heap.push({ id: sourceId, distance: 0 });
-
-      while (heap.length > 0) {
-        heap.sort((a, b) => a.distance - b.distance);
-        const { id: currentId, distance: currentDistance } = heap.shift();
-
-        if (currentId === destinationId) break;
-        if (!graph[currentId]?.connections) continue;
-
-        for (const [neighborId, connection] of Object.entries(
-          graph[currentId].connections
-        )) {
-          const connectionWithFromTo = {
-            ...connection,
-            from: currentId,
-            to: neighborId
-          };
-          const edgeWeight = calculateWeight(connectionWithFromTo, criteria);
-          const totalDistance = currentDistance + edgeWeight;
-
-          if (totalDistance < distances[neighborId]) {
-            distances[neighborId] = totalDistance;
-            previous[neighborId] = currentId;
-            heap.push({ id: neighborId, distance: totalDistance });
-          }
-        }
-      }
-
-      if (distances[destinationId] === Infinity) return [];
-
-      const path = [];
-      let current = destinationId;
-      while (current !== sourceId) {
-        path.push(current);
-        current = previous[current];
-        if (!current) return [];
-      }
-      path.push(sourceId);
-      return path.reverse();
-    }
 
     // Implementación de la fórmula Haversine para calcular distancias
     function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
@@ -230,6 +168,8 @@
 
         const id1 = countryNameToIdMap[country1];
         const id2 = countryNameToIdMap[country2];
+        
+        // Usamos la función dijkstraPath del archivo externo exactamente como está
         const path = dijkstraPath(flightGraph, id1, id2, criteria);
 
         if (!path.length) {
@@ -240,6 +180,7 @@
         let totalPrice = 0;
         let totalDistance = 0;
         let totalTime = 0;
+        let totalWeightedMetric = 0; // Métrica ponderada según el criterio seleccionado
         arcsData = [];
         const routePoints = [];
 
@@ -248,6 +189,7 @@
           const toId = path[i + 1];
           const connection = flightGraph[fromId].connections[toId];
 
+          // Métricas básicas
           totalPrice += connection.price_usd;
 
           const fromName = idToCountryNameMap[fromId];
@@ -268,9 +210,14 @@
             if (!startExists) routePoints.push(startPoint);
             if (!endExists) routePoints.push(endPoint);
             
+            // Calculamos la distancia física para las métricas de visualización
             const distance = calculateHaversineDistance(startLat, startLon, endLat, endLon);
             totalDistance += distance;
-            totalTime += distance / 900;
+            totalTime += connection.duration_hours;
+            
+            // Calculamos el peso ponderado según el criterio que usó dijkstra
+            const weightedValue = calculateDistance(criteria, connection);
+            totalWeightedMetric += weightedValue;
             
             arcsData.push({
               startLat: startLat,
@@ -299,7 +246,9 @@
 
         const country1Spanish = countryNamesToSpanish[country1] || country1;
         const country2Spanish = countryNamesToSpanish[country2] || country2;
-        showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path, criteria);
+        
+        // Pasamos la métrica ponderada a la función de visualización
+        showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path, criteria, totalWeightedMetric, totalTime);
       });
     });
 
@@ -384,9 +333,10 @@
       }
     }
     
-    function showTripInfo(from, to, price, distance, path, criteria) {
+    function showTripInfo(from, to, price, distance, path, criteria, weightedMetric, flightTime) {
       const infoBox = document.getElementById("tripInfo");
-      const flightTime = (distance / 900).toFixed(1);
+      // Ya no calculamos el tiempo de vuelo aquí, sino que usamos el pasado como parámetro
+      const flightTimeString = flightTime.toFixed(1);
       
       const stops = path.map((id) => {
         const engName = idToCountryNameMap[id];
@@ -394,6 +344,30 @@
       }).join(" → ");
       
       let optimizedBy = getOptimizationName(criteria);
+      
+      // Mostramos información detallada sobre la optimización
+      let optimizationDetails = "";
+      const formula = getOptimizationFormula(criteria);
+      
+      if (criteria === 'precio') {
+        optimizationDetails = `
+          <p class="optimization-detail">
+            <small>Valor optimizado: ${weightedMetric.toFixed(2)} (Fórmula: ${formula})</small>
+          </p>
+        `;
+      } else if (criteria === 'tiempo') {
+        optimizationDetails = `
+          <p class="optimization-detail">
+            <small>Valor optimizado: ${weightedMetric.toFixed(2)} horas (Fórmula: ${formula})</small>
+          </p>
+        `;
+      } else if (criteria === 'escalas') {
+        optimizationDetails = `
+          <p class="optimization-detail">
+            <small>Valor optimizado: ${path.length - 1} conexiones (Fórmula: ${formula})</small>
+          </p>
+        `;
+      }
 
       infoBox.innerHTML = `
         <div class="trip-info-header">
@@ -405,6 +379,7 @@
             <p><strong>Origen:</strong> ${from}</p>
             <p><strong>Destino:</strong> ${to}</p>
             <p><strong>Optimización:</strong> ${optimizedBy} <span class="trip-info-badge">Ruta óptima</span></p>
+            ${optimizationDetails}
           </div>
           
           <div class="trip-info-section">
@@ -427,7 +402,7 @@
                 <div class="metric-label">kilómetros</div>
               </div>
               <div class="trip-info-metric">
-                <div class="metric-value">${flightTime}</div>
+                <div class="metric-value">${flightTimeString}</div>
                 <div class="metric-label">horas de vuelo</div>
               </div>
               <div class="trip-info-metric">
