@@ -44,9 +44,8 @@
     let idToCountryNameMap = {};
     let countryNamesToSpanish = {};
 
-    // Implementación de la fórmula Haversine para calcular distancias
     function calculateHaversineDistance(lat1, lon1, lat2, lon2) {
-      const R = 6371; // Radio de la Tierra en km
+      const R = 6371;
       const dLat = (lat2 - lat1) * Math.PI / 180;
       const dLon = (lon2 - lon1) * Math.PI / 180;
       const a = 
@@ -169,7 +168,6 @@
         const id1 = countryNameToIdMap[country1];
         const id2 = countryNameToIdMap[country2];
         
-        // Usamos la función dijkstraPath del archivo externo exactamente como está
         const path = dijkstraPath(flightGraph, id1, id2, criteria);
 
         if (!path.length) {
@@ -180,7 +178,7 @@
         let totalPrice = 0;
         let totalDistance = 0;
         let totalTime = 0;
-        let totalWeightedMetric = 0; // Métrica ponderada según el criterio seleccionado
+        let totalWeightedMetric = 0;
         arcsData = [];
         const routePoints = [];
 
@@ -189,7 +187,6 @@
           const toId = path[i + 1];
           const connection = flightGraph[fromId].connections[toId];
 
-          // Métricas básicas
           totalPrice += connection.price_usd;
 
           const fromName = idToCountryNameMap[fromId];
@@ -210,12 +207,10 @@
             if (!startExists) routePoints.push(startPoint);
             if (!endExists) routePoints.push(endPoint);
             
-            // Calculamos la distancia física para las métricas de visualización
             const distance = calculateHaversineDistance(startLat, startLon, endLat, endLon);
             totalDistance += distance;
             totalTime += connection.duration_hours;
             
-            // Calculamos el peso ponderado según el criterio que usó dijkstra
             const weightedValue = calculateDistance(criteria, connection);
             totalWeightedMetric += weightedValue;
             
@@ -247,7 +242,6 @@
         const country1Spanish = countryNamesToSpanish[country1] || country1;
         const country2Spanish = countryNamesToSpanish[country2] || country2;
         
-        // Pasamos la métrica ponderada a la función de visualización
         showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path, criteria, totalWeightedMetric, totalTime);
       });
     });
@@ -335,7 +329,6 @@
     
     function showTripInfo(from, to, price, distance, path, criteria, weightedMetric, flightTime) {
       const infoBox = document.getElementById("tripInfo");
-      // Ya no calculamos el tiempo de vuelo aquí, sino que usamos el pasado como parámetro
       const flightTimeString = flightTime.toFixed(1);
       
       const stops = path.map((id) => {
@@ -345,26 +338,24 @@
       
       let optimizedBy = getOptimizationName(criteria);
       
-      // Mostramos información detallada sobre la optimización
       let optimizationDetails = "";
-      const formula = getOptimizationFormula(criteria);
       
       if (criteria === 'precio') {
         optimizationDetails = `
           <p class="optimization-detail">
-            <small>Valor optimizado: ${weightedMetric.toFixed(2)} (Fórmula: ${formula})</small>
+            <small>Valor optimizado: $${weightedMetric.toFixed(2)} USD</small>
           </p>
         `;
       } else if (criteria === 'tiempo') {
         optimizationDetails = `
           <p class="optimization-detail">
-            <small>Valor optimizado: ${weightedMetric.toFixed(2)} horas (Fórmula: ${formula})</small>
+            <small>Valor optimizado: ${weightedMetric.toFixed(2)} horas</small>
           </p>
         `;
       } else if (criteria === 'escalas') {
         optimizationDetails = `
           <p class="optimization-detail">
-            <small>Valor optimizado: ${path.length - 1} conexiones (Fórmula: ${formula})</small>
+            <small>Valor optimizado: ${path.length - 1} escalas</small>
           </p>
         `;
       }
@@ -498,7 +489,7 @@
               centerGlobeView(routePoints);
             }
           }
-        }, 300);
+        }, 300);r
       });
     }
     

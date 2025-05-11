@@ -1,24 +1,12 @@
 function calculateDistance(type, conn) {
     if (type === 'precio') {
-        return (conn.price_usd - 50) / 0.10;
+        return conn.price_usd;
     } else if (type === 'tiempo') {
         return conn.duration_hours;
     } else if (type === 'escalas') {
         return conn.hops;
     } else {
         throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
-    }
-}
-
-function getOptimizationFormula(type) {
-    if (type === 'precio') {
-        return "(precio - 50) / 0.10";
-    } else if (type === 'tiempo') {
-        return "Valor directo en horas";
-    } else if (type === 'escalas') {
-        return "Conteo de escalas";
-    } else {
-        return "Fórmula desconocida";
     }
 }
 
@@ -36,7 +24,7 @@ function dijkstra(graph, sourceId, destinationId, cost) {
     heap.push({ id: sourceId, distance: 0 });
 
     while (heap.length > 0) {
-        heap.sort((a, b) => a.distance - b.distance); // Simula una priority queue
+        heap.sort((a, b) => a.distance - b.distance);
         const { id: actualNode, distance: actualDistance } = heap.shift();
 
         if (visited.has(actualNode)) continue;
@@ -61,18 +49,16 @@ function dijkstra(graph, sourceId, destinationId, cost) {
 
     if (distances[destinationId] === Infinity) return [];
 
-    // Reconstrucción del camino
     const path = [];
     let actual = destinationId;
     while (actual !== sourceId) {
         path.push(actual);
         actual = previos[actual];
-        if (!actual) return []; // Path no encontrado
+        if (!actual) return [];
     }
     path.push(sourceId);
     path.reverse();
 
-    // Retorna la lista con distancias acumuladas reales según el criterio
     const resultado = [];
     let acumulado = 0;
     for (let i = 0; i < path.length; i++) {
