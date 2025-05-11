@@ -26,6 +26,7 @@
       </select>
     </div>
     <button id="generateArc">Generar Ruta</button>
+    <button id="clearRoute" class="clear-button">Limpiar Ruta</button>
   </div>
 
   <div id="countryModal" class="modal"></div>
@@ -149,6 +150,8 @@
         .globeImageUrl("water-texture.png")
         .backgroundImageUrl("./night-sky.png")
         .backgroundColor("black")(document.getElementById("globeViz"));
+      
+      window.world = world;
 
       function centerGlobeView(points) {
         if (!points || points.length === 0) return;
@@ -410,10 +413,42 @@
       }
     }
     
+    // ------------ Función de borrar ruta ------------
+
     document.addEventListener('DOMContentLoaded', function() {
       setupTouchInteractions();
       updateMobileUI();
+      
+      document.getElementById('clearRoute').addEventListener('click', clearCurrentRoute);
+      
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          clearCurrentRoute();
+        }
+      });
     });
+    
+    function clearCurrentRoute() {
+      const country1Select = document.getElementById("country1");
+      const country2Select = document.getElementById("country2");
+      country1Select.selectedIndex = 0;
+      country2Select.selectedIndex = 0;
+      
+      const tripInfo = document.getElementById("tripInfo");
+      tripInfo.style.display = "none";
+      
+      const countryModal = document.getElementById("countryModal");
+      countryModal.style.display = "none";
+      
+      if (window.world) {
+        window.world.arcsData([]);
+        
+        window.world.polygonCapColor(() => "#183eb4");
+        window.world.pointOfView({ lat: 0, lng: 0, altitude: 2.5 }, 1000);
+      }
+      
+      arcsData = [];
+    }
     
     window.addEventListener('resize', updateMobileUI);
   </script>
