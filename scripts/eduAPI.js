@@ -17,3 +17,13 @@ function enableEducationalCountryEvents() {
     }
   });
 }
+
+function enableSolvedMode(){
+  world.onPolygonClick((feature) => { 
+    const id = countryNameToIdMap[feature.properties.name];
+    const country = countriesData[id];
+    const name = country.spanish_name;
+    showCountryInfo(name);
+  });
+
+}

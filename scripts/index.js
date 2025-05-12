@@ -49,4 +49,5 @@ window.addEventListener("resize", () => {
 
 function doTheMagic(){
     document.getElementById('mapControls').classList.remove('hidden');
+    enableSolvedMode();
 }
