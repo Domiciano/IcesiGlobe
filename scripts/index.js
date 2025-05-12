@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 clearCurrentRoute();
             }
         });
+        enableEducationalCountryEvents();
+        const script = document.createElement('script');
+        script.src = 'scripts/icesi.js';
+        document.body.appendChild(script);
     });
 });
 
@@ -42,3 +46,7 @@ window.addEventListener("resize", () => {
     addMobileToggleButtons();
     updateMobileUI();
 });
+
+function doTheMagic(){
+    document.getElementById('mapControls').classList.remove('hidden');
+}

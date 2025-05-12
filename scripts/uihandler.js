@@ -7,9 +7,12 @@ function getOptimizationName(type) {
   return names[type] || type;
 }
 
-
-
 function showCountryInfo(countryName) {
+  const name = countrySpanishNameToName[countryName];
+  _showCountryInfo(name);
+}
+
+function _showCountryInfo(countryName) {
   const id = countryNameToIdMap[countryName];
   if (!id || !countriesData[id]) return;
 

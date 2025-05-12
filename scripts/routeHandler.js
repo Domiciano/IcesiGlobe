@@ -1,9 +1,12 @@
 function handleGenerateArc() {
+
     const country1Select = document.getElementById("country1");
     const country2Select = document.getElementById("country2");
     const country1 = country1Select.value;
     const country2 = country2Select.value;
     const criteria = document.getElementById("criteria").value;
+
+
 
     if (!country1 || !country2 || country1 === country2) {
         alert("Selecciona dos países diferentes");
@@ -12,6 +15,7 @@ function handleGenerateArc() {
 
     const id1 = countryNameToIdMap[country1];
     const id2 = countryNameToIdMap[country2];
+
 
     const path = dijkstraPath(flightGraph, id1, id2, criteria);
 
@@ -83,4 +87,24 @@ function handleGenerateArc() {
     const country2Spanish = countryNamesToSpanish[country2] || country2;
 
     showTripInfo(country1Spanish, country2Spanish, totalPrice, totalDistance, path, criteria, totalWeightedMetric, totalTime);
+}
+
+function generateArc(lat1, lng1, lat2, lng2, color = 'orange') {
+    const arc = {
+        startLat: lat1,
+        startLng: lng1,
+        endLat: lat2,
+        endLng: lng2,
+        color: color
+    };
+
+    customArcs.push(arc); // 👈 acumula el arco
+
+    world
+        .arcsData(customArcs)
+        .arcAltitudeAutoScale(0.5)
+        .arcStroke(0.5)
+        .arcDashLength(0.1)
+        .arcDashGap(0.03)
+        .arcDashAnimateTime(3000);
 }

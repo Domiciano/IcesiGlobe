@@ -41,5 +41,23 @@ function setupPolygons(worldData) {
         .polygonCapColor(() => "#183eb4")
         .polygonSideColor(() => "rgba(0, 0, 0, 0.0)")
         .polygonStrokeColor(() => "#020a73")
-        .onPolygonClick((feature) => showCountryInfo(feature.properties.name));
+        //.onPolygonClick((feature) => _showCountryInfo(feature.properties.name));
 }
+
+function addMarker(lat, lng, label = '') {
+    const marker = {
+      lat: lat,
+      lng: lng,
+      size: 0.5,
+      color: 'white',
+      label: label
+    };
+  
+    // Si ya hay otros puntos, mantenlos. Si no, inicia con este.
+    const existingPoints = world.pointsData() || [];
+    world.pointsData([...existingPoints, marker])
+         .pointAltitude('size')
+         .pointColor('color')
+         .pointLabel('label');
+  }
+  
