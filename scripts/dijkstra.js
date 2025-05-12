@@ -1,14 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-
-function calculateDistance(type, cost) {
-    if(type === 'precio'){
-        return (cost - 50) / 0.10;
-    }else if (type === 'tiempo'){
-        return cost
-    }else if (type === 'escalas'){
-        return cost
-    } else{
+function calculateDistance(type, conn) {
+    if (type === 'precio') {
+        return conn.price_usd;
+    } else if (type === 'tiempo') {
+        return conn.duration_hours;
+    } else if (type === 'escalas') {
+        return conn.hops;
+    } else {
         throw new Error('Invalid cost type. Expected "precio", "tiempo" or "escalas".');
     }
 }
@@ -16,6 +13,7 @@ function calculateDistance(type, cost) {
 function dijkstra(graph, sourceId, destinationId, cost) {
     const distances = {};
     const previos = {};
+    const visited = new Set();
     const heap = [];
 
     for (const node in graph) {
@@ -26,18 +24,20 @@ function dijkstra(graph, sourceId, destinationId, cost) {
     heap.push({ id: sourceId, distance: 0 });
 
     while (heap.length > 0) {
-        // js no tiene preority queue, así que toco hacer un sort
         heap.sort((a, b) => a.distance - b.distance);
         const { id: actualNode, distance: actualDistance } = heap.shift();
+
+        if (visited.has(actualNode)) continue;
+        visited.add(actualNode);
 
         if (actualNode === destinationId) break;
 
         const connections = graph[actualNode].connections;
-        var a = 0;
+
         for (const neighborNode in connections) {
             const conn = connections[neighborNode];
-            const distance =  calculateDistance(cost, conn.price_usd);
-            const newDistance = actualDistance + distance;
+            const weight = calculateDistance(cost, conn);
+            const newDistance = actualDistance + weight;
 
             if (newDistance < distances[neighborNode]) {
                 distances[neighborNode] = newDistance;
@@ -47,9 +47,8 @@ function dijkstra(graph, sourceId, destinationId, cost) {
         }
     }
 
-    if (distances[destinationId] === Infinity) return []; // cuando no hay path la lista esta vacia, de momento no encontre ningun caso que esto pase, pero estare pendiente
+    if (distances[destinationId] === Infinity) return [];
 
-    
     const path = [];
     let actual = destinationId;
     while (actual !== sourceId) {
@@ -60,7 +59,6 @@ function dijkstra(graph, sourceId, destinationId, cost) {
     path.push(sourceId);
     path.reverse();
 
-    
     const resultado = [];
     let acumulado = 0;
     for (let i = 0; i < path.length; i++) {
@@ -69,7 +67,8 @@ function dijkstra(graph, sourceId, destinationId, cost) {
         } else {
             const prev = path[i - 1];
             const curr = path[i];
-            const salto = calculateDistance(cost, graph[prev].connections[curr].price_usd);
+            const conn = graph[prev].connections[curr];
+            const salto = calculateDistance(cost, conn);
             acumulado += salto;
             resultado.push({ id: curr, distance: acumulado });
         }
@@ -78,9 +77,7 @@ function dijkstra(graph, sourceId, destinationId, cost) {
     return resultado;
 }
 
-
-const filePath = path.resolve('c:/Users/mateo/Desktop/Semestre 8/Interactiva/IcesiGlobe/data/realistic_flight_graph.json');
-const grafo = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-
-const camino = dijkstra(grafo, "133", "32", 'precio');
-console.log(camino);
+function dijkstraPath(graph, sourceId, destinationId, cost) {
+    const result = dijkstra(graph, sourceId, destinationId, cost);
+    return result.map(item => item.id);
+}
