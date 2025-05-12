@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         enableEducationalCountryEvents();
         const script = document.createElement('script');
-        script.src = 'scripts/icesi.js';
+        script.src = './reto.js';
         document.body.appendChild(script);
     });
 });
