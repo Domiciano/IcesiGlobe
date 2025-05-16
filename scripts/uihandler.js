@@ -157,7 +157,7 @@ function showTripInfo(from, to, price, distance, path, criteria, weightedMetric,
           <div class="trip-info-metric">
             <div class="metric-value">${distance.toFixed(0)}</div>
             <div class="metric-label">kilómetros</div>
-          </div>
+          </div>ACCC
           <div class="trip-info-metric">
             <div class="metric-value">${flightTimeString}</div>
             <div class="metric-label">horas de vuelo</div>
