@@ -43,7 +43,7 @@ East Timor
 Ecuador
 Egypt
 El Salvador
-England
+United Kingdom
 Equatorial Guinea
 Eritrea
 Estonia
@@ -72,7 +72,6 @@ India
 Indonesia
 Iran
 Iraq
-Ireland
 Israel
 Italy
 Ivory Coast
