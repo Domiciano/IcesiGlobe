@@ -898,22 +898,25 @@
     "lon": -88.8700929649076
   },
   "46": {
-    "name": "England",
-    "spanish_name": "Inglaterra",
+    "name": "United Kingdom",
+    "spanish_name": "Reino Unido",
     "info": {
-      "description": "Inglaterra, parte del Reino Unido, ofrece tradición real, universidades históricas y paisajes verdes.",
-      "climate": "Oceánico templado; lluvias moderadas todo el año, inviernos suaves y veranos frescos.",
+      "description": "El Reino Unido engloba Inglaterra, Escocia, Gales e Irlanda del Norte, y combina una rica historia real, ciudades cosmopolitas y paisajes variados, desde las Tierras Altas escocesas hasta la campiña inglesa.",
+      "climate": "Oceánico templado; inviernos suaves, veranos frescos y precipitaciones moderadas durante todo el año.",
       "attractions": [
-        "Palacio de Buckingham y Big Ben",
-        "Stonehenge",
-        "Universidades de Oxford y Cambridge",
-        "Lake District"
+        "Palacio de Buckingham y Big Ben en Londres",
+        "Castillo de Edimburgo en Escocia",
+        "Stonehenge en Wiltshire",
+        "Calzada del Gigante en Irlanda del Norte"
       ],
       "curiosities": [
-        "El té de la tarde es un ritual victoriano.",
-        "El primer ferrocarril público del mundo abrió en 1825 (Stockton‑Darlington)."
+        "En Reino Unido se conduce por la izquierda desde 1835.",
+        "Las cabinas telefónicas rojas y los buzones son iconos reconocibles mundialmente.",
+        "El NHS (Servicio Nacional de Salud) ofrece atención médica gratuita en el punto de uso.",
+        "La corona británica es la casa real más antigua de Europa, con más de mil años de historia."
       ]
-    },
+    },  
+
     "lat": 53.942185006965346,
     "lon": -2.522154505706491
   },
@@ -1473,27 +1476,7 @@
     },
     "lat": 33.05014031709742,
     "lon": 43.765893732150516
-  },
-  "75": {
-    "name": "Ireland",
-    "spanish_name": "Irlanda",
-    "info": {
-      "description": "Irlanda, la isla esmeralda, mezcla acantilados dramáticos, pubs acogedores y mitología celta.",
-      "climate": "Oceánico templado húmedo con lluvias frecuentes y temperaturas moderadas.",
-      "attractions": [
-        "Acantilados de Moher",
-        "Centro histórico de Dublín y Trinity College",
-        "Anillo de Kerry",
-        "Calzada del Gigante en Irlanda del Norte"
-      ],
-      "curiosities": [
-        "El arpa celta es el emblema nacional y aparece en las monedas.",
-        "Celebran el Día de San Patricio con desfiles en todo el mundo."
-      ]
-    },
-    "lat": 53.17710862521655,
-    "lon": -8.143429146516057
-  },
+  },  
   "76": {
     "name": "Israel",
     "spanish_name": "Israel",
